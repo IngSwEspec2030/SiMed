@@ -1,0 +1,6 @@
+
+{
+    "urlTarget":"http://aws-cloudapp.com:8080/api/",
+    
+    "urlApiTest":"default/getTest"
+}
