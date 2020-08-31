@@ -1,0 +1,44 @@
+-- Secuencias
+
+UPDATE "simedSch"."EPS" SET "ID_EPS" = NEXTVAL(
+'"simedSch"."EPS_SEQ"');
+
+ALTER TABLE "simedSch"."EPS" ALTER COLUMN "ID_EPS" 
+SET DEFAULT nextval('"simedSch"."EPS_SEQ"'::regclass);
+
+UPDATE "simedSch"."ESPECIALIDAD" SET "ID_ESPECIALIDAD" = NEXTVAL(
+'"simedSch"."ESPECIALIDAD_SEQ"');
+
+ALTER TABLE "simedSch"."ESPECIALIDAD" ALTER COLUMN "ID_ESPECIALIDAD" 
+SET DEFAULT nextval('"simedSch"."ESPECIALIDAD_SEQ"'::regclass);
+
+
+UPDATE "simedSch"."LUGAR_ATENCION" SET "ID_LUGARES_ATENCION" = NEXTVAL(
+'"simedSch"."LUGAR_ATENCION_SEQ"');
+
+ALTER TABLE "simedSch"."LUGAR_ATENCION" ALTER COLUMN "ID_LUGARES_ATENCION" 
+SET DEFAULT nextval('"simedSch"."LUGAR_ATENCION_SEQ"'::regclass);
+
+UPDATE "simedSch"."PROPIEDAD" SET "ID_PROPIEDAD" = NEXTVAL(
+'"simedSch"."PROPIEDAD_SEQ"');
+
+ALTER TABLE "simedSch"."PROPIEDAD" ALTER COLUMN "ID_PROPIEDAD" 
+SET DEFAULT nextval('"simedSch"."PROPIEDAD_SEQ"'::regclass);
+
+UPDATE "simedSch"."TIPO_IDENTIFICACION" SET "ID_TIPO_IDENTIFICACION" = NEXTVAL(
+'"simedSch"."tipo_identificacion_seq"');
+
+ALTER TABLE "simedSch"."TIPO_IDENTIFICACION" ALTER COLUMN "ID_TIPO_IDENTIFICACION" 
+SET DEFAULT nextval('"simedSch"."tipo_identificacion_seq"'::regclass);
+
+UPDATE "simedSch"."TIPO_USUARIO" SET "ID_TIPO_USUARIO" = NEXTVAL(
+'"simedSch"."TIPO_USUARIO_SEQ"');
+
+ALTER TABLE "simedSch"."TIPO_USUARIO" ALTER COLUMN "ID_TIPO_USUARIO" 
+SET DEFAULT nextval('"simedSch"."TIPO_USUARIO_SEQ"'::regclass);
+
+UPDATE "simedSch"."USUARIO" SET "ID_USUARIO" = NEXTVAL(
+'"simedSch"."USUARIO_SEQ"');
+
+ALTER TABLE "simedSch"."USUARIO" ALTER COLUMN "ID_USUARIO" 
+SET DEFAULT nextval('"simedSch"."USUARIO_SEQ"'::regclass);
