@@ -1,5 +1,13 @@
 
 export class Usuario {
-nombre:string
-apellido:string
+    NOMBRES_USUARIO: string
+    APELLIDOS_USUARIO: string
+    NUMERO_IDENTIFICACION_USUARIO: string
+    PASSWORD_USUARIO: string
+    CORREO_USUARIO: string
+    ESTADO_USUARIO: string
+    FECHA_CREACION_USUARIO: Date
+    FECHA_MODIFICACION_USUARIO: Date
+
+
 }
