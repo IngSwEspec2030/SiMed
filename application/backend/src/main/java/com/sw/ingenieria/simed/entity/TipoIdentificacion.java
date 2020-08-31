@@ -37,7 +37,7 @@ public class TipoIdentificacion implements Serializable {
     @Column(name = "NOMBRE_TIPO_IDENTIFICACION")
     private String nombreTipoIdentificacion;
     @OneToMany(mappedBy = "idTipoIdentificacion")
-    private Collection<Usuario_1> usuarioCollection;
+    private Collection<Usuario> usuarioCollection;
 
     public TipoIdentificacion() {
     }
@@ -62,11 +62,11 @@ public class TipoIdentificacion implements Serializable {
         this.nombreTipoIdentificacion = nombreTipoIdentificacion;
     }
 
-    public Collection<Usuario_1> getUsuarioCollection() {
+    public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }
 
-    public void setUsuarioCollection(Collection<Usuario_1> usuarioCollection) {
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
         this.usuarioCollection = usuarioCollection;
     }
 

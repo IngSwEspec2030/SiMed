@@ -51,7 +51,7 @@ public class Eps implements Serializable {
     @ManyToMany
     private Collection<LugarAtencion> lugarAtencionCollection;
     @OneToMany(mappedBy = "idEps")
-    private Collection<Usuario_1> usuarioCollection;
+    private Collection<Usuario> usuarioCollection;
 
     public Eps() {
     }
@@ -100,11 +100,11 @@ public class Eps implements Serializable {
         this.lugarAtencionCollection = lugarAtencionCollection;
     }
 
-    public Collection<Usuario_1> getUsuarioCollection() {
+    public Collection<Usuario> getUsuarioCollection() {
         return usuarioCollection;
     }
 
-    public void setUsuarioCollection(Collection<Usuario_1> usuarioCollection) {
+    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
         this.usuarioCollection = usuarioCollection;
     }
 
