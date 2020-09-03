@@ -5,6 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -32,26 +34,26 @@ public class TipoIdentificacion implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_TIPO_IDENTIFICACION")
-    private Short idTipoIdentificacion;
+    private Short tipoIdentificacion;
     @Size(max = 100)
     @Column(name = "NOMBRE_TIPO_IDENTIFICACION")
     private String nombreTipoIdentificacion;
-    @OneToMany(mappedBy = "idTipoIdentificacion")
+    @OneToMany(mappedBy = "tipoIdentificacion")
     private Collection<Usuario> usuarioCollection;
 
     public TipoIdentificacion() {
     }
 
     public TipoIdentificacion(Short idTipoIdentificacion) {
-        this.idTipoIdentificacion = idTipoIdentificacion;
+        this.tipoIdentificacion = idTipoIdentificacion;
     }
 
     public Short getIdTipoIdentificacion() {
-        return idTipoIdentificacion;
+        return tipoIdentificacion;
     }
 
     public void setIdTipoIdentificacion(Short idTipoIdentificacion) {
-        this.idTipoIdentificacion = idTipoIdentificacion;
+        this.tipoIdentificacion = idTipoIdentificacion;
     }
 
     public String getNombreTipoIdentificacion() {
@@ -73,7 +75,7 @@ public class TipoIdentificacion implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTipoIdentificacion != null ? idTipoIdentificacion.hashCode() : 0);
+        hash += (tipoIdentificacion != null ? tipoIdentificacion.hashCode() : 0);
         return hash;
     }
 
@@ -84,7 +86,7 @@ public class TipoIdentificacion implements Serializable {
             return false;
         }
         TipoIdentificacion other = (TipoIdentificacion) object;
-        if ((this.idTipoIdentificacion == null && other.idTipoIdentificacion != null) || (this.idTipoIdentificacion != null && !this.idTipoIdentificacion.equals(other.idTipoIdentificacion))) {
+        if ((this.tipoIdentificacion == null && other.tipoIdentificacion != null) || (this.tipoIdentificacion != null && !this.tipoIdentificacion.equals(other.tipoIdentificacion))) {
             return false;
         }
         return true;
@@ -92,7 +94,7 @@ public class TipoIdentificacion implements Serializable {
 
     @Override
     public String toString() {
-        return "com.sw.ingenieria.simed.entity.TipoIdentificacion[ idTipoIdentificacion=" + idTipoIdentificacion + " ]";
+        return "com.sw.ingenieria.simed.entity.TipoIdentificacion[ idTipoIdentificacion=" + tipoIdentificacion + " ]";
     }
     
 }

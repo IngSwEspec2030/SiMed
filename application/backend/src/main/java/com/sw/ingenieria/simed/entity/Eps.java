@@ -5,6 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import lombok.*;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -24,6 +26,11 @@ import javax.validation.constraints.Size;
 /**
  * @author Johan Céspedes at PUJ
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 @Entity
 @Table(name = "EPS")
 @NamedQueries({
@@ -45,16 +52,16 @@ public class Eps implements Serializable {
     @Size(max = 100)
     @Column(name = "TELEFONO_EPS")
     private String telefonoEps;
-    @JoinTable(name = "many_LUGAR_ATENCION_has_many_EPS", joinColumns = {
+    @JoinTable(name = "\"LUGAR_ATENCION_X_EPS\"", joinColumns = {
         @JoinColumn(name = "ID_EPS", referencedColumnName = "ID_EPS")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_LUGARES_ATENCION", referencedColumnName = "ID_LUGARES_ATENCION")})
     @ManyToMany
+    @ToString.Exclude
     private Collection<LugarAtencion> lugarAtencionCollection;
     @OneToMany(mappedBy = "idEps")
+    @ToString.Exclude
     private Collection<Usuario> usuarioCollection;
 
-    public Eps() {
-    }
 
     public Eps(Short idEps) {
         this.idEps = idEps;
