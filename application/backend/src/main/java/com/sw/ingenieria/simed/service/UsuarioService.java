@@ -3,11 +3,14 @@ package com.sw.ingenieria.simed.service;
 import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
 import com.sw.ingenieria.simed.repository.UsuarioRepository;
 import com.sw.ingenieria.simed.entity.Usuario;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
-
+@Service
 public class UsuarioService implements ServiceInterface <Usuario, Long>{
 
     private UsuarioRepository usuarioRepository;
@@ -19,7 +22,7 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
 
     @Override
     public Usuario findById(Long key) throws Exception {
-        System.out.println("este es el id que llega al servicio = " + key);
+        System.out.println(" eb ek eservucui key = " + key);
         if (key == null || !existeById(key)) {
             throw new ResourceNotFoundException("El Usuario con id " + key + " no existe.");
         }
@@ -34,21 +37,24 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
 
     @Override
     public Usuario create(Usuario entity) throws Exception {
-        entity.setFecha_creacion(LocalDate.now());
+        entity.setFechaCreacionUsuario(LocalDate.now());
         return  usuarioRepository.save(entity);
     }
 
     @Override
     public Usuario update(Usuario entity) throws Exception {
-        Usuario usuario = usuarioRepository.findById(entity.getId_usuario()).get();
-        entity.setFecha_creacion(usuario.getFecha_creacion());
+        Usuario usuario = usuarioRepository.findById(entity.getIdUsuario()).get();
+        entity.setFechaCreacionUsuario(usuario.getFechaCreacionUsuario());
         return usuarioRepository.save(entity);
     }
 
     @Override
     public void delete(Long key) throws Exception {
         Usuario usuario = usuarioRepository.findById(key).get();
-        usuarioRepository.delete(usuario);
+        usuario.setEstadoUsuario(false);
+        usuario.setFechaModificacionUsuario(LocalDate.now());
+        usuarioRepository.save(usuario);
+        //usuarioRepository.delete(usuario);
 
     }
 
@@ -77,6 +83,8 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
      */
     public Usuario activar(Long key) throws Exception {
         Usuario usuario = usuarioRepository.findById(key).get();
+        usuario.setEstadoUsuario(true);
+        usuario.setFechaModificacionUsuario(LocalDate.now());
         return usuarioRepository.save(usuario);
     }
 

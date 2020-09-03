@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel>
+<role name="adminsimed"
+      superuser="true"
+      password="simed">
+	<comment><![CDATA[administrado Base de datos SIMED]]></comment>
+</role>
+
+<tablespace name="simedTS" directory="'C:\FileSystemSimed'">
+	<role name="adminsimed"/>
+</tablespace>
+
+<schema name="public" protected="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="simedSch" fill-color="#00ff00">
+	<role name="adminsimed"/>
+	<comment><![CDATA[Esquema principal de la base de datos SIMED]]></comment>
+</schema>
+
+<database name="new_database">
+</database>
+
+<sequence name="TIPO_IDENTIFICACION"
+	 start="1" increment="1"
+	 min-value="0" max-value="2147483647"
+	 cache="1" cycle="false">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<comment><![CDATA[Secuencia para la tabla Tipo de Identificación ]]></comment>
+</sequence>
+
+<table name="USUARIO">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Tabla usuarios ]]></comment>
+	<position x="13" y="43"/>
+	<column name="ID_USUARIO" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Identificador unico de usuarios en SIMED]]></comment>
+	</column>
+	<column name="NOMBRE_USUARIO">
+		<type name="varchar"/>
+		<comment><![CDATA[Nombre de usuario SIMED]]></comment>
+	</column>
+	<column name="APELLIDOS_USUARIO">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Apellidos Usuario de SIMED]]></comment>
+	</column>
+	<column name="NUMERO_IDENTIFICACION_USUARIO">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Numero de documento del Usuario de SIMED]]></comment>
+	</column>
+	<column name="PASSWORD_USUARIO">
+		<type name="varchar" length="250"/>
+		<comment><![CDATA[Password de Usuario de SIMED]]></comment>
+	</column>
+	<column name="CORREO_USUARIO">
+		<type name="varchar" length="250"/>
+		<comment><![CDATA[Cuenta de Correo electronico del Usuario ]]></comment>
+	</column>
+	<column name="ESTADO_USUARIO">
+		<type name="boolean"/>
+		<comment><![CDATA[Estado del Usuario, puede activo 1, inactivo 0]]></comment>
+	</column>
+	<column name="FECHA_CREACION_USUARIO">
+		<type name="timestamp"/>
+		<comment><![CDATA[Fecha de Creacion del registro ]]></comment>
+	</column>
+	<column name="FECHA_MODIFICACION_USUARIO">
+		<type name="timestamp"/>
+		<comment><![CDATA[Fecha de modificacion dell registro de usuario]]></comment>
+	</column>
+	<constraint name="USUARIO_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;USUARIO&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_USUARIO" ref-type="src-columns"/>
+		<comment><![CDATA[llave primaria tabla usuario]]></comment>
+	</constraint>
+</table>
+
+<table name="EPS">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Empresa prestadora de Salud]]></comment>
+	<position x="682" y="189"/>
+	<column name="ID_EPS" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Identificador unico de registro ]]></comment>
+	</column>
+	<column name="NOMBRE_EPS">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nombre de la entidad prestadora de salud]]></comment>
+	</column>
+	<column name="DIRECCION_EPS">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Direccion de ubicacion de la EPS]]></comment>
+	</column>
+	<column name="TELEFONO_EPS">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Numero telefonico de EPS]]></comment>
+	</column>
+	<constraint name="EPS_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;EPS&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_EPS" ref-type="src-columns"/>
+		<comment><![CDATA[Llave primarya Tabla EPS]]></comment>
+	</constraint>
+</table>
+
+<table name="TIPO_USUARIO">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<position x="653" y="117"/>
+	<column name="ID_TIPO_USUARIO" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Numero de identificacion de Usuarios]]></comment>
+	</column>
+	<column name="NOMBRE_TIPO_USUARIO">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nombre del tipo Usuario]]></comment>
+	</column>
+	<constraint name="ID_USUARIO_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;TIPO_USUARIO&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_TIPO_USUARIO" ref-type="src-columns"/>
+		<comment><![CDATA[Llave foranea de Usuarios]]></comment>
+	</constraint>
+</table>
+
+<table name="PROPIEDAD">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Tabla propiedades SIMED]]></comment>
+	<position x="432" y="18"/>
+	<column name="ID_PROPIEDAD" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Propiedades de SIMED]]></comment>
+	</column>
+	<column name="ESTADO_PROPIEDAD">
+		<type name="boolean"/>
+		<comment><![CDATA[Estado de una propiedad 1 activo, 0 inactivo]]></comment>
+	</column>
+	<column name="NOMBRE_PROPIEDAD">
+		<type name="varchar" length="250"/>
+	</column>
+	<column name="VALOR_PROPIEDAD">
+		<type name="varchar" length="2000"/>
+		<comment><![CDATA[Contenido de la propiedad, puede ser un JSON, la cabecera de un correo electronico ]]></comment>
+	</column>
+	<constraint name="PROPIEDAD_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;PROPIEDAD&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_PROPIEDAD" ref-type="src-columns"/>
+		<comment><![CDATA[Llave Primaria de la tabla Propiedades]]></comment>
+	</constraint>
+</table>
+
+<table name="LUGAR_ATENCION">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Lugares de atencion asociados a una EPS]]></comment>
+	<position x="639" y="411"/>
+	<column name="ID_LUGARES_ATENCION" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[identificador unico de lugares de atención]]></comment>
+	</column>
+	<column name="NOMBRE_LUGAR_ATENCION">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nombre del lugar de atención]]></comment>
+	</column>
+	<column name="DIRECCION_LUGAR_ATENCION">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Dirección del Lugar de atención]]></comment>
+	</column>
+	<column name="TELEFONO_LUGAR_ATENCION">
+		<type name="varchar" length="20"/>
+		<comment><![CDATA[Numero telefonico del Lugar de atención]]></comment>
+	</column>
+	<column name="SITIO_WEB_LUGAR_ATENCION">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Sitio web del lugar de atención]]></comment>
+	</column>
+	<column name="LATITUD_LUGAR_ATENCION">
+		<type name="float"/>
+		<comment><![CDATA[Latitud del lugar de atención]]></comment>
+	</column>
+	<column name="LONGITUD_LUGAR_ATENCION">
+		<type name="float"/>
+		<comment><![CDATA[Longitud del lugar de atención]]></comment>
+	</column>
+	<constraint name="LUGAR_ATENCION_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;LUGAR_ATENCION&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_LUGARES_ATENCION" ref-type="src-columns"/>
+		<comment><![CDATA[Llave primaria tabla lugares de atención]]></comment>
+	</constraint>
+</table>
+
+<table name="ESPECIALIDAD">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Especialidad médica]]></comment>
+	<position x="38" y="447"/>
+	<column name="ID_ESPECIALIDAD" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Identificador de Especialidad Médica]]></comment>
+	</column>
+	<column name="NOMBRE_ESPECIALIDAD">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nombre de la especialidad Médica]]></comment>
+	</column>
+	<constraint name="ID_ESPECIALIDAD_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;ESPECIALIDAD&quot;">
+		<columns names="ID_ESPECIALIDAD" ref-type="src-columns"/>
+		<comment><![CDATA[Llave primaria de Especialidades medicas]]></comment>
+	</constraint>
+</table>
+
+<table name="TIPO_IDENTIFICACION">
+	<schema name="&quot;simedSch&quot;"/>
+	<role name="adminsimed"/>
+	<tablespace name="&quot;simedTS&quot;"/>
+	<comment><![CDATA[Tipo de Identificación documento identidad puede ser CC, TI, CE, NUIP otros]]></comment>
+	<position x="27" y="339"/>
+	<column name="ID_TIPO_IDENTIFICACION" not-null="true">
+		<type name="int2"/>
+		<comment><![CDATA[Identificador único de la tabla tipo de identificación]]></comment>
+	</column>
+	<column name="NOMBRE_TIPO_IDENTIFICACION">
+		<type name="varchar" length="100"/>
+		<comment><![CDATA[Nombre del tipo de identificación]]></comment>
+	</column>
+	<constraint name="TIPO_IDENTIFICACION_PK" type="pk-constr" factor="10" table="&quot;simedSch&quot;.&quot;TIPO_IDENTIFICACION&quot;">
+		<tablespace name="&quot;simedTS&quot;"/>
+		<columns names="ID_TIPO_IDENTIFICACION" ref-type="src-columns"/>
+		<comment><![CDATA[Llave primaria del tipo de identificación]]></comment>
+	</constraint>
+</table>
+
+<relationship name="TIPO_IDENTIFICACION_X_USUARIO" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="9" constr-indexes="1"
+	 src-table="&quot;simedSch&quot;.&quot;TIPO_IDENTIFICACION&quot;"
+	 dst-table="&quot;simedSch&quot;.&quot;USUARIO&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="TIPO_USUARIO_X_USUARIO" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="10" constr-indexes="2"
+	 src-table="&quot;simedSch&quot;.&quot;TIPO_USUARIO&quot;"
+	 dst-table="&quot;simedSch&quot;.&quot;USUARIO&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="EPS_X_USUARIO" type="rel1n"
+	 src-col-pattern="{sc}"
+	 pk-pattern="{dt}_pk" uq-pattern="{dt}_uq"
+	 src-fk-pattern="{st}_fk"
+	 col-indexes="11" constr-indexes="3"
+	 src-table="&quot;simedSch&quot;.&quot;EPS&quot;"
+	 dst-table="&quot;simedSch&quot;.&quot;USUARIO&quot;"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="LUGAR_ATENCION_X_EPS" type="relnn"
+	 src-col-pattern="{sc}" dst-col-pattern="{sc}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 src-table="&quot;simedSch&quot;.&quot;LUGAR_ATENCION&quot;"
+	 dst-table="&quot;simedSch&quot;.&quot;EPS&quot;"
+	 src-required="false" dst-required="false"	 table-name="many_LUGAR_ATENCION_has_many_EPS"/>
+
+<relationship name="LUGAR_ATENCION_X_ESPECIALIDAD" type="relnn"
+	 src-col-pattern="{sc}" dst-col-pattern="{sc}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 src-table="&quot;simedSch&quot;.&quot;LUGAR_ATENCION&quot;"
+	 dst-table="&quot;simedSch&quot;.&quot;ESPECIALIDAD&quot;"
+	 src-required="false" dst-required="false"	 table-name="many_LUGAR_ATENCION_has_many_ESPECIALIDAD"/>
+
+</dbmodel>

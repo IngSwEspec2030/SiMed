@@ -1,8 +1,12 @@
 package com.sw.ingenieria.simed.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 
 /**
  * @author Johan Céspedes at PUJ
@@ -14,7 +18,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@Table(name = "usuario")
+@Table(name = "\"USUARIO\"")
 
 
 public class Usuario implements Serializable {
@@ -23,30 +27,48 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_usuario")
-    private Long id_usuario;
-    @Column(name = "nombre_usuario")
-    private String nombre_usuario;
-    @Column(name = "apellido_usuario")
-    private String apellido_usuario;
-    @Column(name = "numdoc_usuario")
-    private String numdoc_usuario;
-    @Column(name = "fecha_creacion")
-    private LocalDate fecha_creacion;
-    /*@Column(name = "tipo_documento")
-    private String tipo_documento;
-    @Column(name = "estado_usuario")
-    private Boolean estado_usuario;
-    @Column(name = "eps_usuario")
-    private Boolean eps_usuario;
-    @Column(name = "usuario_crea")
-    private Long usuario_crea;
-    @Column(name = "usuario_mod")
-    private Long usuario_mod;*/
+    @Column(name = "ID_USUARIO")
+    private Long idUsuario;
+    @Size(max = 2147483647)
+    @Column(name = "NOMBRE_USUARIO")
+    private String nombreUsuario;
+    @Size(max = 100)
+    @Column(name = "APELLIDOS_USUARIO")
+    private String apellidosUsuario;
+    @Size(max = 20)
+    @Column(name = "NUMERO_IDENTIFICACION_USUARIO")
+    private String numeroIdentificacionUsuario;
+    @Size(max = 250)
+    @Column(name = "PASSWORD_USUARIO")
+    private String passwordUsuario;
+    @Size(max = 250)
+    @Column(name = "CORREO_USUARIO")
+    private String correoUsuario;
+    @Column(name = "ESTADO_USUARIO")
+    private Boolean estadoUsuario;
+    @Column(name = "FECHA_CREACION_USUARIO")
+    //@Temporal(TemporalType.TIMESTAMP)
+    private LocalDate fechaCreacionUsuario;
+    @Column(name = "FECHA_MODIFICACION_USUARIO")
+    //@Temporal(TemporalType.TIMESTAMP)
+    private LocalDate fechaModificacionUsuario;
+    @JoinColumn(name = "ID_EPS", referencedColumnName = "ID_EPS")
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private Eps idEps;
+    @JoinColumn(name = "\"ID_TIPO_IDENTIFICACION\"", referencedColumnName = "ID_TIPO_IDENTIFICACION")
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private TipoIdentificacion tipoIdentificacion;
+    @JoinColumn(name = "\"ID_TIPO_USUARIO\"", referencedColumnName = "ID_TIPO_USUARIO")
+    @ManyToOne
+    @JsonIgnore
+    @ToString.Exclude
+    private TipoUsuario idTipoUsuario;
 
-    public Usuario(Long id) {
-        this.id_usuario = id_usuario;
-    }
+    public Usuario(Long idUsuario) { this.idUsuario = idUsuario; }
 
 
 

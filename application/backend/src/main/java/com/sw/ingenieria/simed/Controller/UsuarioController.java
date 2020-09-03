@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping (value="/usuario")
 public class UsuarioController {
 
+    @Autowired
     private UsuarioService usuarioService;
 
     public UsuarioController(UsuarioService usuarioService) {this.usuarioService = usuarioService;}
@@ -45,7 +46,7 @@ public class UsuarioController {
 
     @PutMapping("/update")
     public ResponseEntity <?> update(@RequestBody Usuario usuario) throws Exception {
-        Usuario usu = usuarioService.findById(usuario.getId_usuario());
+        Usuario usu = usuarioService.findById(usuario.getIdUsuario());
         if(usu==null){
             return new ResponseEntity<>("No existe un Usuario correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
@@ -72,9 +73,4 @@ public class UsuarioController {
         usuarioService.activar(id);
         return new ResponseEntity<>("Usuario activado", HttpStatus.OK);
     }
-
-
-
-
-
 }
