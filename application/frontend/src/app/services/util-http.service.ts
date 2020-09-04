@@ -9,7 +9,7 @@ import { isJson } from '../utils/constants';
 })
 export class UtilHttpService {
 
-  defaultMsgSpinner:string="Procesando su solicitud!";
+  defaultMsgSpinner:string="<h3>Procesando su solicitud!</h3>";
 
   constructor(private http:HttpClient, private config:ConfigService) {}
 
@@ -60,6 +60,7 @@ export class UtilHttpService {
    * @param id 
    */
   delete(url:string,id:any){
+    url = `${url}/${id}`;
     url = this.config.prop.urlTarget + url;
     return this.http.delete(url,{headers:this.createRequestHeader()} )
   }
