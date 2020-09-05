@@ -1,0 +1,68 @@
+<h2 class="card-title">Administración de usuario</h2>
+
+<div class="card">
+    <div class="card-body mb-5">
+        <h5 class="card-title">Actualización de información de usuario</h5>
+        <hr>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <div class="form-group">
+                    <label for="NOMBRES_USUARIO">Nombre(s)</label>
+                    <input type="text" formControlName="NOMBRES_USUARIO" class="form-control"
+                    />
+                    <!-- [ngClass]="{ 'is-invalid': submitted && f.NOMBRES_USUARIO.errors }" -->
+                    <!-- <div *ngIf="submitted && f.NOMBRES_USUARIO.errors" class="invalid-feedback">
+                        <div *ngIf="f.NOMBRES_USUARIO.errors.required">El nombre es requerido</div>
+                    </div> -->
+                </div>
+           </div>
+            <div class="col-lg-6 col-sm-12">              
+                <div class="form-group">
+                    <label for="APELLIDOS_USUARIO">Apellido(s)</label>
+                    <input type="text" formControlName="APELLIDOS_USUARIO" class="form-control"
+                    />
+                    <!-- [ngClass]="{ 'is-invalid': submitted && f.APELLIDOS_USUARIO.errors }"  -->
+                    <!-- <div *ngIf="submitted && f.APELLIDOS_USUARIO.errors" class="invalid-feedback">
+                        <div *ngIf="f.APELLIDOS_USUARIO.errors.required">El apellido es requerido</div>
+                    </div> -->
+                </div>                
+            </div>
+            <div class="col-lg-6 col-sm-12">              
+                <div class="form-group">
+                    <label for="NUMERO_IDENTIFICACION">Numero Identificación</label>
+                    <input type="text" formControlName="NUMERO_IDENTIFICACION" class="form-control"
+                    />
+                    <!-- [ngClass]="{ 'is-invalid': submitted && f.NUMERO_IDENTIFICACION.errors }" -->
+                    <!-- <div *ngIf="submitted && f.NUMERO_IDENTIFICACION.errors" class="invalid-feedback">
+                        <div *ngIf="f.NUMERO_IDENTIFICACION.errors.required">El Numero de identificación es requerido</div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12">              
+                <div class="form-group">
+                    <label for="CORREO_USUARIO">Correo electrónico</label>
+                    <input type="text" formControlName="CORREO_USUARIO" class="form-control"
+                    />
+                    <!-- [ngClass]="{ 'is-invalid': submitted && f.CORREO_USUARIO.errors }"  -->
+                    <!-- <div *ngIf="submitted && f.CORREO_USUARIO.errors" class="invalid-feedback">
+                        <div *ngIf="f.CORREO_USUARIO.errors.required">El correo electrónico es requerido</div>
+                    </div> -->
+                </div>
+           </div>
+
+       </div> 
+
+
+
+
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">
+                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                Actualizar
+            </button>
+        </div>
+    </form>
+    </div>
+</div>

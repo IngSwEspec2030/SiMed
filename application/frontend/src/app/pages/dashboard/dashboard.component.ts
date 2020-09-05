@@ -9,7 +9,10 @@ import { UtilHttpService } from 'src/app/services/util-http.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-
+  public labels1: string[] = ['Sanitas', 'Colsubsidio', 'Coomeva'];
+  public data1 = [
+    [10, 15, 40],
+  ];
   message:DisplayMessage
   constructor(private http:UtilHttpService) { 
     this.message = new DisplayMessage();
