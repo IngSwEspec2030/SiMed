@@ -7,37 +7,111 @@
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
-                <li class="user-profile">
+                <!-- ***************************************************************************************************** -->
+                <!-- SECCIÓN DE USUARIOS -->
+                <!-- ***************************************************************************************************** -->
+                <!-- <li class="nav-small-cap">USUARIOS</li> -->
+                <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <img src="./assets/images/users/profile.png" alt="user" /><span class="hide-menu">USUARIO</span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void()">My Profile </a></li>
-                        <li><a href="javascript:void()">My Balance</a></li>
-                        <li><a href="javascript:void()">Inbox</a></li>
-                        <li><a routerLink="account-settings">Account Setting</a></li>
-                        <li><a routerLink="/login">Cerrar Sesión</a></li>
-                    </ul>
-                </li>
-                <li class="nav-devider"></li>
-                <li class="nav-small-cap">PERSONAL</li>
-
-                <!-- <li *ngFor="let item of menuItems"> 
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
-                        <i class="mdi mdi-gauge"></i>
+                        <i class="mdi mdi-account-settings-variant"></i>
                         <span class="hide-menu"> 
-                            {{ item.titulo }} 
+                            USUARIOS
                             <span class="label label-rouded label-themecolor pull-right">
-                                {{ item.submenu.length }}
+                                subtitulo2
                             </span>
                         </span>
                     </a>
+                    <ul aria-expanded="false" class="collapse">                        
+                        <li><a routerLink="pages/admin-user" >Perfil</a></li>
+                        <li><a href="javascript:void()">Item 2</a></li>
+                    </ul>                    
+                </li>
 
+                <!-- ***************************************************************************************************** -->
+                <!-- SECCIÓN DE LUGARES DE ATENCIÓN -->
+                <!-- ***************************************************************************************************** -->
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">LUGARES DE ATENCIÓN</li> -->
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-hospital-marker"></i>
+                        <span class="hide-menu"> 
+                            CENTROS
+                            <span class="label label-rouded label-themecolor pull-right">
+                                subtitulo1
+                            </span>
+                        </span>
+                    </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li *ngFor="let subMenuItem of item.submenu">
-                            <a [routerLink]="subMenuItem.url"> {{ subMenuItem.titulo }} </a>
-                        </li>
-                    </ul>
-                </li> -->
+                        <li><a href="javascript:void()">Item 1</a></li>
+                        <li><a href="javascript:void()">Item 2</a></li>
+                    </ul>                    
+                </li>
+
+                <!-- ***************************************************************************************************** -->
+                <!-- EPS -->
+                <!-- ***************************************************************************************************** -->
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">LUGARES DE ATENCIÓN</li> -->
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-hospital-building"></i>
+                        <span class="hide-menu"> 
+                            EPS
+                            <span class="label label-rouded label-themecolor pull-right">
+                                subtitulo1
+                            </span>
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="javascript:void()">Item 1</a></li>
+                        <li><a href="javascript:void()">Item 2</a></li>
+                    </ul>                    
+                </li>
+                
+                <!-- ***************************************************************************************************** -->
+                <!-- SECCIÓN DE ESPECIALIDADES -->
+                <!-- ***************************************************************************************************** -->
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">DASHBOARD</li> -->
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-signal-hspa-plus"></i>
+                        <span class="hide-menu"> 
+                            ESPECIALIDADES
+                            <span class="label label-rouded label-themecolor pull-right">
+                                subtitulo1
+                            </span>
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="javascript:void()">Item 1</a></li>
+                        <li><a href="javascript:void()">Item 2</a></li>
+                    </ul>                    
+                </li>
+                
+                <!-- ***************************************************************************************************** -->
+                <!-- SECCIÓN DE DASHBOARD -->
+                <!-- ***************************************************************************************************** -->
+                <li class="nav-devider"></li>
+                <!-- <li class="nav-small-cap">DASHBOARD</li> -->
+                <li>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <i class="mdi mdi-chart-bar"></i>
+                        <span class="hide-menu"> 
+                            DASHBOARD
+                            <span class="label label-rouded label-themecolor pull-right">
+                                subtitulo1
+                            </span>
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li><a href="javascript:void()">Item 1</a></li>
+                        <li><a href="javascript:void()">Item 2</a></li>
+                    </ul>                    
+                </li>
+                
+
                 
             </ul>
         </nav>
@@ -48,3 +122,6 @@
 <!-- ============================================================== -->
 <!-- End Left Sidebar - style you can find in sidebar.scss  -->
 <!-- ============================================================== -->
+
+
+

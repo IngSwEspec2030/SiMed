@@ -4,22 +4,22 @@ import Swal, {SweetAlertIcon} from 'sweetalert2'
 
 export class DisplayMessage{
         swalWithBootstrapButtons = Swal.mixin({customClass:{
-        confirmButton: 'btn btn-primary',
-        cancelButton: 'btn btn-default'
+        confirmButton: 'btn btn-primary mr-2',
+        cancelButton: 'btn btn-danger ml-2'
         },
         buttonsStyling:false
     })
 
 
-    public displayInfoMEsage(
+    public displayInfoMessage(
         title:string, 
         message:string,
-        txtOk:string="Ok",
-        txtCancel:string="Cancel",
         sweetAlertIconType:SweetAlertIcon,
         buttonType:ButtonType
         ):any{
         let promise:any;
+        let txtOk:string="Aceptar";
+        let txtCancel:string="Cancelar";
 
         switch(buttonType){
             case ButtonType.Ok:
@@ -57,7 +57,7 @@ export class DisplayMessage{
 
 
 export enum IconType{
-    success="",
+    success="success",
     error="error",
     warning="warning",
     info="info",

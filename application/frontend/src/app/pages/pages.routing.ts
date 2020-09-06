@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminUsuarioComponent } from './usuario/admin-usuario/admin-usuario.component';
+import { AdminEpsComponent } from './eps/admin-eps/admin-eps.component';
+import { AdminEspecialidadComponent } from './especialidad/admin-especialidad/admin-especialidad.component';
+import { AdminLugarComponent } from './lugarAtencion/admin-lugar/admin-lugar.component';
 
 
 const routes: Routes = [
@@ -11,9 +15,10 @@ const routes: Routes = [
         component: PagesComponent,
         children: [
             { path: '', component: DashboardComponent },
-            // { path: 'progress', component: ProgressComponent },
-            // { path: 'grafica1', component: Grafica1Component },
-            // { path: 'account-settings', component: AccountSettingsComponent },
+            { path: 'pages/admin-user', component: AdminUsuarioComponent },
+            { path: 'pages/admin-eps', component: AdminEpsComponent },
+            { path: 'pages/admin-specialties', component: AdminEspecialidadComponent },
+            { path: 'pages/admin-site', component: AdminLugarComponent },
         ]
     },
 ];

@@ -1,21 +1,35 @@
-<p>dashboard works!</p>
+<div class="row">
+    <div class="col-6">
+        <app-dona [labels]="labels1"
+                  [data]="data1"
+                  title="Gestión EPS">
+        </app-dona>
+    </div>
+    <div class="col-6">
+        <app-dona [labels]="labels1"
+                  [data]="data1"
+                  title="Gestión EPS">
+        </app-dona>
+    </div>
+</div>
+
+
 <div class="card">
-    <div class="card-body mb-10">
+    <div class="card-body mb-5">
         <h5 class="card-title">Card title</h5>
         <hr>
-       
-
-        <div class="row ">
-            <div class="col-12">
+        <div class="row">
+            <div class="col-12 mt-1">
                 <label for="input1">Label</label>
                 <input id="input1" class="form-control" placeholder="Input">                
             </div>
-            <div class="col-12">
+            <div class="col-12 mt-1">
                 <label for="input2">Label</label>
                 <input id="input2" class="form-control" placeholder="Input">                
             </div>
-            <div class="col-12">                
-                <button type="button" class="btn btn-success ">Button</button>
+            <div class="col-12 mt-2">                
+                <button type="button" class="btn btn-primary mr-3"(click)="onClick(1)">Probar Spinner</button>
+                <button type="button" class="btn btn-primary"(click)="onClick(2)">Probar Alert</button>
             </div>
 
         </div>
