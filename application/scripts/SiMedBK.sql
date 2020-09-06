@@ -52,13 +52,13 @@ CREATE SEQUENCE "simedSch"."EPS_SEQ"
 
 ALTER TABLE "simedSch"."EPS_SEQ" OWNER TO postgres;
 
-SET default_tablespace = "simedTS";
+SET default_tablespace = "pg_default";
 
 SET default_table_access_method = heap;
 
 --
 -- TOC entry 204 (class 1259 OID 24981)
--- Name: EPS; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: EPS; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."EPS" (
@@ -134,7 +134,7 @@ ALTER TABLE "simedSch"."ESPECIALIDAD_SEQ" OWNER TO postgres;
 
 --
 -- TOC entry 208 (class 1259 OID 25004)
--- Name: ESPECIALIDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: ESPECIALIDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."ESPECIALIDAD" (
@@ -189,7 +189,7 @@ ALTER TABLE "simedSch"."LUGAR_ATENCION_SEQ" OWNER TO postgres;
 
 --
 -- TOC entry 207 (class 1259 OID 24999)
--- Name: LUGAR_ATENCION; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: LUGAR_ATENCION; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."LUGAR_ATENCION" (
@@ -279,7 +279,7 @@ COMMENT ON COLUMN "simedSch"."LUGAR_ATENCION"."LONGITUD_LUGAR_ATENCION" IS 'Long
 
 --
 -- TOC entry 210 (class 1259 OID 25029)
--- Name: LUGAR_ATENCION_X_EPS; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: LUGAR_ATENCION_X_EPS; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."LUGAR_ATENCION_X_EPS" (
@@ -310,7 +310,7 @@ COMMENT ON COLUMN "simedSch"."LUGAR_ATENCION_X_EPS"."ID_EPS" IS 'Identificador u
 
 --
 -- TOC entry 211 (class 1259 OID 25044)
--- Name: LUGAR_ATENCION_X_ESPECIALIDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: LUGAR_ATENCION_X_ESPECIALIDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."LUGAR_ATENCION_X_ESPECIALIDAD" (
@@ -356,7 +356,7 @@ ALTER TABLE "simedSch"."PROPIEDAD_SEQ" OWNER TO postgres;
 
 --
 -- TOC entry 206 (class 1259 OID 24991)
--- Name: PROPIEDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: PROPIEDAD; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."PROPIEDAD" (
@@ -422,7 +422,7 @@ ALTER TABLE "simedSch".tipo_identificacion_seq OWNER TO postgres;
 
 --
 -- TOC entry 209 (class 1259 OID 25009)
--- Name: TIPO_IDENTIFICACION; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: TIPO_IDENTIFICACION; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."TIPO_IDENTIFICACION" (
@@ -477,7 +477,7 @@ ALTER TABLE "simedSch"."TIPO_USUARIO_SEQ" OWNER TO postgres;
 
 --
 -- TOC entry 205 (class 1259 OID 24986)
--- Name: TIPO_USUARIO; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: TIPO_USUARIO; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."TIPO_USUARIO" (
@@ -523,7 +523,7 @@ ALTER TABLE "simedSch"."USUARIO_SEQ" OWNER TO postgres;
 
 --
 -- TOC entry 203 (class 1259 OID 24973)
--- Name: USUARIO; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: USUARIO; Type: TABLE; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 CREATE TABLE "simedSch"."USUARIO" (
@@ -829,7 +829,7 @@ SELECT pg_catalog.setval('"simedSch".tipo_identificacion_seq', 4, true);
 
 --
 -- TOC entry 2744 (class 2606 OID 24985)
--- Name: EPS EPS_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: EPS EPS_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."EPS"
@@ -845,7 +845,7 @@ ALTER TABLE ONLY "simedSch"."EPS"
 COMMENT ON CONSTRAINT "EPS_PK" ON "simedSch"."EPS" IS 'Llave primarya Tabla EPS';
 
 
-SET default_tablespace = '';
+SET default_tablespace = 'pg_default';
 
 --
 -- TOC entry 2752 (class 2606 OID 25008)
@@ -865,11 +865,11 @@ ALTER TABLE ONLY "simedSch"."ESPECIALIDAD"
 COMMENT ON CONSTRAINT "ID_ESPECIALIDAD_PK" ON "simedSch"."ESPECIALIDAD" IS 'Llave primaria de Especialidades medicas';
 
 
-SET default_tablespace = "simedTS";
+SET default_tablespace = "pg_default";
 
 --
 -- TOC entry 2746 (class 2606 OID 24990)
--- Name: TIPO_USUARIO ID_USUARIO_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: TIPO_USUARIO ID_USUARIO_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."TIPO_USUARIO"
@@ -887,7 +887,7 @@ COMMENT ON CONSTRAINT "ID_USUARIO_PK" ON "simedSch"."TIPO_USUARIO" IS 'Llave for
 
 --
 -- TOC entry 2750 (class 2606 OID 25003)
--- Name: LUGAR_ATENCION LUGAR_ATENCION_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: LUGAR_ATENCION LUGAR_ATENCION_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."LUGAR_ATENCION"
@@ -903,7 +903,7 @@ ALTER TABLE ONLY "simedSch"."LUGAR_ATENCION"
 COMMENT ON CONSTRAINT "LUGAR_ATENCION_PK" ON "simedSch"."LUGAR_ATENCION" IS 'Llave primaria tabla lugares de atención';
 
 
-SET default_tablespace = '';
+SET default_tablespace = 'pg_default';
 
 --
 -- TOC entry 2756 (class 2606 OID 25033)
@@ -914,11 +914,11 @@ ALTER TABLE ONLY "simedSch"."LUGAR_ATENCION_X_EPS"
     ADD CONSTRAINT "LUGAR_ATENCION_X_EPS_pk" PRIMARY KEY ("ID_LUGARES_ATENCION", "ID_EPS");
 
 
-SET default_tablespace = "simedTS";
+SET default_tablespace = "pg_default";
 
 --
 -- TOC entry 2748 (class 2606 OID 24998)
--- Name: PROPIEDAD PROPIEDAD_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: PROPIEDAD PROPIEDAD_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."PROPIEDAD"
@@ -936,7 +936,7 @@ COMMENT ON CONSTRAINT "PROPIEDAD_PK" ON "simedSch"."PROPIEDAD" IS 'Llave Primari
 
 --
 -- TOC entry 2754 (class 2606 OID 25013)
--- Name: TIPO_IDENTIFICACION TIPO_IDENTIFICACION_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: TIPO_IDENTIFICACION TIPO_IDENTIFICACION_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."TIPO_IDENTIFICACION"
@@ -954,7 +954,7 @@ COMMENT ON CONSTRAINT "TIPO_IDENTIFICACION_PK" ON "simedSch"."TIPO_IDENTIFICACIO
 
 --
 -- TOC entry 2742 (class 2606 OID 25086)
--- Name: USUARIO USUARIO_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: simedTS
+-- Name: USUARIO USUARIO_PK; Type: CONSTRAINT; Schema: simedSch; Owner: postgres; Tablespace: pg_default
 --
 
 ALTER TABLE ONLY "simedSch"."USUARIO"
@@ -970,7 +970,7 @@ ALTER TABLE ONLY "simedSch"."USUARIO"
 COMMENT ON CONSTRAINT "USUARIO_PK" ON "simedSch"."USUARIO" IS 'llave primaria tabla usuario';
 
 
-SET default_tablespace = '';
+SET default_tablespace = 'pg_default';
 
 --
 -- TOC entry 2758 (class 2606 OID 25048)
