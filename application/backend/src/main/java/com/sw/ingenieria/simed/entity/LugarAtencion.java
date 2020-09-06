@@ -32,7 +32,7 @@ public class LugarAtencion implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "ID_LUGARES_ATENCION")
-    private Short idLugaresAtencion;
+    private Long idLugaresAtencion;
     @Size(max = 100)
     @Column(name = "NOMBRE_LUGAR_ATENCION")
     private String nombreLugarAtencion;
@@ -58,15 +58,15 @@ public class LugarAtencion implements Serializable {
     public LugarAtencion() {
     }
 
-    public LugarAtencion(Short idLugaresAtencion) {
+    public LugarAtencion(Long idLugaresAtencion) {
         this.idLugaresAtencion = idLugaresAtencion;
     }
 
-    public Short getIdLugaresAtencion() {
+    public Long getIdLugaresAtencion() {
         return idLugaresAtencion;
     }
 
-    public void setIdLugaresAtencion(Short idLugaresAtencion) {
+    public void setIdLugaresAtencion(Long idLugaresAtencion) {
         this.idLugaresAtencion = idLugaresAtencion;
     }
 
