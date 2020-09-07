@@ -12,6 +12,7 @@ import { AdminLugarComponent } from './lugarAtencion/admin-lugar/admin-lugar.com
 import { AdminUsuarioComponent } from './usuario/admin-usuario/admin-usuario.component';
 import { AdminEspecialidadComponent } from './especialidad/admin-especialidad/admin-especialidad.component';
 import { ComponentsModule } from '../components/components.module';
+import { UbicarLugaresComponent } from './lugarAtencion/ubicar-lugares/ubicar-lugares.component';
 
 
 
@@ -22,7 +23,8 @@ import { ComponentsModule } from '../components/components.module';
     AdminEpsComponent,
     AdminLugarComponent,
     AdminEspecialidadComponent,
-    AdminUsuarioComponent
+    AdminUsuarioComponent,
+    UbicarLugaresComponent
   ],
   imports: [
     CommonModule,
