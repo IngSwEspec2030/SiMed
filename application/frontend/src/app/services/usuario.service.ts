@@ -1,10 +1,20 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../dto/usuario';
 
-
+const httpOptions = {
+    headers: new HttpHeaders({ 
+      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method',
+      'Allow': '*',
+      'Content-Type': 'application/json'
+    })
+  };
 @Injectable({ providedIn: 'root' })
 export class UserService {
+
+ 
     constructor(private http: HttpClient) { }
 
     getAll() {
@@ -12,8 +22,9 @@ export class UserService {
     }
 
     register(user: Usuario) {
+        
         console.log(user)
-        return this.http.post('http://localhost:4000/usuarios/registrar', user);
+        return this.http.post('usuario/create', user, httpOptions);
     }
 
     delete(id: number) {

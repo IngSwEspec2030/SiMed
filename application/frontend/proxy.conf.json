@@ -1,0 +1,7 @@
+{
+    "/usuario":{
+        "target":"http://localhost:8191/",
+        "secure":"false",
+        "loglevel":"debug"
+    }
+}

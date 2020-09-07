@@ -11,6 +11,7 @@ import { first } from 'rxjs/internal/operators/first';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  
   registerForm: FormGroup;
   loading = false;
   submitted = false;
@@ -25,11 +26,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      NOMBRES_USUARIO: ['', Validators.required],
-      APELLIDOS_USUARIO: ['', Validators.required],
-      NUMERO_IDENTIFICACION: ['', Validators.required],
-      CORREO_USUARIO: ['', [Validators.required, Validators.email]],
-      PASSWORD_USUARIO: ['', [Validators.required, Validators.minLength(6)]]
+      nombreUsuario: ['', Validators.required],
+      apellidosUsuario: ['', Validators.required],
+      numeroIdentificacionUsuario: ['', Validators.required],
+      correoUsuario: ['', [Validators.required, Validators.email]],
+      passwordUsuario: ['', [Validators.required, Validators.minLength(6)]],
+      tipoIdentificacion: ['', [Validators.required, Validators.required]],
+      idEps: ['', [Validators.required, Validators.required]],
+      estadoUsuario: 1
     });
 
 
@@ -54,6 +58,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          console.log(data)
           this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/login']);
         },
