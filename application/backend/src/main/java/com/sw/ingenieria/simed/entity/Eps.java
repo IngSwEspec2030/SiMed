@@ -5,6 +5,7 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.io.Serializable;
@@ -32,7 +33,7 @@ import javax.validation.constraints.Size;
 @Getter
 @Setter
 @Entity
-@Table(name = "EPS")
+@Table(name = "\"EPS\"")
 @NamedQueries({
     @NamedQuery(name = "Eps.findAll", query = "SELECT e FROM Eps e")})
 public class Eps implements Serializable {
@@ -40,7 +41,6 @@ public class Eps implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_EPS")
     private Short idEps;
     @Size(max = 100)
@@ -49,6 +49,8 @@ public class Eps implements Serializable {
     @Size(max = 100)
     @Column(name = "DIRECCION_EPS")
     private String direccionEps;
+    @Column(name = "ESTADO_EPS")
+    private Boolean estadoEps;
     @Size(max = 100)
     @Column(name = "TELEFONO_EPS")
     private String telefonoEps;
@@ -56,9 +58,11 @@ public class Eps implements Serializable {
         @JoinColumn(name = "ID_EPS", referencedColumnName = "ID_EPS")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_LUGARES_ATENCION", referencedColumnName = "ID_LUGARES_ATENCION")})
     @ManyToMany
+    @JsonIgnore
     @ToString.Exclude
     private Collection<LugarAtencion> lugarAtencionCollection;
     @OneToMany(mappedBy = "idEps")
+    @JsonIgnore
     @ToString.Exclude
     private Collection<Usuario> usuarioCollection;
 
@@ -66,7 +70,7 @@ public class Eps implements Serializable {
     public Eps(Short idEps) {
         this.idEps = idEps;
     }
-
+/*
     public Short getIdEps() {
         return idEps;
     }
@@ -138,6 +142,6 @@ public class Eps implements Serializable {
     @Override
     public String toString() {
         return "com.sw.ingenieria.simed.entity.Eps[ idEps=" + idEps + " ]";
-    }
+    }*/
     
 }

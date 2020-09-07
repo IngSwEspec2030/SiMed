@@ -5,6 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -38,10 +40,11 @@ public class Especialidad implements Serializable {
     @Size(max = 100)
     @Column(name = "NOMBRE_ESPECIALIDAD")
     private String nombreEspecialidad;
-    @JoinTable(name = "many_LUGAR_ATENCION_has_many_ESPECIALIDAD", joinColumns = {
+    @JoinTable(name = "LUGAR_ATENCION_X_ESPECIALIDAD", joinColumns = {
         @JoinColumn(name = "ID_ESPECIALIDAD", referencedColumnName = "ID_ESPECIALIDAD")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_LUGARES_ATENCION", referencedColumnName = "ID_LUGARES_ATENCION")})
     @ManyToMany
+    @JsonIgnore
     private Collection<LugarAtencion> lugarAtencionCollection;
 
     public Especialidad() {
