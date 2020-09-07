@@ -1,6 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Usuario } from '../dto/usuario';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
     headers: new HttpHeaders({ 
@@ -13,18 +14,23 @@ const httpOptions = {
   };
 @Injectable({ providedIn: 'root' })
 export class UserService {
-
+      
+     
+      apiEndPoint:string="";
  
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {
+        this.apiEndPoint = environment.apiEndPoint;
+
+     }
 
     getAll() {
-        return this.http.get<Usuario[]>('http://localhost:4000/usuarios');
+        return this.http.get<Usuario[]>(`${this.apiEndPoint}/usuarios`);
     }
 
     register(user: Usuario) {
         
         console.log(user)
-        return this.http.post('usuario/create', user, httpOptions);
+        return this.http.post(`${this.apiEndPoint}/usuario/create`, user, httpOptions);
     }
 
     delete(id: number) {
