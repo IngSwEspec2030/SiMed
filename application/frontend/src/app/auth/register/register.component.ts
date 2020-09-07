@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators,  ReactiveFormsModule } from '@angul
 import { AlertService } from 'src/app/services/alert.service';
 import { UserService } from 'src/app/services/usuario.service';
 import { first } from 'rxjs/internal/operators/first';
+import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet';
 
 @Component({
   selector: 'app-register',
@@ -15,12 +16,14 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  alert: DisplayMessage; 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
     private alertService: AlertService
   ) {
+    this.alert = new DisplayMessage();
 
   }
 
@@ -59,11 +62,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          this.alertService.success('Se ha registrado correctamente', true);
+          this.alert.displayInfoMessage('Usuario','Se ha registrado correctamente', IconType.info, ButtonType.Ok);
+          //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/login']);
         },
         error => {
-          this.alertService.error('No se ha registrado correctamente', true);
+          this.alert.displayInfoMessage('Usuario','No se ha registrado correctamente', IconType.error, ButtonType.Ok);
+
+          //this.alertService.error('No se ha registrado correctamente', true);
           this.alertService.error(error);
           this.loading = false;
         });
