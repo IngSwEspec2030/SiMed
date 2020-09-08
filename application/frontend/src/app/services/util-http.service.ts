@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { ConfigService } from './config.service';
 import Swal from 'sweetalert2'
 import { isJson } from '../utils/constants';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,7 @@ export class UtilHttpService {
    */
   get(url:string, param:string){
     url = param===null || param===""? url:`${url}/${param}`;
-    url = this.config.prop.urlTarget + url;
+    url = environment.apiEndPoint + url;
     return this.http.get(url, {headers:this.createRequestHeader()})
   }
 
@@ -39,7 +40,7 @@ export class UtilHttpService {
    */
   post(url:string, body:any){
     let b:string = isJson(body)? body: JSON.stringify(body);
-    url = this.config.prop.urlTarget + url;
+    url = environment.apiEndPoint + url;
     return this.http.post(url, b, {headers:this.createRequestHeader()} )
   }
 
@@ -50,7 +51,7 @@ export class UtilHttpService {
    */
   put(url:string, body:any){
     let b:string = isJson(body)? body: JSON.stringify(body);
-    url = this.config.prop.urlTarget + url;
+    url = environment.apiEndPoint + url;
     return this.http.put(url, b, {headers:this.createRequestHeader()} )
   }
 
@@ -61,7 +62,7 @@ export class UtilHttpService {
    */
   delete(url:string,id:any){
     url = `${url}/${id}`;
-    url = this.config.prop.urlTarget + url;
+    url = environment.apiEndPoint + url;
     return this.http.delete(url,{headers:this.createRequestHeader()} )
   }
 

@@ -23,7 +23,7 @@
                 <select type="text" formControlName="tipoIdentificacion" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.tipoIdentificacion.errors }">
                     <option selected hidden value="">Seleccionar</option>
-                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.idTipoDocumento">{{tipo.tipoDocumento}}</option>
+                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.ID_TIPO_IDENTIFICACION">{{tipo.NOMBRE_TIPO_IDENTIFICACION}}</option>
                 </select>
                 <div *ngIf="submitted && f.tipoIdentificacion.errors" class="invalid-feedback">
                     <div *ngIf="f.tipoIdentificacion.errors.required">El Tipo de identificación es requerido</div>
