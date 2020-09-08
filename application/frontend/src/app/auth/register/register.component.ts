@@ -13,6 +13,30 @@ import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet
 })
 export class RegisterComponent implements OnInit {
   
+  epsList:any=[
+    {
+    "idEps":"1",
+    "nombreEps":"Sanitas"
+  },
+    {
+    "idEps":"2",
+    "nombreEps":"Salud Total"
+  },
+    {
+    "idEps":"1",
+    "nombreEps":"Nueva Eps"
+  }]
+
+  tipoDocumento=[
+    {
+    "idTipoDocumento":"1",
+    "tipoDocumento":"CC"
+  },
+    {
+    "idTipoDocumento":"2",
+    "tipoDocumento":"CE"
+  },
+]
   registerForm: FormGroup;
   loading = false;
   submitted = false;
