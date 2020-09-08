@@ -1,27 +1,28 @@
 package com.sw.ingenieria.simed.service;
 
 import com.sw.ingenieria.simed.entity.LugarAtencion;
-import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
-import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
 
+import com.sw.ingenieria.simed.entity.Usuario;
+import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
+import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
 
-
-public class LugarAtencionService implements ServiceInterface <LugarAtencion, Long> {
+@Service
+public class LugarAtencionService implements ServiceInterface <LugarAtencion,Long> {
     private LugarAtencionRepository lugarAtencionRepository;
 
-    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository) {
-        this.lugarAtencionRepository = lugarAtencionRepository;
+    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository){
+    this.lugarAtencionRepository = lugarAtencionRepository;
     }
-
 
     @Override
     public LugarAtencion findById(Long key) throws Exception {
         System.out.println("este es el id que llega al servicio = " + key);
         if (key == null || !existeById(key)) {
-            throw new ResourceNotFoundException("El lugar de atención con id " + key + " no existe.");
+            throw new ResourceNotFoundException("El lugar de atención con ID " + key + " no existe.");
         }
         return lugarAtencionRepository.findById(key).get();
 
@@ -47,13 +48,18 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion, Lo
     @Override
     public void delete(Long key) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(key).get();
-        lugarAtencionRepository.delete(lugarAtencion);
+        lugarAtencion.setEstadoLugarAtencion(false);
+        lugarAtencionRepository.save(lugarAtencion);
+        //usuarioRepository.delete(usuario);
+
 
     }
 
     public Boolean existeById (Long key) throws Exception {
         if(key==null){
-            throw new ResourceNotFoundException("El ID a validar no puede estar vacío.");
+
+            throw new ResourceNotFoundException("El ID a validar, no puede estar vacío.");
+
         }
         if (lugarAtencionRepository.findById(key) == null) {
             return false;
@@ -63,9 +69,24 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion, Lo
 
     public LugarAtencion findId(Long key) throws Exception {
         if (key == null || !existeById(key)) {
-            throw new ResourceNotFoundException("El lugar con ID " + key + " no existe.");
+
+            throw new ResourceNotFoundException("El lugar de atención con id " + key + " no existe.");
+
         }
         return lugarAtencionRepository.findById(key).get();
+    }
+
+
+    /**
+     * Metodo para activar usuarios
+     * @param key id del usuario
+     * @return
+     * @throws Exception
+     */
+    public LugarAtencion activar(Long key) throws Exception {
+        LugarAtencion lugarAtencion = lugarAtencionRepository.findById(key).get();
+        lugarAtencion.setEstadoLugarAtencion(true);
+        return lugarAtencionRepository.save(lugarAtencion);
     }
 
 

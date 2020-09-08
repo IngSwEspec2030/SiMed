@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators,  ReactiveFormsModule } from '@angul
 import { AlertService } from 'src/app/services/alert.service';
 import { UserService } from 'src/app/services/usuario.service';
 import { first } from 'rxjs/internal/operators/first';
+import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet';
 
 @Component({
   selector: 'app-register',
@@ -11,25 +12,55 @@ import { first } from 'rxjs/internal/operators/first';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  
+  epsList:any=[
+    {
+    "idEps":"1",
+    "nombreEps":"Sanitas"
+  },
+    {
+    "idEps":"2",
+    "nombreEps":"Salud Total"
+  },
+    {
+    "idEps":"1",
+    "nombreEps":"Nueva Eps"
+  }]
+
+  tipoDocumento=[
+    {
+    "idTipoDocumento":"1",
+    "tipoDocumento":"CC"
+  },
+    {
+    "idTipoDocumento":"2",
+    "tipoDocumento":"CE"
+  },
+]
   registerForm: FormGroup;
   loading = false;
   submitted = false;
+  alert: DisplayMessage; 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
     private alertService: AlertService
   ) {
+    this.alert = new DisplayMessage();
 
   }
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
-      NOMBRES_USUARIO: ['', Validators.required],
-      APELLIDOS_USUARIO: ['', Validators.required],
-      NUMERO_IDENTIFICACION: ['', Validators.required],
-      CORREO_USUARIO: ['', [Validators.required, Validators.email]],
-      PASSWORD_USUARIO: ['', [Validators.required, Validators.minLength(6)]]
+      nombreUsuario: ['', Validators.required],
+      apellidosUsuario: ['', Validators.required],
+      numeroIdentificacionUsuario: ['', Validators.required],
+      correoUsuario: ['', [Validators.required, Validators.email]],
+      passwordUsuario: ['', [Validators.required, Validators.minLength(6)]],
+      tipoIdentificacion: ['', [Validators.required, Validators.required]],
+      idEps: ['', [Validators.required, Validators.required]],
+      estadoUsuario: 1
     });
 
 
@@ -54,11 +85,15 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Se ha registrado correctamente', true);
+          console.log(data)
+          this.alert.displayInfoMessage('Usuario','Se ha registrado correctamente', IconType.info, ButtonType.Ok);
+          //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/login']);
         },
         error => {
-          this.alertService.error('No se ha registrado correctamente', true);
+          this.alert.displayInfoMessage('Usuario','No se ha registrado correctamente', IconType.error, ButtonType.Ok);
+
+          //this.alertService.error('No se ha registrado correctamente', true);
           this.alertService.error(error);
           this.loading = false;
         });

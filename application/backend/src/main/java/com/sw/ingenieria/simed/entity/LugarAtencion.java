@@ -5,6 +5,11 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -22,6 +27,10 @@ import javax.validation.constraints.Size;
  * @author Johan Céspedes at PUJ
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "LUGAR_ATENCION")
 @NamedQueries({
     @NamedQuery(name = "LugarAtencion.findAll", query = "SELECT l FROM LugarAtencion l")})
@@ -50,88 +59,17 @@ public class LugarAtencion implements Serializable {
     private Double latitudLugarAtencion;
     @Column(name = "LONGITUD_LUGAR_ATENCION")
     private Double longitudLugarAtencion;
-    @ManyToMany(mappedBy = "lugarAtencionCollection")
+    @Column(name = "ESTADO_LUGAR_ATENCION")
+    private Boolean estadoLugarAtencion;
+    /*@ManyToMany(mappedBy = "lugarAtencionCollection")
     private Collection<Especialidad> especialidadCollection;
     @ManyToMany(mappedBy = "lugarAtencionCollection")
-    private Collection<Eps> epsCollection;
 
-    public LugarAtencion() {
-    }
+    private Collection<Eps> epsCollection;*/
+
 
     public LugarAtencion(Long idLugaresAtencion) {
         this.idLugaresAtencion = idLugaresAtencion;
-    }
-
-    public Long getIdLugaresAtencion() {
-        return idLugaresAtencion;
-    }
-
-    public void setIdLugaresAtencion(Long idLugaresAtencion) {
-        this.idLugaresAtencion = idLugaresAtencion;
-    }
-
-    public String getNombreLugarAtencion() {
-        return nombreLugarAtencion;
-    }
-
-    public void setNombreLugarAtencion(String nombreLugarAtencion) {
-        this.nombreLugarAtencion = nombreLugarAtencion;
-    }
-
-    public String getDireccionLugarAtencion() {
-        return direccionLugarAtencion;
-    }
-
-    public void setDireccionLugarAtencion(String direccionLugarAtencion) {
-        this.direccionLugarAtencion = direccionLugarAtencion;
-    }
-
-    public String getTelefonoLugarAtencion() {
-        return telefonoLugarAtencion;
-    }
-
-    public void setTelefonoLugarAtencion(String telefonoLugarAtencion) {
-        this.telefonoLugarAtencion = telefonoLugarAtencion;
-    }
-
-    public String getSitioWebLugarAtencion() {
-        return sitioWebLugarAtencion;
-    }
-
-    public void setSitioWebLugarAtencion(String sitioWebLugarAtencion) {
-        this.sitioWebLugarAtencion = sitioWebLugarAtencion;
-    }
-
-    public Double getLatitudLugarAtencion() {
-        return latitudLugarAtencion;
-    }
-
-    public void setLatitudLugarAtencion(Double latitudLugarAtencion) {
-        this.latitudLugarAtencion = latitudLugarAtencion;
-    }
-
-    public Double getLongitudLugarAtencion() {
-        return longitudLugarAtencion;
-    }
-
-    public void setLongitudLugarAtencion(Double longitudLugarAtencion) {
-        this.longitudLugarAtencion = longitudLugarAtencion;
-    }
-
-    public Collection<Especialidad> getEspecialidadCollection() {
-        return especialidadCollection;
-    }
-
-    public void setEspecialidadCollection(Collection<Especialidad> especialidadCollection) {
-        this.especialidadCollection = especialidadCollection;
-    }
-
-    public Collection<Eps> getEpsCollection() {
-        return epsCollection;
-    }
-
-    public void setEpsCollection(Collection<Eps> epsCollection) {
-        this.epsCollection = epsCollection;
     }
 
     @Override
