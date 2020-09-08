@@ -36,6 +36,8 @@ public class Usuario implements Serializable {
     @Column(name = "APELLIDOS_USUARIO")
     private String apellidosUsuario;
     @Size(max = 20)
+    @Column(name = "USERNAME_USUARIO")
+    private String username;
     @Column(name = "NUMERO_IDENTIFICACION_USUARIO")
     private String numeroIdentificacionUsuario;
     @Size(max = 250)
