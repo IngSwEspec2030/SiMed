@@ -12,12 +12,10 @@
     <artifactId>simed</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>simed</name>
-    <description>Su cita médicas</description>
-
+    <description>Sus citas médicas</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
     <dependencies>
         <!--dependency>
             <groupId>org.springframework.boot</groupId>
@@ -80,7 +78,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
@@ -89,5 +86,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
