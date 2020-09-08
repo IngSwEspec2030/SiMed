@@ -1,13 +1,12 @@
 
 export class LugaresAtencion {
-    ID_LUGARES_ATENCION: number
-    NOMBRE_LUGAR_ATENCION: string
-    DIRECCION_LUGAR_ATENCION: string
-    TELEFONO_LUGAR_ATENCION: string
-    SITIO_WEB_LUGAR_ATENCION: string
-    LATITUD_LUGAR_ATENCION: string
-    LONGITUD_LUGAR_ATENCION: string
- 
-
+    idLugaresAtencion: number;
+    nombreLugarAtencion: string;
+    direccionLugarAtencion: string;
+    telefonoLugarAtencion: string;
+    sitioWebLugarAtencion: string;
+    latitudLugarAtencion: any;
+    longitudLugarAtencion: any;
+    estadoLugarAtencion:boolean;
 
 }
