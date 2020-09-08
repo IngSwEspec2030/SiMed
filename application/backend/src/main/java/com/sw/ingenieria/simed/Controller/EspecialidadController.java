@@ -13,6 +13,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping (value = "/especialidad")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT,
+        RequestMethod.DELETE}, allowedHeaders = "*")
 
 public class EspecialidadController {
 
