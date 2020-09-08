@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "9325f33b-6af2-4877-9a23-21682048fe3a",
+		"_postman_id": "276459d1-cd66-4788-b3c2-d6d359662a3c",
 		"name": "simed",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -366,6 +366,77 @@
 				}
 			],
 			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "http://localhost:8191/login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8f56f47f-0f5f-4863-8f14-e375dd59dc20",
+								"exec": [
+									"const response = pm.response.json();\r",
+									"pm.environment.set(\"jwt_token\", response.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"username\":\"kattyap\",\r\n\t\"password\":\"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8191/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"login"
+							]
+						},
+						"description": "Autenticacion de Usuario"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c3721d65-fabc-4742-89d8-64bdb8a72250",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f583ebbe-37bc-49f3-8af6-d2f1394ffb5a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
 		}
 	],
 	"protocolProfileBehavior": {}

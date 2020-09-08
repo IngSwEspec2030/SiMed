@@ -3,6 +3,7 @@ package com.sw.ingenieria.simed.service;
 import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
 import com.sw.ingenieria.simed.repository.UsuarioRepository;
 import com.sw.ingenieria.simed.entity.Usuario;
+import com.sw.ingenieria.simed.util.EncoderUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,14 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
+/**
+ * @author Johan Céspedes Ortega at PUJ
+ * @project SiMed
+ * @date 07/09/2020
+ */
+
 @Service
 public class UsuarioService implements ServiceInterface <Usuario, Long>{
 
@@ -38,6 +47,8 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
     @Override
     public Usuario create(Usuario entity) throws Exception {
         entity.setFechaCreacionUsuario(LocalDate.now());
+        entity.setUsername(entity.getUsername().trim().toLowerCase());
+        entity.setPasswordUsuario(EncoderUtil.encode(entity.getPasswordUsuario()));
         return  usuarioRepository.save(entity);
     }
 
@@ -87,5 +98,18 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
         usuario.setFechaModificacionUsuario(LocalDate.now());
         return usuarioRepository.save(usuario);
     }
+
+    /**
+     * Metodo que permite obtener el usuario apartir de su nombre de usuario.
+     * @param username Nombre de usuario a validar.
+     * @return Objeto Usuario.
+     */
+    public Optional<Usuario> findByUsernameAndActivoTrue (String username) {
+        if(username == null){
+            throw new ResourceNotFoundException("El Username a validar, no puede estar vacio.");
+        }
+        return usuarioRepository.findByUsernameAndEstadoUsuarioTrue(username.trim().toLowerCase());
+    }
+
 
 }
