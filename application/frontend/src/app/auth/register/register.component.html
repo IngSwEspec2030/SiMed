@@ -2,6 +2,7 @@
     <h2>Crear una cuenta</h2>
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="row">
+            
             <div class="col-lg-6 col-sm-12 form-group">
                 <label for="nombreUsuario">Nombre(s)</label>
                 <input type="text" formControlName="nombreUsuario" class="form-control"
@@ -19,11 +20,19 @@
                 </div>
             </div>
             <div class="col-lg-6 col-sm-12  form-group">
-                <label for="tipoIdentificacion">Tipo Identificación</label>
+                <label for="username">Usuario</label>
+                <input type="text" formControlName="username" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+                    <div *ngIf="f.username.errors.required">El usuario es requerido</div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12  form-group">
+                <label for="tipoIdentificacion">Tipo identificación</label>
                 <select type="text" formControlName="tipoIdentificacion" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.tipoIdentificacion.errors }">
                     <option selected hidden value="">Seleccionar</option>
-                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.ID_TIPO_IDENTIFICACION">{{tipo.NOMBRE_TIPO_IDENTIFICACION}}</option>
+                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.idTipoDocumento">{{tipo.tipoDocumento}}</option>
                 </select>
                 <div *ngIf="submitted && f.tipoIdentificacion.errors" class="invalid-feedback">
                     <div *ngIf="f.tipoIdentificacion.errors.required">El Tipo de identificación es requerido</div>
@@ -31,7 +40,7 @@
             </div>
 
             <div class="col-lg-6 col-sm-12 form-group">
-                <label for="numeroIdentificacionUsuario">Numero Identificación</label>
+                <label for="numeroIdentificacionUsuario">Número identificación</label>
                 <input type="text" formControlName="numeroIdentificacionUsuario" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.numeroIdentificacionUsuario.errors }" />
                 <div *ngIf="submitted && f.numeroIdentificacionUsuario.errors" class="invalid-feedback">

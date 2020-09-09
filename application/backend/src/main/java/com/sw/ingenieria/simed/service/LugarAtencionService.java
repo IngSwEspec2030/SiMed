@@ -1,7 +1,6 @@
 package com.sw.ingenieria.simed.service;
 
 import com.sw.ingenieria.simed.entity.LugarAtencion;
-
 import com.sw.ingenieria.simed.entity.Usuario;
 import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
 import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
@@ -14,9 +13,7 @@ import java.util.List;
 public class LugarAtencionService implements ServiceInterface <LugarAtencion,Long> {
     private LugarAtencionRepository lugarAtencionRepository;
 
-    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository){
-    this.lugarAtencionRepository = lugarAtencionRepository;
-    }
+    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository){this.lugarAtencionRepository = lugarAtencionRepository;}
 
     @Override
     public LugarAtencion findById(Long key) throws Exception {
@@ -52,14 +49,11 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
         lugarAtencionRepository.save(lugarAtencion);
         //usuarioRepository.delete(usuario);
 
-
     }
 
     public Boolean existeById (Long key) throws Exception {
         if(key==null){
-
             throw new ResourceNotFoundException("El ID a validar, no puede estar vacío.");
-
         }
         if (lugarAtencionRepository.findById(key) == null) {
             return false;
@@ -69,13 +63,10 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
 
     public LugarAtencion findId(Long key) throws Exception {
         if (key == null || !existeById(key)) {
-
             throw new ResourceNotFoundException("El lugar de atención con id " + key + " no existe.");
-
         }
         return lugarAtencionRepository.findById(key).get();
     }
-
 
     /**
      * Metodo para activar usuarios
@@ -88,6 +79,5 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
         lugarAtencion.setEstadoLugarAtencion(true);
         return lugarAtencionRepository.save(lugarAtencion);
     }
-
 
 }

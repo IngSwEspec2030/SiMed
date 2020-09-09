@@ -64,7 +64,6 @@ public class LugarAtencion implements Serializable {
     /*@ManyToMany(mappedBy = "lugarAtencionCollection")
     private Collection<Especialidad> especialidadCollection;
     @ManyToMany(mappedBy = "lugarAtencionCollection")
-
     private Collection<Eps> epsCollection;*/
 
 
