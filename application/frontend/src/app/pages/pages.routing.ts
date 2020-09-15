@@ -12,7 +12,7 @@ import { UbicarLugaresComponent } from './lugarAtencion/ubicar-lugares/ubicar-lu
 
 const routes: Routes = [
     { 
-        path: 'dashboard', 
+        path: 'site', 
         component: PagesComponent,
         children: [
             { path: '', component: UbicarLugaresComponent },

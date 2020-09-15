@@ -61,11 +61,11 @@ export class MapsComponent implements OnInit {
     .subscribe((data:LugaresAtencion[])=>{
 
       if(data.length>0){
-        this.message.displayInfoMessage("Estimado Usuario", "Se han encontrado " +data.length + " sitios cerca de usted!"  , IconType.info, ButtonType.Ok);      
+        this.message.displayInfoMessage("Estimado Usuario", "Se han encontrado " +data.length + " sitios cerca de usted"  , IconType.info, ButtonType.Ok);      
         this.lugaresCercanosList = data;
       }
       else{
-        this.message.displayInfoMessage("Error", "No se encontraron lugares de atención cerca de usted!", IconType.error, ButtonType.Ok);      
+        this.message.displayInfoMessage("Error", "No se encontraron lugares de atención cerca de usted", IconType.error, ButtonType.Ok);      
       }
     }, (err)=>{
       console.error(err.error);      

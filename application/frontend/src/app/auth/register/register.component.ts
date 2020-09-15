@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators,  ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AlertService } from 'src/app/services/alert.service';
 import { UserService } from 'src/app/services/usuario.service';
 import { first } from 'rxjs/internal/operators/first';
@@ -9,57 +9,52 @@ import { Eps } from 'src/app/dto/eps';
 import { TipoIdentificacion } from 'src/app/dto/tipo_identificacion';
 import { UtilHttpService } from 'src/app/services/util-http.service';
 import { ConfigService } from 'src/app/services/config.service';
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  
-  epsList:Eps[]=[
+  epsList: any = []
+/*
+  epsList: any = [
     {
-    "idEps":1,
-    "nombreEps":"Sanitas",
-    "direccionEps":"",
-    "telefonoEps":""
-  },
+      "idEps": "1",
+      "nombreEps": "Sanitas"
+    },
     {
-    "idEps":2,
-    "nombreEps":"Salud Total",
-    "direccionEps":"",
-    "telefonoEps":""
-  },
+      "idEps": "2",
+      "nombreEps": "Salud Total"
+    },
     {
-    "idEps":3,
-    "nombreEps":"Nueva Eps",
-    "direccionEps":"",
-    "telefonoEps":""
-  }]
-
-  tipoDocumento:TipoIdentificacion[]=[
+      "idEps": "1",
+      "nombreEps": "Nueva Eps"
+    }]
+* */
+  tipoDocumento = [
     {
-    "ID_TIPO_IDENTIFICACION":1,
-    "NOMBRE_TIPO_IDENTIFICACION":"CC"
-  },
+      "idTipoDocumento": "1",
+      "tipoDocumento": "CC"
+    },
     {
-    "ID_TIPO_IDENTIFICACION":2,
-    "NOMBRE_TIPO_IDENTIFICACION":"CE"
-  },
-]
+      "idTipoDocumento": "2",
+      "tipoDocumento": "CE"
+    },
+  ]
   registerForm: FormGroup;
   loading = false;
   submitted = false;
-  alert: DisplayMessage; 
+  alert: DisplayMessage;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
+    private http: UtilHttpService,
     private userService: UserService,
     private alertService: AlertService,
-    private http:UtilHttpService,
-    private config:ConfigService
+    private config: ConfigService
   ) {
     this.alert = new DisplayMessage();
+
   }
 
   ngOnInit(): void {
@@ -70,27 +65,25 @@ export class RegisterComponent implements OnInit {
       correoUsuario: ['', [Validators.required, Validators.email]],
       passwordUsuario: ['', [Validators.required, Validators.minLength(6)]],
       tipoIdentificacion: ['', [Validators.required, Validators.required]],
+      username: ['', [Validators.required, Validators.required]],
       idEps: ['', [Validators.required, Validators.required]],
       estadoUsuario: 1
     });
 
     this.getEps();
+
+
   }
 
-
-
-  /**
-   * Obtiene el listado de eps desde el servicio
-   */
   getEps() {
     this.http.showBusy();
-    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp:Eps[])=>{
+    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp: Eps[]) => {
       console.log("EPS Recibidas: ", resp);
-      
-      this.epsList=resp;
+
+      this.epsList = resp;
       this.http.closeBusy();
-    }, error=>{
-      console.error(error.error);      
+    }, error => {
+      console.error(error.error);
       this.http.closeBusy();
     })
   }
@@ -115,11 +108,14 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         data => {
           console.log(data)
-          this.alert.displayInfoMessage('Usuario','Se ha registrado correctamente', IconType.info, ButtonType.Ok);
+          this.alert.displayInfoMessage('Usuario', 'Se ha registrado correctamente', IconType.info, ButtonType.Ok);
+          //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/login']);
         },
         error => {
-          this.alert.displayInfoMessage('Usuario','No se ha registrado correctamente', IconType.error, ButtonType.Ok);
+          this.alert.displayInfoMessage('Usuario', 'No se ha registrado correctamente', IconType.error, ButtonType.Ok);
+
+          //this.alertService.error('No se ha registrado correctamente', true);
           this.alertService.error(error);
           this.loading = false;
         });
