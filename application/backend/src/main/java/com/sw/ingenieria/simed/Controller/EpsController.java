@@ -1,5 +1,7 @@
 package com.sw.ingenieria.simed.Controller;
 
+import com.sw.ingenieria.simed.dto.EpsInputDTO;
+import com.sw.ingenieria.simed.dto.GeneralOutput;
 import com.sw.ingenieria.simed.entity.Eps;
 import com.sw.ingenieria.simed.service.EpsService;
 import lombok.RequiredArgsConstructor;
@@ -74,5 +76,17 @@ public class EpsController {
         epsService.activar(id);
         return new ResponseEntity<>("Eps activada", HttpStatus.OK);
     }
+
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    @PutMapping("/asignarLugar")
+    public GeneralOutput asignarLugar(@RequestBody EpsInputDTO entity) throws Exception{
+
+
+        System.out.println("entity.getIdEps() en controlador  = " + entity.getIdEps());
+
+        epsService.asignarLugar(entity);
+        return new GeneralOutput(HttpStatus.ACCEPTED.value(),HttpStatus.ACCEPTED.getReasonPhrase(),"Asignación Realizada Exitosamente...");
+    }
+
 
 }

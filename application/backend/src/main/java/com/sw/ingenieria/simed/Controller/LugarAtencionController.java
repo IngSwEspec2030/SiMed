@@ -1,7 +1,8 @@
 package com.sw.ingenieria.simed.Controller;
 
+import com.sw.ingenieria.simed.dto.GeneralOutput;
+import com.sw.ingenieria.simed.dto.LugarAtencionOutputDTO;
 import com.sw.ingenieria.simed.entity.LugarAtencion;
-import com.sw.ingenieria.simed.entity.Usuario;
 import com.sw.ingenieria.simed.service.LugarAtencionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -74,4 +76,19 @@ public class LugarAtencionController {
         lugarAtencionService.activar(id);
         return new ResponseEntity<>("Usuario activado", HttpStatus.OK);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/lugaresAtencionEps/{id}")
+    public GeneralOutput getAllByEpsAndActivo(@PathVariable("id") Short id ) throws Exception {
+        List<LugarAtencionOutputDTO> lugarAtencionDTOList =new ArrayList<>();
+        for (LugarAtencion lugarAtencion:lugarAtencionService.obtenerLugarAtencionPorEps(id)) {
+            LugarAtencionOutputDTO laDTO = LugarAtencionOutputDTO.getDTO(lugarAtencion);
+            lugarAtencionDTOList.add(laDTO);
+        }
+        return new GeneralOutput(HttpStatus.OK.value(),HttpStatus.OK.getReasonPhrase(),lugarAtencionDTOList);
+    }
+
+
+
+
 }

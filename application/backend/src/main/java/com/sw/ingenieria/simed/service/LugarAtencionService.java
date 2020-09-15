@@ -1,19 +1,24 @@
 package com.sw.ingenieria.simed.service;
 
+import com.sw.ingenieria.simed.entity.Eps;
 import com.sw.ingenieria.simed.entity.LugarAtencion;
-import com.sw.ingenieria.simed.entity.Usuario;
+import com.sw.ingenieria.simed.repository.EpsRepository;
 import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
 import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class LugarAtencionService implements ServiceInterface <LugarAtencion,Long> {
-    private LugarAtencionRepository lugarAtencionRepository;
+    private final LugarAtencionRepository lugarAtencionRepository;
+    private final EpsRepository epsRepository;
 
-    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository){this.lugarAtencionRepository = lugarAtencionRepository;}
+
+    public LugarAtencionService(LugarAtencionRepository lugarAtencionRepository, EpsRepository epsRepository){
+        this.lugarAtencionRepository = lugarAtencionRepository;
+        this.epsRepository = epsRepository;
+    }
 
     @Override
     public LugarAtencion findById(Long key) throws Exception {
@@ -78,6 +83,20 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(key).get();
         lugarAtencion.setEstadoLugarAtencion(true);
         return lugarAtencionRepository.save(lugarAtencion);
+    }
+
+    public List<LugarAtencion> obtenerLugarAtencionPorEps (Short idEps) {
+        if (idEps == null) {
+            throw new ResourceNotFoundException("El id de la Eps no puede estar vacio.");
+        }
+        if (epsRepository.findEpsByIdEps(idEps) == null) {
+            throw new ResourceNotFoundException("La Eps con id " + idEps + " no existe o esta inactivo.");
+        }
+        Eps eps = epsRepository.findEpsByIdEps(idEps);
+        if (lugarAtencionRepository.findAllByEpsCollectionAndAndEstadoLugarAtencionIsTrue(eps).isEmpty()    ){
+            throw new ResourceNotFoundException("El Eps no tiene Lugares disponibles activos en el sistema");
+        }
+        return lugarAtencionRepository.findAllByEpsCollectionAndAndEstadoLugarAtencionIsTrue(eps);
     }
 
 }
