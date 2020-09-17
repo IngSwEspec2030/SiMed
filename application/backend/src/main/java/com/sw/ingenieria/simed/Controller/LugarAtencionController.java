@@ -71,10 +71,10 @@ public class LugarAtencionController {
     public ResponseEntity <?> activar(@PathVariable("id") Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionService.findId(id);
         if(lugarAtencion==null || !lugarAtencionService.existeById(id)){
-            return new ResponseEntity<>("No existe un usuario correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("No existe un lugar de atención correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
         lugarAtencionService.activar(id);
-        return new ResponseEntity<>("Usuario activado", HttpStatus.OK);
+        return new ResponseEntity<>("Lugar de atención activado", HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.OK)
@@ -88,7 +88,14 @@ public class LugarAtencionController {
         return new GeneralOutput(HttpStatus.OK.value(),HttpStatus.OK.getReasonPhrase(),lugarAtencionDTOList);
     }
 
-
+    @GetMapping("/lugaresCercanos/{idEps}/{lat}/{lon}")
+    public ResponseEntity<?> getClosestPlaces(@PathVariable("idEps") Short idEps, @PathVariable("lat") double lat, @PathVariable("lon") double lon ) throws Exception {
+        List<LugarAtencion> list = lugarAtencionService.obtenerLugaresAtencionCercanos(idEps, lat, lon);
+        if(!list.isEmpty()){
+            return new ResponseEntity<List>(list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
+    }
 
 
 }

@@ -5,10 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -62,8 +60,12 @@ public class LugarAtencion implements Serializable {
     @Column(name = "ESTADO_LUGAR_ATENCION")
     private Boolean estadoLugarAtencion;
     @ManyToMany(mappedBy = "lugarAtencionCollection")
+    @JsonIgnore
+    @ToString.Exclude
     private Collection<Especialidad> especialidadCollection;
     @ManyToMany(mappedBy = "lugarAtencionCollection")
+    @JsonIgnore
+    @ToString.Exclude
     private Collection<Eps> epsCollection;
 
 
