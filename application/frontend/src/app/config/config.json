@@ -1,9 +1,26 @@
 
 {
-    "urlTarget":"http://aws-cloudapp.com:8080/api/",
-    "urlApiTest":"/default/getTest",
-    "urllistAllEps":"/eps/listAll",
-    "urllistAllLugaresAtencion":"/lugarAtencion/listAll"
+    "urlfindByIdUsuario":"/usuario/findById",
+    "urllistAllUsuario":"/usuario/listAll",
+    "urlcreateUsuario":"/usuario/create",
+    "urldeleteUsuario":"/usuario/delete",
+    "urlactivarUsuario":"/usuario/activar",
+    "urlUsuario":"/usuario",
 
+    "urlFindByIdEps":"/eps/findById/",
+    "urllistAllEps":"/eps/listAll",    
+    "urlcreateEps":"/eps/create",
+    "urldeleteEps":"/eps/delete",
+    "urlactivarEps":"/esp/activar",
+    "urlEps":"/eps",
+    
+    "urlFindByIdLugaresAtencion":"/lugarAtencion/findById/",
+    "urllistAllLugaresAtencion":"/lugarAtencion/listAll",    
+    "urlcreateLugaresAtencion":"/lugarAtencion/create",
+    "urldeleteLugaresAtencion":"/lugarAtencion/delete",
+    "urlactivarLugaresAtencion":"/lugarAtencion/activar",
+    "urlLugaresAtencion":"/lugarAtencion",
+
+    "urlLogin":"/login"
 
 }
