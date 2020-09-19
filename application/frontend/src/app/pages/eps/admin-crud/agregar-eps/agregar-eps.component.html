@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <h3 mat-dialog-title>Agregar una EPS nueva</h3>
+  <hr>
+  
+    <form class="mat-dialog-content" [formGroup]="addForm" >
+      <div class="row">
+
+        <!-- Sección para nombre de la eps -->
+        <div class="col-lg-12 col-xs-7 form-group">    
+            <label for="nombreEps">Nombre</label>
+            <input matInput formControlName="nombreEps" class="form-control"  placeholder="Nombre"  name="nombre"
+            [ngClass]="{ 'is-invalid': submitted && f.nombreEps.errors }" >
+            <div *ngIf="submitted && f.nombreEps.errors" class="invalid-feedback">
+              <div *ngIf="f.nombreEps.errors.required">Nombre de eps requerido</div>
+            </div>
+        </div>
+
+      <!--Textarea para dirección-->
+      <div class="col-lg-12 col-xs-7 form-group">
+          <label for="direccionEps">Dirección</label>
+          <textarea matInput formControlName="direccionEps" class="form-control" placeholder="Dirección"  name="direccion" required 
+          [ngClass]="{ 'is-invalid': submitted && f.direccionEps.errors }" 
+          ></textarea>
+          <div *ngIf="submitted && f.direccionEps.errors" class="invalid-feedback">
+            <div *ngIf="f.direccionEps.errors.required">Dirección requerida</div>
+        </div>
+      </div>      
+
+      <!-- Sección para el teléfono -->
+      <div class="col-lg-12 col-xs-7  form-group">
+        <label for="telefonoEps">Teléfono</label>
+          <input matInput class="form-control"  formControlName="telefonoEps" placeholder="Teléfono"  name="telefono">
+      </div>
+  
+      <div class="col-12 form-group">
+        <button class="btn btn-primary mr-2" [disabled]="!addForm.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Guardar</button>
+        <button class="btn btn-secundary-primary" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+      </div>
+    </div>
+    </form>
+  </div>
+  

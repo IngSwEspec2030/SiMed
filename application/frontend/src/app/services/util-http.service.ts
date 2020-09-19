@@ -27,7 +27,7 @@ export class UtilHttpService {
    * @param url url de endpoint
    * @param param si el endpoint necesita un recurso se pasa aquí, de lo contrario debe ser null o ""
    */
-  get(url:string, param:string){
+  get(url:string, param?:string){
     url = param===null || param===""? url:`${url}/${param}`;
     url = environment.apiEndPoint + url;
     return this.http.get(url, {headers:this.createRequestHeader()})
@@ -49,9 +49,9 @@ export class UtilHttpService {
    * @param url url del endpoint
    * @param body 
    */
-  put(url:string, body:any){
+  put(url:string, body:any, id:any){
     let b:string = isJson(body)? body: JSON.stringify(body);
-    url = environment.apiEndPoint + url;
+    url = environment.apiEndPoint + `${url}/${id}`;
     return this.http.put(url, b, {headers:this.createRequestHeader()} )
   }
 

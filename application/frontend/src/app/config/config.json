@@ -1,9 +1,8 @@
 
 {
-    "urlTarget":"http://aws-cloudapp.com:8080/api/",
-    "urlApiTest":"/default/getTest",
     "urllistAllEps":"/eps/listAll",
-    "urllistAllLugaresAtencion":"/lugarAtencion/listAll"
+    "urllistAllLugaresAtencion":"/lugarAtencion/listAll",
 
+    "urlEps":"/eps"
 
 }

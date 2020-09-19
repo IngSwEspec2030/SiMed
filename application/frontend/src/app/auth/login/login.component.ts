@@ -13,7 +13,6 @@ import { first } from 'rxjs/internal/operators/first';
 })
 export class LoginComponent implements OnInit {
 
- 
   registerForm: FormGroup;
   loading = false;
   submitted = false;
