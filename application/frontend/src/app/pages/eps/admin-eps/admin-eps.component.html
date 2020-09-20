@@ -1,8 +1,6 @@
 <div class="container">
     <div class="row d-flex justify-content-center">
         <div class="col-lg-12">
-
-
             <div class="col-12 mb-1">
                 <span class="vertical-line">||</span>&nbsp;
                 <strong>EPS</strong>
@@ -31,32 +29,32 @@
 
                 <!-- nombreEps Column -->
                 <ng-container matColumnDef="nombreEps">
-                    <th  *matHeaderCellDef> Eps </th>
-                    <td  *matCellDef="let element"> {{element.nombreEps}} </td>
+                    <th mat-header-cell *matHeaderCellDef> Eps </th>
+                    <td mat-cell  *matCellDef="let element"> {{element.nombreEps}} </td>
                 </ng-container>
             
                 <!-- direccionEps Column -->
                 <ng-container matColumnDef="direccionEps">
-                    <th  *matHeaderCellDef> Dirección </th>
-                    <td  *matCellDef="let element"> {{element.direccionEps}} </td>
+                    <th mat-header-cell *matHeaderCellDef> Dirección </th>
+                    <td mat-cell *matCellDef="let element"> {{element.direccionEps}} </td>
                   </ng-container>
                 
                   <!-- telefonoEps Column -->
                   <ng-container matColumnDef="telefonoEps">
-                    <th  *matHeaderCellDef> Teléfono </th>
-                    <td  *matCellDef="let element"> {{element.telefonoEps}} </td>
+                    <th mat-header-cell *matHeaderCellDef> Teléfono </th>
+                    <td mat-cell *matCellDef="let element"> {{element.telefonoEps}} </td>
                 </ng-container>
                 
                 <!-- actions Column -->
                 <ng-container matColumnDef="actions">
-                    <th  *matHeaderCellDef>
-                        <button class="btn btn-secundary" mat-raised-button color="primary" (click)="onAddNew()">
+                    <th mat-header-cell *matHeaderCellDef>
+                        <button class="btn btn-secundary primary-icon" mat-raised-button  (click)="onAddNew()">
                           <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
                         </button>
                     </th>
-                    <td  *matCellDef="let element; let i=index;"> 
-                        <button class="btn btn-secundary" color="primary" (click)="onEditItem(i,element)" mat-icon-button><mat-icon>launch</mat-icon></button>
-                        <button class="btn btn-secundary" color="accent" (click)="onDeleteItem(i,element)" mat-icon-button><mat-icon>delete_outline</mat-icon></button>                          
+                    <td mat-cell *matCellDef="let element; let i=index;"> 
+                        <button class="btn btn-secundary primary-icon"  (click)="onEditItem(i,element)" mat-icon-button><mat-icon aria-label="Edit">edit</mat-icon></button>
+                        <button class="btn btn-secundary accent-icon"  (click)="onDeleteItem(i,element)" mat-icon-button><mat-icon aria-label="Delete">delete</mat-icon></button>                          
                     </td>
                     </ng-container>                    
                     <!-- loading -->
