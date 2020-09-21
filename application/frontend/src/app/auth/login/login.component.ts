@@ -5,6 +5,8 @@ import { AlertService } from 'src/app/services/alert.service';
 import { LoginService } from 'src/app/services/login.service';
 import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet';
 import { first } from 'rxjs/internal/operators/first';
+import { userReturned } from 'src/app/dto/userReturn';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,7 +23,8 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private loginService: LoginService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private authService:AuthService
   ) {
     this.alert = new DisplayMessage();
 
@@ -59,8 +62,9 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.registerForm.value)
       .pipe(first())
       .subscribe(
-        data => {
-          console.log(data)
+        (data:userReturned) => {
+          console.log(data);
+          this.authService.setUser(data);//inscripción de datos en servicio de autorización
           //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/site']);
         },

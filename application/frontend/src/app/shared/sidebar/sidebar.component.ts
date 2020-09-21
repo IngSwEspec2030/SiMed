@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Permisos, PermissionCheckerService } from 'src/app/services/auth/permission-checker.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
+  permisos=Permisos;
+  constructor(public pc:PermissionCheckerService) {}
 
   ngOnInit(): void {
-  }
+  } 
 
 }
