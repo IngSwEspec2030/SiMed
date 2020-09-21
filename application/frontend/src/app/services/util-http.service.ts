@@ -61,6 +61,7 @@ export class UtilHttpService {
    * @param id 
    */
   delete(url:string,id:any){
+    console.log(`${url}/${id}`);
     url = `${url}/${id}`;
     url = environment.apiEndPoint + url;
     return this.http.delete(url,{headers:this.createRequestHeader()} )

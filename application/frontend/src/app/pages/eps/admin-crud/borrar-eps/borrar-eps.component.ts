@@ -30,12 +30,14 @@ export class BorrarEpsComponent implements OnInit {
 
   confirmDelete(): void {
     this.http.showBusy();
-    this.http.delete(this.config.prop.urlEps, this.eps.idEps)
+    this.http.delete(this.config.prop.urldeleteEps, this.eps.idEps)
     .subscribe(resp=>{
       this.http.closeBusy();
       this.message.displayInfoMessage("Admin","EPS borrada satisfactoriamente", IconType.info, ButtonType.Ok);      
     }, err=>{
       this.http.closeBusy();
+      console.log(err.error);
+   
       this.message.displayInfoMessage("Admin","No se pudo borrar el recurso", IconType.error, ButtonType.Ok);  
     });
   }

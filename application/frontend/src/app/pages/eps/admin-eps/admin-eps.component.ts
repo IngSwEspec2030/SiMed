@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource} from '@angular/material/table'
+import { MatTableDataSource } from '@angular/material/table'
 import { Eps } from 'src/app/dto/eps';
 import { ConfigService } from 'src/app/services/config.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
@@ -15,116 +15,117 @@ import { EditarEpsComponent } from '../admin-crud/editar-eps/editar-eps.componen
   styleUrls: ['./admin-eps.component.css']
 })
 export class AdminEpsComponent implements OnInit {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
-  searchKey:string="";
+  searchKey: string = "";
 
   displayedColumns: string[] = ['nombreEps', 'direccionEps', 'telefonoEps', 'actions'];
-
-  data:Eps[]=[
-    {
-      idEps:1,
-      nombreEps:'Sanitas EPS',
-      direccionEps:'Cra 24 # 65s - as',
-      telefonoEps:'321 65 54',
-      estadoEps:true,
-    },
-    {
-      idEps:2,
-      nombreEps:'Colsubsidio',
-      direccionEps:'Av cll 45 # 98 4df',
-      telefonoEps:'(+71)6540000',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-    {
-      idEps:3,
-      nombreEps:'Coomeva',
-      direccionEps:'Cll 156 # 65s - as',
-      telefonoEps:'56805665',
-      estadoEps:true,
-    },
-  ];
-
-  datasource = new MatTableDataSource<any>(); 
+  data: Eps[] = [];
+  /*
+    data:Eps[]=[
+      {
+        idEps:1,
+        nombreEps:'Sanitas EPS',
+        direccionEps:'Cra 24 # 65s - as',
+        telefonoEps:'321 65 54',
+        estadoEps:true,
+      },
+      {
+        idEps:2,
+        nombreEps:'Colsubsidio',
+        direccionEps:'Av cll 45 # 98 4df',
+        telefonoEps:'(+71)6540000',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+      {
+        idEps:3,
+        nombreEps:'Coomeva',
+        direccionEps:'Cll 156 # 65s - as',
+        telefonoEps:'56805665',
+        estadoEps:true,
+      },
+    ];
+  */
+  datasource = new MatTableDataSource<any>();
 
   constructor(
     public dialog: MatDialog,
-    public http:UtilHttpService,
-    public config:ConfigService
-    ) { 
-     this.datasource = new MatTableDataSource<any>();
-    }
-
-  ngOnInit(): void {
-    this.onConfigInit();
-    // this.onLoadEps();//TODO: Activar esto y borrar la línea anterior
+    public http: UtilHttpService,
+    public config: ConfigService
+  ) {
+    this.datasource = new MatTableDataSource<any>();
   }
 
-  onLoadEps(){
-    this.data = this.data.splice(0,this.data.length);
+  ngOnInit(): void {
+    //this.onConfigInit();
+    this.onLoadEps();//TODO: Activar esto y borrar la línea anterior
+  }
+
+  onLoadEps() {
+    this.data = this.data.splice(0, this.data.length);
     this.http.showBusy();
     this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp: Eps[]) => {
       this.data = resp;
@@ -136,19 +137,19 @@ export class AdminEpsComponent implements OnInit {
     })
   }
 
-  onConfigInit(){
+  onConfigInit() {
     this.datasource = new MatTableDataSource<any>(this.data);
-    this.datasource.filterPredicate = 
-         (data: Eps, filter: string) => data.nombreEps.toLowerCase().indexOf(filter) !== -1;
-    this.datasource.paginator=this.paginator;
+    this.datasource.filterPredicate =
+      (data: Eps, filter: string) => data.nombreEps.toLowerCase().indexOf(filter) !== -1;
+    this.datasource.paginator = this.paginator;
   }
 
-  onClearSearchKey(){    
-    this.searchKey="";
+  onClearSearchKey() {
+    this.searchKey = "";
     this.applyFilter();
   }
 
-  onEditItem(index: number, element:any){  
+  onEditItem(index: number, element: any) {
     this.index = index;
     this.id = element.idEps;
     const dialogRef = this.dialog.open(EditarEpsComponent, {
@@ -159,17 +160,17 @@ export class AdminEpsComponent implements OnInit {
   index: number;
   id: number;
 
-  onDeleteItem(index: number, element:Eps){
+  onDeleteItem(index: number, element: Eps) {
     this.index = index;
     this.id = element.idEps;
     const dialogRef = this.dialog.open(BorrarEpsComponent, {
       data: element
     });
 
-    
+
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.datasource.data.splice(index,1);        
+        this.datasource.data.splice(index, 1);
         this.refreshTable();
       }
     });
@@ -179,14 +180,14 @@ export class AdminEpsComponent implements OnInit {
     this.paginator._changePageSize(this.paginator.pageSize);
   }
 
-  applyFilter(){
+  applyFilter() {
     this.datasource.filter = this.searchKey.trim().toLowerCase();
   }
 
-  onAddNew(){
+  onAddNew() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width='80vw';
-    this.dialog.open(AgregarEpsComponent, dialogConfig);    
+    dialogConfig.width = '80vw';
+    this.dialog.open(AgregarEpsComponent, dialogConfig);
   }
 
 }

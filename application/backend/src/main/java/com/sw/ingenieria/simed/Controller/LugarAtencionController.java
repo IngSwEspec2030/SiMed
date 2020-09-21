@@ -1,7 +1,8 @@
 package com.sw.ingenieria.simed.Controller;
 
+import com.sw.ingenieria.simed.dto.GeneralOutput;
+import com.sw.ingenieria.simed.dto.LugarAtencionOutputDTO;
 import com.sw.ingenieria.simed.entity.LugarAtencion;
-import com.sw.ingenieria.simed.entity.Usuario;
 import com.sw.ingenieria.simed.service.LugarAtencionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -69,9 +71,31 @@ public class LugarAtencionController {
     public ResponseEntity <?> activar(@PathVariable("id") Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionService.findId(id);
         if(lugarAtencion==null || !lugarAtencionService.existeById(id)){
-            return new ResponseEntity<>("No existe un usuario correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("No existe un lugar de atención correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
         lugarAtencionService.activar(id);
-        return new ResponseEntity<>("Usuario activado", HttpStatus.OK);
+        return new ResponseEntity<>("Lugar de atención activado", HttpStatus.OK);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/lugaresAtencionEps/{id}")
+    public GeneralOutput getAllByEpsAndActivo(@PathVariable("id") Short id ) throws Exception {
+        List<LugarAtencionOutputDTO> lugarAtencionDTOList =new ArrayList<>();
+        for (LugarAtencion lugarAtencion:lugarAtencionService.obtenerLugarAtencionPorEps(id)) {
+            LugarAtencionOutputDTO laDTO = LugarAtencionOutputDTO.getDTO(lugarAtencion);
+            lugarAtencionDTOList.add(laDTO);
+        }
+        return new GeneralOutput(HttpStatus.OK.value(),HttpStatus.OK.getReasonPhrase(),lugarAtencionDTOList);
+    }
+
+    @GetMapping("/lugaresCercanos/{idEps}/{lat}/{lon}")
+    public ResponseEntity<?> getClosestPlaces(@PathVariable("idEps") Short idEps, @PathVariable("lat") double lat, @PathVariable("lon") double lon ) throws Exception {
+        List<LugarAtencion> list = lugarAtencionService.obtenerLugaresAtencionCercanos(idEps, lat, lon);
+        if(!list.isEmpty()){
+            return new ResponseEntity<List>(list, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
+    }
+
+
 }

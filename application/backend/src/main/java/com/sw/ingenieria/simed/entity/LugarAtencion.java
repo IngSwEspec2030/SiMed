@@ -5,10 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -33,7 +31,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @Table(name = "LUGAR_ATENCION")
 @NamedQueries({
-    @NamedQuery(name = "LugarAtencion.findAll", query = "SELECT l FROM LugarAtencion l")})
+        @NamedQuery(name = "LugarAtencion.findAll", query = "SELECT l FROM LugarAtencion l")})
 public class LugarAtencion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,10 +59,14 @@ public class LugarAtencion implements Serializable {
     private Double longitudLugarAtencion;
     @Column(name = "ESTADO_LUGAR_ATENCION")
     private Boolean estadoLugarAtencion;
-    /*@ManyToMany(mappedBy = "lugarAtencionCollection")
+    @ManyToMany(mappedBy = "lugarAtencionCollection")
+    @JsonIgnore
+    @ToString.Exclude
     private Collection<Especialidad> especialidadCollection;
     @ManyToMany(mappedBy = "lugarAtencionCollection")
-    private Collection<Eps> epsCollection;*/
+    @JsonIgnore
+    @ToString.Exclude
+    private Collection<Eps> epsCollection;
 
 
     public LugarAtencion(Long idLugaresAtencion) {
@@ -95,5 +97,5 @@ public class LugarAtencion implements Serializable {
     public String toString() {
         return "com.sw.ingenieria.simed.entity.LugarAtencion[ idLugaresAtencion=" + idLugaresAtencion + " ]";
     }
-    
+
 }
