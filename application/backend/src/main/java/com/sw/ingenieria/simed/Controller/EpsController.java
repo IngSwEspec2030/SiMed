@@ -63,8 +63,8 @@ public class EpsController {
         if(eps1==null || !epsService.existeById(id)){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        epsService.delete(id);
-        return new ResponseEntity<>("Eps eliminado", HttpStatus.OK);
+
+        return new ResponseEntity<>(epsService.deleteEPS(id), HttpStatus.OK);
     }
 
     @PutMapping("/activar/{id}")
@@ -73,8 +73,8 @@ public class EpsController {
         if(eps==null || !epsService.existeById(id)){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        epsService.activar(id);
-        return new ResponseEntity<>("Eps activada", HttpStatus.OK);
+
+        return new ResponseEntity<>(epsService.activar(id), HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.ACCEPTED)
