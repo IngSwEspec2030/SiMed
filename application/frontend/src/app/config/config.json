@@ -11,7 +11,7 @@
     "urllistAllEps":"/eps/listAll",    
     "urlcreateEps":"/eps/create",
     "urldeleteEps":"/eps/delete",
-    "urlactivarEps":"/esp/activar",
+    "urlactivarEps":"/eps/activar",
     "urlEps":"/eps",
     
     "urlFindByIdLugaresAtencion":"/lugarAtencion/findById/",

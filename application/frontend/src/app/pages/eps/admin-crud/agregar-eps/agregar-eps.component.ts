@@ -50,7 +50,7 @@ export class AgregarEpsComponent implements OnInit {
     }
 
     this.http.showBusy();
-    this.http.post(this.config.prop.urlEps, this.addForm.value)
+    this.http.post(this.config.prop.urlcreateEps, this.addForm.value)
     .subscribe(resp=>{
       this.http.closeBusy();
       this.message.displayInfoMessage("Admin","Eps Agregada satisfactoriamente", IconType.info, ButtonType.Ok);      
