@@ -54,9 +54,13 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
 
     @Override
     public void delete(Short key) throws Exception {
+        
+    }
+
+    public Eps deleteEPS(Short key) throws Exception {
         Eps eps = epsRepository.findById(key).get();
         eps.setEstadoEps(false);
-        epsRepository.save(eps);
+        return epsRepository.save(eps);
     }
 
     public Boolean existeById (Short key) throws Exception {
