@@ -39,14 +39,28 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
     @Override
     public Eps update(Eps entity) throws Exception {
         Eps eps = epsRepository.findById(entity.getIdEps()).get();
-        return epsRepository.save(entity);
+
+        if (entity.getNombreEps() != null) {
+            eps.setNombreEps(entity.getNombreEps());
+        }
+        if (entity.getDireccionEps() != null) {
+        eps.setDireccionEps(entity.getDireccionEps());
+        }
+        if (entity.getTelefonoEps() != null) {
+        eps.setTelefonoEps(entity.getTelefonoEps());
+        }
+        return epsRepository.save(eps);
     }
 
     @Override
     public void delete(Short key) throws Exception {
+        
+    }
+
+    public Eps deleteEPS(Short key) throws Exception {
         Eps eps = epsRepository.findById(key).get();
         eps.setEstadoEps(false);
-        epsRepository.save(eps);
+        return epsRepository.save(eps);
     }
 
     public Boolean existeById (Short key) throws Exception {

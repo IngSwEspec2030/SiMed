@@ -188,7 +188,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idEps\": 3,\r\n    \"nombreEps\": \"Salud Total S.A. E.P.S.\",\r\n    \"direccionEps\": \"Cra. 104 #14-50\",\r\n    \"telefonoEps\": \"4854555 \"\r\n}"
+							"raw": "{\r\n    \"nombreEps\": \"Salud Total S.A. E.P.S.\",\r\n    \"direccionEps\": \"Cra. 104 #14-50\",\r\n    \"telefonoEps\": \"4854555 \"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8191/eps/create",
@@ -200,6 +200,37 @@
 							"path": [
 								"eps",
 								"create"
+							]
+						},
+						"description": "Crear una Nueva EPS"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/eps/update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEps\": 10,    \r\n    \"nombreEps\": \"MEDIMAS OAU y PA E.P.S.\",\r\n    \"direccionEps\": \"Carrera 52 No. 67 A - 71\",\r\n    \"telefonoEps\": \"+57(1)7632596\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8191/eps/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"eps",
+								"update"
 							]
 						},
 						"description": "Crear una Nueva EPS"

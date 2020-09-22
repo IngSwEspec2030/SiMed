@@ -19,96 +19,8 @@ export class AdminEpsComponent implements OnInit {
 
   searchKey: string = "";
 
-  displayedColumns: string[] = ['nombreEps', 'direccionEps', 'telefonoEps', 'actions'];
+  displayedColumns: string[] = ['nombreEps', 'direccionEps', 'telefonoEps', 'estadoEps','actions'];
   data: Eps[] = [];
-  /*
-    data:Eps[]=[
-      {
-        idEps:1,
-        nombreEps:'Sanitas EPS',
-        direccionEps:'Cra 24 # 65s - as',
-        telefonoEps:'321 65 54',
-        estadoEps:true,
-      },
-      {
-        idEps:2,
-        nombreEps:'Colsubsidio',
-        direccionEps:'Av cll 45 # 98 4df',
-        telefonoEps:'(+71)6540000',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-      {
-        idEps:3,
-        nombreEps:'Coomeva',
-        direccionEps:'Cll 156 # 65s - as',
-        telefonoEps:'56805665',
-        estadoEps:true,
-      },
-    ];
-  */
   datasource = new MatTableDataSource<any>();
 
   constructor(
@@ -170,7 +82,8 @@ export class AdminEpsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
-        this.datasource.data.splice(index, 1);
+        //this.datasource.data.splice(index, 1);
+        this.onLoadEps();
         this.refreshTable();
       }
     });
@@ -187,7 +100,16 @@ export class AdminEpsComponent implements OnInit {
   onAddNew() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '80vw';
-    this.dialog.open(AgregarEpsComponent, dialogConfig);
+    let dialogRef= this.dialog.open(AgregarEpsComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 1) {
+        //this.datasource.data.splice(index, 1);
+        this.onLoadEps();
+        this.refreshTable();
+      }
+    });
+    
+    
   }
 
 }

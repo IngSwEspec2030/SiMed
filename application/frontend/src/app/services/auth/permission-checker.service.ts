@@ -37,7 +37,8 @@ export class PermissionCheckerService {
 
 
    isGranted(permiso:Permisos):boolean{
-    if(this.grantedPermissions=='admin'){
+     console.log("Imprimir Granted Permiso",this.grantedPermissions)
+    if(this.grantedPermissions=='1'){
       return (this.adminPermisos.includes(permiso));
     }
     else{
@@ -45,7 +46,7 @@ export class PermissionCheckerService {
     }
    }
 
-}
+} 
 
 //Si se incluyen permisos aquí, se deben habilitar en los listados de permisos del perfil
 export enum Permisos{

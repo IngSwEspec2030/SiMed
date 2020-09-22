@@ -28,9 +28,9 @@ export class AuthService {
 
   setUser(usuarioAutenticado:userReturned){
     this.user = usuarioAutenticado.usuario;
-    localStorage.setItem(this.keyTipoUsuario, usuarioAutenticado.usuario.idTipoUsuario.nombreTipoUsuario)
+    localStorage.setItem(this.keyTipoUsuario, usuarioAutenticado.usuario.tipoUsuario.idTipoUsuario.toString());
     localStorage.setItem(this.keyUsuer, usuarioAutenticado.usuario.username);
-    localStorage.setItem(this.keyEps, usuarioAutenticado.usuario.idEps.toString());
+    localStorage.setItem(this.keyEps, usuarioAutenticado.usuario.eps.idEps.toString());
     localStorage.setItem(this.keyToken, usuarioAutenticado.token);
   }
 

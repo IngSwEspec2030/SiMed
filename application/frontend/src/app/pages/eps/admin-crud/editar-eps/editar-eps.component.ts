@@ -68,7 +68,7 @@ export class EditarEpsComponent implements OnInit {
       }
      
       this.http.showBusy();
-      this.http.put(this.config.prop.urlEps, this.editForm.value, this.id)
+      this.http.put(this.config.prop.urlupdateEps, this.editForm.value, this.id)
       .subscribe(resp=>{
         this.http.closeBusy();
         this.message.displayInfoMessage("Admin","Eps actualizada correctamente", IconType.info, ButtonType.Ok);      

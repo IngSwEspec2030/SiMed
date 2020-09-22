@@ -67,7 +67,8 @@ export class RegisterComponent implements OnInit {
       tipoIdentificacion: ['', [Validators.required, Validators.required]],
       username: ['', [Validators.required, Validators.required]],
       idEps: ['', [Validators.required, Validators.required]],
-      estadoUsuario: 1
+      estadoUsuario: true,
+      idTipoUsuario: 3
     });
 
     this.getEps();
