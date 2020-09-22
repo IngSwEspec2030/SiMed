@@ -126,9 +126,13 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
                 }
             }
         }
-        //ToDo limitar elementos a 5
+        //ToDo limitar elementos a 5 o menos
+        int cantEnviar = 0;
+        if(lugarAtencionEPS.size()>=5){
+            cantEnviar=5;
+        }else cantEnviar = lugarAtencionEPS.size();
         List<LugarAtencion> lugarAtencionCercanos = new ArrayList<LugarAtencion>();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<cantEnviar;i++){
             lugarAtencionCercanos.add(lugarAtencionEPS.get(i));
         }
         return lugarAtencionCercanos;
