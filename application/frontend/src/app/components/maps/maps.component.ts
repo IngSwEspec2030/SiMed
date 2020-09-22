@@ -5,6 +5,7 @@ import { UtilHttpService } from 'src/app/services/util-http.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { LugaresAtencion } from 'src/app/dto/lugares_atencion';
 import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-maps',
@@ -29,26 +30,37 @@ export class MapsComponent implements OnInit {
   constructor(
     private locationService:LocationService, 
     private http:UtilHttpService, 
-    private config:ConfigService ) { }
+    private config:ConfigService ,
+    private auth:AuthService
+    ) { }
 
   ngOnInit(): void {
+
     this.getUserLocation();
-    this.getLugaresCercanos();
+    
+    
   }
 
   /**
    * Obtiene la ubicación del usuario
    */
   getUserLocation() {
+
     this.locationService.getPosition().then(pos=>
-      {
+      { 
+        console.log("Antes del condicional",pos)
+        if(!pos){
+          console.log("No tengo posicion", pos);
+        }
          this.lat=pos.lat;
          this.lng=pos.lng;
          const userMark = new Marcador(this.lat, this.lng);
          userMark.valido=true;
          this.userMark=userMark;
+         this.getLugaresCercanos();
          
       });
+    
   }
 
 
@@ -56,8 +68,9 @@ export class MapsComponent implements OnInit {
    * Obtiene los lugares de atención mas cernanos
    */
   getLugaresCercanos(){
+    let parametros= `${this.auth.getidEps()}/${this.lat}/${this.lng}`
 
-    this.http.get(this.config.prop.urllistAllLugaresAtencion, null)
+    this.http.get(this.config.prop.urllistLugaresAtencionCercanos, parametros)
     .subscribe((data:LugaresAtencion[])=>{
 
       if(data.length>0){

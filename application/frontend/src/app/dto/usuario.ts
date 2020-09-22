@@ -13,7 +13,9 @@ export class Usuario {
     fechaCreacionUsuario: Date;
     fechaModificacionUsuario: Date;
     tipoIdentificacion: TipoIdentificacion;
-    idEps: Eps;
-    idTipoUsuario: TipoUsuario;
+    idEps: string;
+    eps: Eps;
+    idTipoUsuario: string;
+    tipoUsuario: TipoUsuario;
     username: string;
 }

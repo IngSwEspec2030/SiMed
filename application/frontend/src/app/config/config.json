@@ -12,10 +12,12 @@
     "urlcreateEps":"/eps/create",
     "urldeleteEps":"/eps/delete",
     "urlactivarEps":"/eps/activar",
+    "urlupdateEps":"/eps/update",
     "urlEps":"/eps",
     
     "urlFindByIdLugaresAtencion":"/lugarAtencion/findById/",
-    "urllistAllLugaresAtencion":"/lugarAtencion/listAll",    
+    "urllistAllLugaresAtencion":"/lugarAtencion/listAll",  
+    "urllistLugaresAtencionCercanos":"/lugarAtencion/lugaresCercanos",    
     "urlcreateLugaresAtencion":"/lugarAtencion/create",
     "urldeleteLugaresAtencion":"/lugarAtencion/delete",
     "urlactivarLugaresAtencion":"/lugarAtencion/activar",
