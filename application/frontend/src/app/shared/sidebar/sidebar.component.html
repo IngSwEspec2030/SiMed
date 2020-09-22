@@ -10,7 +10,6 @@
                 <!-- ***************************************************************************************************** -->
                 <!-- SECCIÓN DE USUARIOS -->
                 <!-- ***************************************************************************************************** -->
-                <!-- <li class="nav-small-cap">USUARIOS</li> -->
                 <li>
                     <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-user" aria-expanded="false">
                         <i class="mdi mdi-account-settings-variant"></i>
@@ -22,8 +21,7 @@
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">                        
-                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" >Perfil</a></li>
-                        <!-- <li><a routerLink="">Item 2</a></li> -->
+                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" routerLinkActive='active' >Perfil</a></li>
                     </ul>                    
                 </li>
 
@@ -31,7 +29,6 @@
                 <!-- SECCIÓN DE LUGARES DE ATENCIÓN -->
                 <!-- ***************************************************************************************************** -->
                 <li class="nav-devider"></li>
-                <!-- <li class="nav-small-cap">LUGARES DE ATENCIÓN</li> -->
                 <li>
                     <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-site" aria-expanded="false">
                         <i class="mdi mdi-hospital-marker"></i>
@@ -44,18 +41,16 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  routerLink="">Lugares más cercanos</a></li>
-                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site">Admin Lugares</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site" routerLinkActive='active'>Admin Lugares</a></li>
                     </ul>                    
                 </li>
-
                 <!-- ***************************************************************************************************** -->
                 <!-- EPS -->
                 <!-- ***************************************************************************************************** -->
-                <li class="nav-devider"></li>
-                <!-- <li class="nav-small-cap">LUGARES DE ATENCIÓN</li> -->
-                <li>
-                    <a *ngIf="pc.isGranted(permisos.AdminEps)" 
-                    class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                <li  *ngIf="pc.isGranted(permisos.AdminEps)" class="nav-devider"></li>
+                <li *ngIf="pc.isGranted(permisos.AdminEps)" >
+                    <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-eps" routerLinkActive='active'
+                     aria-expanded="false">
                         <i class="mdi mdi-hospital-building"></i>
                         <span class="hide-menu"> 
                             EPS
@@ -66,18 +61,19 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.AdminEps)" 
-                             routerLink="pages/admin-eps">Admin EPS</a></li>
-                        <!-- <li><a routerLink="">Item 2</a></li> -->
+                             routerLink="pages/admin-eps" routerLinkActive='active'>Admin EPS</a>
+                        </li>
+
                     </ul>                    
                 </li>
                 
                 <!-- ***************************************************************************************************** -->
                 <!-- SECCIÓN DE ESPECIALIDADES -->
                 <!-- ***************************************************************************************************** -->
-                <li class="nav-devider"></li>
-                <li>
-                    <a *ngIf="pc.isGranted(permisos.AdminEspecialidad)" 
-                    class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                <li *ngIf="pc.isGranted(permisos.AdminEspecialidad)"  class="nav-devider"></li>
+                <li *ngIf="pc.isGranted(permisos.AdminEspecialidad)" >
+                    <a 
+                    class="has-arrow waves-effect waves-dark" routerLink="pages/admin-specialties" aria-expanded="false">
                         <i class="mdi mdi-signal-hspa-plus"></i>
                         <span class="hide-menu"> 
                             ESPECIALIDADES
@@ -88,18 +84,17 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.AdminEspecialidad)"  
-                            routerLink="pages/admin-specialties">Admin Especialidades</a></li>
-                        <!-- <li><a routerLink="">Item 2</a></li> -->
+                            routerLink="pages/admin-specialties" routerLinkActive='active'>Admin Especialidades</a>
+                        </li>
                     </ul>                    
                 </li>
                 
                 <!-- ***************************************************************************************************** -->
                 <!-- SECCIÓN DE DASHBOARD -->
                 <!-- ***************************************************************************************************** -->
-                <li class="nav-devider"></li>
-                <!-- <li class="nav-small-cap">DASHBOARD</li> -->
-                <li>
-                    <a *ngIf="pc.isGranted(permisos.Dashboard)" 
+                <li *ngIf="pc.isGranted(permisos.Dashboard)" class="nav-devider"></li>
+                <li *ngIf="pc.isGranted(permisos.Dashboard)">
+                    <a  
                     class="has-arrow waves-effect waves-dark" routerLink="pages/dashboard" aria-expanded="false">
                         <i class="mdi mdi-chart-bar"></i>
                         <span class="hide-menu"> 
@@ -110,8 +105,7 @@
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a routerLink="pages/dashboard" >Gestión EPS</a></li>
-                        <!-- <li><a routerLink="">Item 2</a></li> -->
+                        <li><a routerLink="pages/dashboard" routerLinkActive='active'>Gestión EPS</a></li>
                     </ul>                    
                 </li>
             </ul>
