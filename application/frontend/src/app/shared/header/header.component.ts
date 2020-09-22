@@ -14,6 +14,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onLogout(){
+    console.log('quiero salir');
+    
     this.authService.logout();
   }
 

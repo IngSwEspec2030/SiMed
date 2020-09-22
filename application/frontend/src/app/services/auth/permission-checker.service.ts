@@ -37,7 +37,6 @@ export class PermissionCheckerService {
 
 
    isGranted(permiso:Permisos):boolean{
-     console.log("Imprimir Granted Permiso",this.grantedPermissions)
     if(this.grantedPermissions=='1'){
       return (this.adminPermisos.includes(permiso));
     }

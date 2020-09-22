@@ -32,32 +32,31 @@ export class MapsComponent implements OnInit {
     private http:UtilHttpService, 
     private config:ConfigService ,
     private auth:AuthService
-    ) { }
+    ) { 
+      this.userMark = new Marcador(4.627832,-74.064395);
+      this.userMark.valido=false;
+    }
 
   ngOnInit(): void {
-
     this.getUserLocation();
-    
-    
   }
 
   /**
    * Obtiene la ubicación del usuario
    */
   getUserLocation() {
-
     this.locationService.getPosition().then(pos=>
-      { 
-        console.log("Antes del condicional",pos)
+      {
         if(!pos){
           console.log("No tengo posicion", pos);
         }
-         this.lat=pos.lat;
-         this.lng=pos.lng;
+         this.lat=pos===undefined?this.lat: pos.lat;
+         this.lng=pos===undefined?this.lng:pos.lng;
          const userMark = new Marcador(this.lat, this.lng);
          userMark.valido=true;
          this.userMark=userMark;
-         this.getLugaresCercanos();
+         if(pos!==undefined)
+          this.getLugaresCercanos();
          
       });
     

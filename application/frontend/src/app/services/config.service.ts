@@ -11,7 +11,6 @@ export class ConfigService {
   prop:any = configInit;
 
   constructor(private http:HttpClient) {
-    console.log('aqui', this.prop);
     if(this.prop===null || this.prop === undefined || this.prop.length){
       this.http.get('app/config/config.json')
       .subscribe(data=>{
