@@ -40,6 +40,8 @@ public class Especialidad implements Serializable {
     @Size(max = 100)
     @Column(name = "NOMBRE_ESPECIALIDAD")
     private String nombreEspecialidad;
+    @Column(name = "ESTADO_ESPECIALIDAD")
+    private Boolean estadoEspecialidad;
     @JoinTable(name = "LUGAR_ATENCION_X_ESPECIALIDAD", joinColumns = {
         @JoinColumn(name = "ID_ESPECIALIDAD", referencedColumnName = "ID_ESPECIALIDAD")}, inverseJoinColumns = {
         @JoinColumn(name = "ID_LUGARES_ATENCION", referencedColumnName = "ID_LUGARES_ATENCION")})
