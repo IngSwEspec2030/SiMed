@@ -1,8 +1,8 @@
-<h2 class="card-title">EPS</h2>
+<h2 class="card-title">Lugares de atención</h2>
 
 <div class="card">
     <div class="card-body mb-5">
-        <h5 class="card-title">A continuación se presentan las EPS</h5>
+        <h5 class="card-title">A continuación se presentan los lugares de atención</h5>
         <hr>
         <div>
 
@@ -13,7 +13,7 @@
                     <div class="col-lg-12">
                         <div class="col-12 mb-1">
                             <span class="vertical-line">||</span>&nbsp;
-                            <strong>EPS</strong>
+                            <strong>Lugares de Atención</strong> 
                         </div>
                         <div class="col-12 container mat-elevation-z1">
 
@@ -35,26 +35,47 @@
                                 <td mat-cell *matCellDef="let element"> {{element.id}} </td>
                             </ng-container> -->
 
-                                <!-- nombreEps Column -->
-                                <ng-container matColumnDef="nombreEps">
-                                    <th mat-header-cell *matHeaderCellDef> Eps </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.nombreEps}} </td>
+                                <!-- nombreLugarAtencion Column -->
+                                <ng-container matColumnDef="nombreLugarAtencion">
+                                    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.nombreLugarAtencion}} </td>
                                 </ng-container>
 
-                                <!-- direccionEps Column -->
-                                <ng-container matColumnDef="direccionEps">
+                                <!-- direccionLugarAtencion Column -->
+                                <ng-container matColumnDef="direccionLugarAtencion">
                                     <th mat-header-cell *matHeaderCellDef> Dirección </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.direccionEps}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.direccionLugarAtencion}} </td>
                                 </ng-container>
 
-                                <!-- telefonoEps Column -->
-                                <ng-container matColumnDef="telefonoEps">
+                                <!-- telefonoLugarAtencion Column -->
+                                <ng-container matColumnDef="telefonoLugarAtencion">
                                     <th mat-header-cell *matHeaderCellDef> Teléfono </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.telefonoEps}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.telefonoLugarAtencion}} </td>
                                 </ng-container>
-                                <ng-container matColumnDef="estadoEps">
+
+                                <!-- sitioWebLugarAtencion Column -->
+                                <ng-container matColumnDef="sitioWebLugarAtencion">
+                                    <th mat-header-cell *matHeaderCellDef> Sitio Web </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.sitioWebLugarAtencion}} </td>
+                                </ng-container>
+
+                                <!-- latitudLugarAtencion Column -->
+                                <ng-container matColumnDef="latitudLugarAtencion">
+                                    <th mat-header-cell *matHeaderCellDef> Latitud</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.latitudLugarAtencion}} </td>
+                                </ng-container>
+
+                                <!-- longitudLugarAtencion Column -->
+                                <ng-container matColumnDef="longitudLugarAtencion">
+                                    <th mat-header-cell *matHeaderCellDef> Longitud</th>
+                                    <td mat-cell *matCellDef="let element"> {{element.longitudLugarAtencion}} </td>
+                                </ng-container>
+
+
+
+                                <ng-container matColumnDef="estadoLugarAtencion">
                                     <th mat-header-cell *matHeaderCellDef> Estado </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.estadoEps | boolTranslate}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.estadoLugarAtencion | boolTranslate}} </td>
                                 </ng-container>
 
                                 <!-- actions Column -->

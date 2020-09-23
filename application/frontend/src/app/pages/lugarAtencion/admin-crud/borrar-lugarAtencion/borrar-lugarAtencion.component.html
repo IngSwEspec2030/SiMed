@@ -1,0 +1,29 @@
+<button type="button" class="close" tabindex="-1" (click)="onNoClick()" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+<div class="container">
+    <h3 mat-dialog-title>Está seguro que desea borrar el Lugar de Atención?</h3>
+    <div mat-dialog-content>
+      Id: {{lugarAtencion.idLugaresAtencion}}
+      <p></p>
+      lugarAtencion: {{lugarAtencion.nombreLugarAtencion}}
+      <p></p>
+      Estado: {{lugarAtencion.estadoLugarAtencion}}
+      <p></p>
+      Dirección: {{lugarAtencion.direccionLugarAtencion}}
+      <p></p>
+      Teléfono: {{lugarAtencion.telefonoLugarAtencion}}
+      <p></p>
+      Sitio Web: {{lugarAtencion.sitioWebLugarAtencion}}
+      <p></p>
+      Latitud: {{lugarAtencion.latitudLugarAtencion}}
+      <p></p>
+      Longitud: {{lugarAtencion.longitudLugarAtencion}}
+      <p></p>
+    </div>
+   
+    <div mat-dialog-actions>
+      <button class="btn btn-danger mr-2" mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Borrar</button>
+      <button class="btn btn-light mr-2"mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+    </div>
+  </div>
