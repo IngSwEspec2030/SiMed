@@ -25,6 +25,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { ActivoPipe } from '../utils/pipes/activo.pipe';
+import { OpcionesVisualizacionComponent } from './usuario/opciones-visualizacion/opciones-visualizacion.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AdminUsuarioComponent,
     UbicarLugaresComponent,
     AdminEpsComponent,AgregarEpsComponent,BorrarEpsComponent,EditarEpsComponent,
+    ActivoPipe,
+    OpcionesVisualizacionComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ComponentsModule,
     FormsModule,
     MatTableModule,MatIconModule, MatCardModule, MatDialogModule, MatFormFieldModule,MatPaginatorModule
-  ]
+  ],
+  exports:[ActivoPipe]
 })
 export class PagesModule { }

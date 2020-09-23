@@ -4,6 +4,7 @@ import { ConfigService } from './config.service';
 import Swal from 'sweetalert2'
 import { isJson } from '../utils/constants';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,13 +13,14 @@ export class UtilHttpService {
 
   defaultMsgSpinner:string="<h3>Procesando su solicitud!</h3>";
 
-  constructor(private http:HttpClient, private config:ConfigService) {}
+  constructor(private http:HttpClient, private config:ConfigService, private auth:AuthService) {}
 
   private createRequestHeader():HttpHeaders{
 
     return new HttpHeaders({
       'Content-Type':'application/json',
-      'Accept':'application/json'
+      'Accept':'application/json',
+      'Authorization': this.auth.getTokenUser()
     })
   }
 

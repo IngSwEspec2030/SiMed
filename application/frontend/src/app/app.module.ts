@@ -12,10 +12,6 @@ import { RegisterComponent } from './auth/register/register.component';
 import { AlertComponent } from './components/alert';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
-
-
-
 @NgModule({
   declarations: [ 
     AppComponent,

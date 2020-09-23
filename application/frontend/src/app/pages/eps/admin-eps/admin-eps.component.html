@@ -54,7 +54,7 @@
                                 </ng-container>
                                 <ng-container matColumnDef="estadoEps">
                                     <th mat-header-cell *matHeaderCellDef> Estado </th>
-                                    <td mat-cell *matCellDef="let element"> {{element.estadoEps}} </td>
+                                    <td mat-cell *matCellDef="let element"> {{element.estadoEps | boolTranslate}} </td>
                                 </ng-container>
 
                                 <!-- actions Column -->

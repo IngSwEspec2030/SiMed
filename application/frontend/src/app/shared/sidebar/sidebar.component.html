@@ -11,17 +11,21 @@
                 <!-- SECCIÓN DE USUARIOS -->
                 <!-- ***************************************************************************************************** -->
                 <li>
-                    <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-user" aria-expanded="false">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-account-settings-variant"></i>
                         <span class="hide-menu"> 
                             USUARIOS
                             <span class="label label-rouded label-themecolor pull-right">
-                                Administración central de usuarios
+                                1
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">                        
-                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" routerLinkActive='active' >Perfil</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" >Perfil</a></li>
+                        <!-- <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" href="#" (click)="onOpenThema()" >Tema</a></li> -->
+                        <li>
+                            <button *ngIf="pc.isGranted(permisos.AdminUsuario)" type="button" class="btn btn-link" (click)="onOpenThema()">Tema</button>
+                        </li>
                     </ul>                    
                 </li>
 
@@ -30,18 +34,18 @@
                 <!-- ***************************************************************************************************** -->
                 <li class="nav-devider"></li>
                 <li>
-                    <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-site" aria-expanded="false">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-hospital-marker"></i>
                         <span class="hide-menu"> 
                             LUGARES
                             <span class="label label-rouded label-themecolor pull-right">
-                                administración de lugares de atención
+                               2
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  routerLink="">Lugares más cercanos</a></li>
-                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site" routerLinkActive='active'>Admin Lugares</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  href="#">Lugares más cercanos</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site">Admin Lugares</a></li>
                     </ul>                    
                 </li>
                 <!-- ***************************************************************************************************** -->
@@ -49,19 +53,19 @@
                 <!-- ***************************************************************************************************** -->
                 <li  *ngIf="pc.isGranted(permisos.AdminEps)" class="nav-devider"></li>
                 <li *ngIf="pc.isGranted(permisos.AdminEps)" >
-                    <a class="has-arrow waves-effect waves-dark" routerLink="pages/admin-eps" routerLinkActive='active'
+                    <a class="has-arrow waves-effect waves-dark" href="#"
                      aria-expanded="false">
                         <i class="mdi mdi-hospital-building"></i>
                         <span class="hide-menu"> 
                             EPS
                             <span class="label label-rouded label-themecolor pull-right">
-                               administración de eps
+                               1
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.AdminEps)" 
-                             routerLink="pages/admin-eps" routerLinkActive='active'>Admin EPS</a>
+                             routerLink="pages/admin-eps">Admin EPS</a>
                         </li>
 
                     </ul>                    
@@ -72,19 +76,18 @@
                 <!-- ***************************************************************************************************** -->
                 <li *ngIf="pc.isGranted(permisos.AdminEspecialidad)"  class="nav-devider"></li>
                 <li *ngIf="pc.isGranted(permisos.AdminEspecialidad)" >
-                    <a 
-                    class="has-arrow waves-effect waves-dark" routerLink="pages/admin-specialties" aria-expanded="false">
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-signal-hspa-plus"></i>
                         <span class="hide-menu"> 
                             ESPECIALIDADES
                             <span class="label label-rouded label-themecolor pull-right">
-                               administración de especialidades
+                               1
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.AdminEspecialidad)"  
-                            routerLink="pages/admin-specialties" routerLinkActive='active'>Admin Especialidades</a>
+                            routerLink="pages/admin-specialties">Admin Especialidades</a>
                         </li>
                     </ul>                    
                 </li>
@@ -95,17 +98,17 @@
                 <li *ngIf="pc.isGranted(permisos.Dashboard)" class="nav-devider"></li>
                 <li *ngIf="pc.isGranted(permisos.Dashboard)">
                     <a  
-                    class="has-arrow waves-effect waves-dark" routerLink="pages/dashboard" aria-expanded="false">
+                    class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-chart-bar"></i>
                         <span class="hide-menu"> 
                             DASHBOARD
                             <span class="label label-rouded label-themecolor pull-right">
-                                monitor de administración
+                                1
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a routerLink="pages/dashboard" routerLinkActive='active'>Gestión EPS</a></li>
+                        <li><a routerLink="pages/dashboard">Gestión EPS</a></li>
                     </ul>                    
                 </li>
             </ul>

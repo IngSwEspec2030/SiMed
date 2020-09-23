@@ -10,6 +10,7 @@ export class UbicarLugaresComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }
