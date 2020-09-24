@@ -32,7 +32,7 @@ public class EspecialidadService implements ServiceInterface  <Especialidad, Sho
     }
 
     @Override
-    public Especialidad update(Especialidad entity) throws Exception {
+    public Especialidad update(Especialidad entity, Short id) throws Exception {
         Especialidad especialidad = especialidadRepository.findById(entity.getIdEspecialidad()).get();
         return especialidadRepository.save(entity);
     }

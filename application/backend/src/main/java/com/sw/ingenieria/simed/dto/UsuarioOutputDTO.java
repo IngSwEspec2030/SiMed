@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,8 +24,7 @@ import javax.validation.constraints.Size;
  */
 
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class UsuarioOutputDTO {
 
     private Long idUsuario;
@@ -33,13 +33,13 @@ public class UsuarioOutputDTO {
     private String apellidosUsuario;
     private String numeroIdentificacionUsuario;
     private String correoUsuario;
-    //private Boolean estadoUsuario;
     private LocalDate fechaCreacionUsuario;
     private LocalDate fechaModificacionUsuario;
 
     //Relaciones
-    private Map<String,Object> TipoUsuario;
-    private Map<String,Object> Eps;
+    private Map<String,Object> tipoUsuario;
+    private Map<String,Object> eps;
+    private Map<String,Object> tipoIdentificacion;
 
     //Auditoria
     private boolean estadoUsuario;
@@ -61,18 +61,24 @@ public class UsuarioOutputDTO {
         usuDTO.setFechaCreacionUsuario(usuario.getFechaCreacionUsuario());
         usuDTO.setFechaModificacionUsuario(usuario.getFechaModificacionUsuario());
 
-        if(usuario.getIdTipoUsuario() !=null) {
+        if(usuario.getTipoUsuario() !=null) {
             Map<String, Object> usuarioData = new LinkedHashMap<>();
-            usuarioData.put("nombreTipoUsuario",usuario.getIdTipoUsuario().getNombreTipoUsuario());
-            usuarioData.put("idTipoUsuario", usuario.getIdTipoUsuario().getIdTipoUsuario());
+            usuarioData.put("nombreTipoUsuario",usuario.getTipoUsuario().getNombreTipoUsuario());
+            usuarioData.put("idTipoUsuario", usuario.getTipoUsuario().getIdTipoUsuario());
             usuDTO.setTipoUsuario(usuarioData);
         }
 
-        if(usuario.getIdEps() !=null) {
-            Map<String, Object> usuarioEps = new LinkedHashMap<>();
-            usuarioEps.put("nombreEps",usuario.getIdEps().getNombreEps());
-            usuarioEps.put("idEps", usuario.getIdEps().getIdEps());
-            usuDTO.setEps(usuarioEps);
+       if(usuario.getEps() !=null) {
+            Map<String, Object> usuarioData = new LinkedHashMap<>();
+            usuarioData.put("nombreEps",usuario.getEps().getNombreEps());
+            usuarioData.put("idEps", usuario.getEps().getIdEps());
+            usuDTO.setEps(usuarioData);
+        }
+        if(usuario.getTipoIdentificacion() !=null) {
+            Map<String, Object> usuarioData = new LinkedHashMap<>();
+            usuarioData.put("nombreTipoIdentificacion",usuario.getTipoIdentificacion().getNombreTipoIdentificacion());
+            usuarioData.put("tipoIdentificacion", usuario.getTipoIdentificacion().getTipoIdentificacion());
+            usuDTO.setTipoIdentificacion(usuarioData);
         }
 
         return usuDTO;

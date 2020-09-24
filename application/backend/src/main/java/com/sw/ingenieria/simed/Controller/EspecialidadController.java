@@ -46,13 +46,13 @@ public class EspecialidadController {
         return new ResponseEntity<>(especialidadService.create(especialidad), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity <?> update(@RequestBody Especialidad especialidad) throws Exception {
+    @PutMapping("/update/{id}")
+    public ResponseEntity <?> update(@PathVariable("id") Short id, @RequestBody Especialidad especialidad) throws Exception {
         Especialidad especialidad1 = especialidadService.findById(especialidad.getIdEspecialidad());
         if(especialidad1==null){
             return new ResponseEntity<>("No existe una especialidad correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(especialidadService.update(especialidad),HttpStatus.OK);
+        return new ResponseEntity<>(especialidadService.update(especialidad, id),HttpStatus.OK);
     }
 
     //@ResponseBody
