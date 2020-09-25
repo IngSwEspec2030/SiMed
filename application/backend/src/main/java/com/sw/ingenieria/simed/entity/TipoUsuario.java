@@ -5,6 +5,8 @@
  */
 package com.sw.ingenieria.simed.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 import java.io.Serializable;
@@ -19,8 +21,6 @@ import javax.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "\"TIPO_USUARIO\"")
 @NamedQueries({
@@ -37,7 +37,7 @@ public class TipoUsuario implements Serializable {
     @Size(max = 100)
     @Column(name = "NOMBRE_TIPO_USUARIO")
     private String nombreTipoUsuario;
-    @OneToMany(mappedBy = "idTipoUsuario")
+    @OneToMany(mappedBy = "tipoUsuario")
     private Collection<Usuario> usuarioCollection;
 
     public TipoUsuario(Short idTipoUsuario) {

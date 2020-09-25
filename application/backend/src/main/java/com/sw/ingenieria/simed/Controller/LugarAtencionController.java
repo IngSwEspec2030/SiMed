@@ -34,7 +34,6 @@ public class LugarAtencionController {
     @ResponseBody
     @GetMapping("/findById/{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") Long id ) throws Exception {
-        System.out.println("este es el id que llega al controller = " + id);
         LugarAtencion lugarAtencion = lugarAtencionService.findById(id);
         if(lugarAtencion==null){
             return new ResponseEntity<>("No existen resultados para su consulta",HttpStatus.BAD_REQUEST);
@@ -47,13 +46,13 @@ public class LugarAtencionController {
         return new ResponseEntity<>(lugarAtencionService.create(lugarAtencion), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity <?> update(@RequestBody LugarAtencion lugarAtencion) throws Exception {
+    @PutMapping("/update/{id}")
+    public ResponseEntity <?> update(@PathVariable("id") Long id, @RequestBody LugarAtencion lugarAtencion) throws Exception {
         LugarAtencion lugAtencion = lugarAtencionService.findById(lugarAtencion.getIdLugaresAtencion());
         if(lugAtencion==null){
             return new ResponseEntity<>("No existe un lugar de atención correspondiente al ID ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion),HttpStatus.OK);
+        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion, id),HttpStatus.OK);
     }
 
     @ResponseBody

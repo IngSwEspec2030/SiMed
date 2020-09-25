@@ -9,12 +9,12 @@
 			"name": "Usuario",
 			"item": [
 				{
-					"name": "http://localhost:8191/usuario/findById/3",
+					"name": "Listar usuario por Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/findById/3",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -22,8 +22,7 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"findById",
-								"3"
+								"34"
 							]
 						},
 						"description": "Buscar un id por Usuario"
@@ -31,20 +30,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/listAll",
+					"name": "Listar todos los Usuarios",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/listAll",
+							"raw": "http://localhost:8191/usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"usuario",
-								"listAll"
+								"usuario"
 							]
 						},
 						"description": "Listar todos los Usuarios"
@@ -52,7 +50,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/create",
+					"name": "Crear un usuario",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -64,18 +62,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n        \"nombreUsuario\": \"al\",\r\n        \"apellidosUsuario\": \"C\",\r\n        \"username\": \"al\",\r\n        \"numeroIdentificacionUsuario\": \"45613\",\r\n        \"passwordUsuario\": \"123456\",\r\n        \"correoUsuario\": \"al@simed.com.co\",\r\n        \"estadoUsuario\": \"true\",\r\n        \"fechaCreacionUsuario\": \"2020-09-02\",\r\n        \"fechaModificacionUsuario\": \"2020-09-02\",\r\n        \"idEps\": \"1\",\r\n        \"tipoIdentificacion\": 2,\r\n        \"idTipoUsuario\": \"1\"\r\n  \t\r\n  }\r\n"
+							"raw": "  {\r\n        \"nombreUsuario\": \"jef\",\r\n        \"apellidosUsuario\": \"b\",\r\n        \"username\": \"jb\",\r\n        \"numeroIdentificacionUsuario\": \"45613\",\r\n        \"passwordUsuario\": \"123456\",\r\n        \"correoUsuario\": \"jb@simed.com.co\",\r\n        \"estadoUsuario\": \"true\",\r\n        \"eps\": {\r\n        \"idEps\":4\r\n        },\r\n        \"tipoIdentificacion\": {\r\n        \"tipoIdentificacion\":1\r\n        },\r\n        \"tipoUsuario\": {\r\n        \"idTipoUsuario\":2\r\n        }\r\n  \t\r\n  }\r\n"
 						},
 						"url": {
-							"raw": "http://localhost:8191/usuario/create",
+							"raw": "http://localhost:8191/usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"usuario",
-								"create"
+								"usuario"
 							]
 						},
 						"description": "Crear un Usuario"
@@ -83,12 +80,12 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/delete/3",
+					"name": "Eliminar un usuario",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/delete/3",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -96,8 +93,7 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"delete",
-								"3"
+								"34"
 							]
 						},
 						"description": "Borrado lógico de un usuario"
@@ -105,35 +101,13 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/activar/3",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8191/usuario/activar/3",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8191",
-							"path": [
-								"usuario",
-								"activar",
-								"3"
-							]
-						},
-						"description": "Activar un usuario borrado, cambio de estado a true"
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8191/usuario/update",
+					"name": "Activar Un usuario",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idUsuario\": 40,\r\n    \"nombreUsuario\": \"Vali\",\r\n    \"apellidosUsuario\": \"C\",\r\n    \"username\": \"valice\",\r\n    \"numeroIdentificacionUsuario\": \"45613\",\r\n    \"correoUsuario\": \"vce@simed.com.co\",\r\n    \"estadoUsuario\": true,\r\n    \"fechaCreacionUsuario\": \"2020-09-21\",\r\n    \"fechaModificacionUsuario\": \"2020-09-02\",\r\n    \"idEps\": \"1\",\r\n    \"tipoIdentificacion\": \"2\",\r\n    \"idTipoUsuario\": \"1\"\r\n}",
+							"raw": "{\r\n    \"estadoUsuario\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -141,7 +115,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8191/usuario/update",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -149,7 +123,37 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"update"
+								"34"
+							]
+						},
+						"description": "Activar un usuario borrado, cambio de estado a true"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreUsuario\": \"estado2\",\r\n    \"apellidosUsuario\": \"C\",\r\n    \"username\": \"valice\",\r\n    \"numeroIdentificacionUsuario\": \"145696329853\",\r\n    \"correoUsuario\": \"vce@simed.com.co\",\r\n    \"estadoUsuario\": true,\r\n   \"eps\": {\r\n        \"idEps\":3\r\n        },\r\n        \"tipoIdentificacion\": {\r\n        \"tipoIdentificacion\":3\r\n        },\r\n        \"tipoUsuario\": {\r\n        \"idTipoUsuario\":3\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/usuario/34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"usuario",
+								"34"
 							]
 						}
 					},
@@ -485,16 +489,16 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/activar/19",
+							"raw": "http://localhost:8191/especialidad/activar/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"eps",
+								"especialidad",
 								"activar",
-								"19"
+								"1"
 							]
 						},
 						"description": "Activar una EPS"

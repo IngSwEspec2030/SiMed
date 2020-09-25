@@ -26,7 +26,6 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
 
     @Override
     public LugarAtencion findById(Long key) throws Exception {
-        System.out.println("este es el id que llega al servicio = " + key);
         if (key == null || !existeById(key)) {
             throw new ResourceNotFoundException("El lugar de atención con ID " + key + " no existe.");
         }
@@ -46,7 +45,7 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
     }
 
     @Override
-    public LugarAtencion update(LugarAtencion entity) throws Exception {
+    public LugarAtencion update(LugarAtencion entity, Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(entity.getIdLugaresAtencion()).get();
         return lugarAtencionRepository.save(entity);
     }

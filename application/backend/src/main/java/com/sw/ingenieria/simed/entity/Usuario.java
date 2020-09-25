@@ -1,5 +1,6 @@
 package com.sw.ingenieria.simed.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -57,21 +58,23 @@ public class Usuario implements Serializable {
     @JoinColumn(name = "ID_EPS", referencedColumnName = "ID_EPS")
     @ManyToOne
     @JsonIgnore
+    @JsonDeserialize
     @ToString.Exclude
-    private Eps idEps;
-    @JoinColumn(name = "\"ID_TIPO_IDENTIFICACION\"", referencedColumnName = "ID_TIPO_IDENTIFICACION")
+    private Eps eps;
+    @JoinColumn(name = "ID_TIPO_IDENTIFICACION", referencedColumnName = "ID_TIPO_IDENTIFICACION")
     @ManyToOne
     @JsonIgnore
+    @JsonDeserialize
     @ToString.Exclude
     private TipoIdentificacion tipoIdentificacion;
-    @JoinColumn(name = "\"ID_TIPO_USUARIO\"", referencedColumnName = "ID_TIPO_USUARIO")
+    @JoinColumn(name = "ID_TIPO_USUARIO", referencedColumnName = "ID_TIPO_USUARIO")
     @ManyToOne
     @JsonIgnore
+    @JsonDeserialize
     @ToString.Exclude
-    private TipoUsuario idTipoUsuario;
+    private TipoUsuario tipoUsuario;
 
     public Usuario(Long idUsuario) { this.idUsuario = idUsuario; }
 
-//
 
 }
