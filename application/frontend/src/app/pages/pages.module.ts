@@ -33,19 +33,20 @@ import { AgregarLugarAtencionComponent } from './lugarAtencion/admin-crud/agrega
 import { EditarLugarAtencionComponent } from './lugarAtencion/admin-crud/editar-lugarAtencion/editar-lugarAtencion.component';
 import { BorrarLugarAtencionComponent } from './lugarAtencion/admin-crud/borrar-lugarAtencion/borrar-lugarAtencion.component';
 import { BorrarEspecialidadComponent } from './especialidad/admin-crud/borrar-especialidad/borrar-especialidad.component';
+import { RelSiteSpecialtyComponent } from './lugarAtencion/rel-site-specialty/rel-site-specialty.component';
+import { RelEpsSiteComponent } from './eps/rel-eps-site/rel-eps-site.component';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     DashboardComponent,
-    AdminLugarAtencionComponent, AgregarLugarAtencionComponent, EditarLugarAtencionComponent, BorrarLugarAtencionComponent,
+    AdminLugarAtencionComponent, AgregarLugarAtencionComponent, EditarLugarAtencionComponent, BorrarLugarAtencionComponent,RelSiteSpecialtyComponent,
     AdminEspecialidadComponent, AgregarEspecialidadComponent, EditarEspecialidadComponent, BorrarEspecialidadComponent,
-    AdminUsuarioComponent,
+    AdminUsuarioComponent,OpcionesVisualizacionComponent,
     UbicarLugaresComponent,
-    AdminEpsComponent,AgregarEpsComponent,BorrarEpsComponent,EditarEpsComponent,
-    ActivoPipe,
-    OpcionesVisualizacionComponent
+    AdminEpsComponent,AgregarEpsComponent,BorrarEpsComponent,EditarEpsComponent,RelEpsSiteComponent,
+    ActivoPipe
   ],
   imports: [
     CommonModule,

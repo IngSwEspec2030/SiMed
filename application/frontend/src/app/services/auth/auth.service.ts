@@ -13,12 +13,14 @@ export class AuthService {
   private keyEps:string;
   private user:Usuario;
   private keyTipoUsuario:string;
+  private keyEmail: string;
 
   constructor(private router:Router) {
     this.keyToken='#ARDPTJB*Kt#';
     this.keyUsuer='#334567Ku$';
     this.keyEps='#456467Ke$';
     this.keyTipoUsuario="%46456456";
+    this.keyEmail="%&456545km";
 
    }
 
@@ -32,9 +34,17 @@ export class AuthService {
     localStorage.setItem(this.keyUsuer, usuarioAutenticado.usuario.username);
     localStorage.setItem(this.keyEps, usuarioAutenticado.usuario.eps.idEps.toString());
     localStorage.setItem(this.keyToken, usuarioAutenticado.token);
+    localStorage.setItem(this.keyEmail, usuarioAutenticado.usuario.correoUsuario);
+  }
+  
+  
+  getUserName():string{    
+    return localStorage.getItem(this.keyUsuer);
   }
 
-
+  getUserEmail():string{    
+    return localStorage.getItem(this.keyEmail);
+  }
 
   getTokenUser():string{
     let token = (localStorage.getItem(this.keyToken));

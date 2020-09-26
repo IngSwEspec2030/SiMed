@@ -16,12 +16,12 @@
                         <span class="hide-menu"> 
                             USUARIOS
                             <span class="label label-rouded label-themecolor pull-right">
-                                1
+                                2
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">                        
-                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" >Perfil</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" >Mi Perfil</a></li>
                         <!-- <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" href="#" (click)="onOpenThema()" >Tema</a></li> -->
                         <li>
                             <button *ngIf="pc.isGranted(permisos.AdminUsuario)" type="button" class="btn btn-link" (click)="onOpenThema()">Tema</button>
@@ -39,13 +39,14 @@
                         <span class="hide-menu"> 
                             LUGARES
                             <span class="label label-rouded label-themecolor pull-right">
-                               2
+                               3
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  href="#">Lugares más cercanos</a></li>
                         <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site">Admin Lugares</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/rel-site-spec">Asignar Especialidades</a></li>
                     </ul>                    
                 </li>
                 <!-- ***************************************************************************************************** -->
@@ -59,15 +60,13 @@
                         <span class="hide-menu"> 
                             EPS
                             <span class="label label-rouded label-themecolor pull-right">
-                               1
+                               2
                             </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a *ngIf="pc.isGranted(permisos.AdminEps)" 
-                             routerLink="pages/admin-eps">Admin EPS</a>
-                        </li>
-
+                        <li><a *ngIf="pc.isGranted(permisos.AdminEps)" routerLink="pages/admin-eps">Admin EPS</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminEps)" routerLink="pages/rel-eps-site">Asignar Lugares de Atención</a></li>
                     </ul>                    
                 </li>
                 

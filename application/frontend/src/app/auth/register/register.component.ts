@@ -105,24 +105,19 @@ export class RegisterComponent implements OnInit {
     let tipoUsuario = new TipoUsuario();
     tipoUsuario.idTipoUsuario=this.registerForm.get("idTipoUsuario").value
 
-    let usuario = new Usuario()={
+    let usuario:Usuario = {
       nombreUsuario:this.registerForm.get("nombreUsuario").value,
       apellidosUsuario:this.registerForm.get("apellidosUsuario").value,
       numeroIdentificacionUsuario:this.registerForm.get("numeroIdentificacionUsuario").value,
       correoUsuario:this.registerForm.get("correoUsuario").value,
       passwordUsuario:this.registerForm.get("passwordUsuario").value,
-      username:this.registerForm.get("username").value,
-      
+      username:this.registerForm.get("username").value,      
       eps:eps,
       tipoUsuario:tipoUsuario,
-      tipoIdentificacion:TipoIdentificacion,
+      tipoIdentificacion:tipoIdentificacion,
       estadoUsuario: true
-
-
-      
     }
     return usuario;
-
   }
 
   onSubmit() {
@@ -137,7 +132,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.register(this.registerForm.value)
+    this.userService.register(this.crearObjetoUsuario())
       .pipe(first())
       .subscribe(
         data => {
