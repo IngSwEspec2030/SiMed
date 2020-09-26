@@ -9,13 +9,11 @@ export class Usuario {
     numeroIdentificacionUsuario: string;
     passwordUsuario: string;
     correoUsuario: string;
-    estadoUsuario: string;
-    fechaCreacionUsuario: Date;
-    fechaModificacionUsuario: Date;
+    estadoUsuario: boolean;
+    fechaCreacionUsuario?: Date;
+    fechaModificacionUsuario?: Date;
     tipoIdentificacion: TipoIdentificacion;
-    idEps: string;
     eps: Eps;
-    idTipoUsuario: string;
     tipoUsuario: TipoUsuario;
     username: string;
 }

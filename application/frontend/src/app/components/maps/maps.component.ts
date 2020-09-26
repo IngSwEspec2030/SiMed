@@ -3,7 +3,7 @@ import { Marcador } from 'src/app/dto/marcador';
 import { LocationService } from 'src/app/services/location.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
 import { ConfigService } from 'src/app/services/config.service';
-import { LugaresAtencion } from 'src/app/dto/lugares_atencion';
+import { LugaresAtencion } from 'src/app/dto/lugarAtencion'; 
 import { DisplayMessage, IconType, ButtonType } from 'src/app/utils/messageSweet';
 import { AuthService } from 'src/app/services/auth/auth.service';
 

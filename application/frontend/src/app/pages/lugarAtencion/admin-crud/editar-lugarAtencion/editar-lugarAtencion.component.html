@@ -1,0 +1,87 @@
+<button type="button" class="close" tabindex="-1" (click)="onNoClick()" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+</button>
+<div class="container-fluid">
+  <h3 mat-dialog-title>Actualizar Lugar Atención id:{{id}}</h3>
+  <hr>
+
+  <form class="mat-dialog-content" [formGroup]="editForm">
+    <div class="row">
+
+      <!-- Sección para nombre de la lugarAtencion -->
+      <div class="col-lg-12 col-xs-7 form-group">
+        <label for="nombreLugarAtencion">Nombre</label>
+        <input matInput formControlName="nombreLugarAtencion" class="form-control" placeholder="Nombre"
+          name="nombreLugarAtencion" [ngClass]="{ 'is-invalid': submitted && f.nombreLugarAtencion.errors }">
+        <div *ngIf="submitted && f.nombreLugarAtencion.errors" class="invalid-feedback">
+          <div *ngIf="f.nombreLugarAtencion.errors.required">Nombre de lugarAtencion requerido</div>
+        </div>
+      </div>
+
+      <!--Textarea para dirección-->
+      <div class="col-lg-12 col-xs-7 form-group">
+        <label for="direccionLugarAtencion">Dirección</label>
+        <input matInput formControlName="direccionLugarAtencion" class="form-control" placeholder="Dirección"
+          name="direccion" required [ngClass]="{ 'is-invalid': submitted && f.direccionLugarAtencion.errors }">
+        <!-- </textarea> -->
+        <div *ngIf="submitted && f.direccionLugarAtencion.errors" class="invalid-feedback">
+          <div *ngIf="f.direccionLugarAtencion.errors.required">Dirección requerida</div>
+        </div>
+      </div>
+
+      <!-- Sección para el teléfono -->
+      <div class="col-lg-12 col-xs-7  form-group">
+        <label for="telefonoLugarAtencion">Teléfono</label>
+        <input matInput class="form-control" formControlName="telefonoLugarAtencion" placeholder="Teléfono"
+          name="telefono">
+      </div>
+
+
+      <!--Textarea para sitioWebLugarAtencion-->
+      <div class="col-lg-12 col-xs-7 form-group">
+        <label for="sitioWebLugarAtencion">Sitio Web </label>
+        <input matInput formControlName="sitioWebLugarAtencion" class="form-control" placeholder="Sitio Web"
+          name="sitioWebLugarAtencion" required [ngClass]="{ 'is-invalid': submitted && f.sitioWebLugarAtencion.errors }">
+        <!-- </textarea> -->
+        <div *ngIf="submitted && f.sitioWebLugarAtencion.errors" class="invalid-feedback">
+          <div *ngIf="f.sitioWebLugarAtencion.errors.required">Sitio Web requerida</div>
+        </div>
+      </div>
+      <!--Textarea para latitudLugarAtencion-->
+      <div class="col-lg-12 col-xs-7 form-group">
+        <label for="latitudLugarAtencion">Latitud</label>
+        <input matInput formControlName="latitudLugarAtencion" class="form-control" placeholder="Latitud"
+          name="latitudLugarAtencion" required [ngClass]="{ 'is-invalid': submitted && f.latitudLugarAtencion.errors }">
+        <!-- </textarea> -->
+        <div *ngIf="submitted && f.latitudLugarAtencion.errors" class="invalid-feedback">
+          <div *ngIf="f.latitudLugarAtencion.errors.required">Latitud requerida</div>
+        </div>
+      </div>
+      <!--Textarea para longitudLugarAtencion-->
+      <div class="col-lg-12 col-xs-7 form-group">
+        <label for="longitudLugarAtencion">Longitud</label>
+        <input matInput formControlName="longitudLugarAtencion" class="form-control" placeholder="Longitud"
+          name="longitudLugarAtencion" required [ngClass]="{ 'is-invalid': submitted && f.longitudLugarAtencion.errors }">
+        <!-- </textarea> -->
+        <div *ngIf="submitted && f.longitudLugarAtencion.errors" class="invalid-feedback">
+          <div *ngIf="f.longitudLugarAtencion.errors.required">Longitud requerida</div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-12 col-xs-7  form-group">
+        <!-- <label for="state"> Estado de EPS</label><br> -->
+        <input type="checkbox" class="form-check-input form-control" id="state" name="state"
+          formControlName="estadoLugarAtencion" value="Bike">
+        <label for="state"> Estado Lugar Atención</label>
+      </div>
+
+
+      <div class="col-12 form-group">
+        <button class="btn btn-primary mr-2" [disabled]="!editForm.valid" [mat-dialog-close]="1"
+          (click)="onConfirm()">Guardar</button>
+        <button class="btn btn-secundary-primary" (click)="onNoClick()" tabindex="-1">Cancelar</button>
+      </div>
+    </div>
+  </form>
+</div>

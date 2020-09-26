@@ -47,13 +47,13 @@ public class EpsController {
         return new ResponseEntity<>(epsService.create(eps), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity <?> update(@RequestBody Eps eps) throws Exception {
+    @PutMapping("/update/{id}")
+    public ResponseEntity <?> update(@PathVariable("id") Short id, @RequestBody Eps eps) throws Exception {
         Eps eps1 = epsService.findById(eps.getIdEps());
         if(eps1==null){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(epsService.update(eps),HttpStatus.OK);
+        return new ResponseEntity<>(epsService.update(eps, id),HttpStatus.OK);
     }
 
     @ResponseBody
@@ -80,10 +80,6 @@ public class EpsController {
     @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/asignarLugar")
     public GeneralOutput asignarLugar(@RequestBody EpsInputDTO entity) throws Exception{
-
-
-        System.out.println("entity.getIdEps() en controlador  = " + entity.getIdEps());
-
         epsService.asignarLugar(entity);
         return new GeneralOutput(HttpStatus.ACCEPTED.value(),HttpStatus.ACCEPTED.getReasonPhrase(),"Asignación Realizada Exitosamente...");
     }

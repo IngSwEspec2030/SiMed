@@ -16,12 +16,17 @@
     "urlEps":"/eps",
     
     "urlFindByIdLugaresAtencion":"/lugarAtencion/findById/",
-    "urllistAllLugaresAtencion":"/lugarAtencion/listAll",  
+    "urllistAllLugarAtencion":"/lugarAtencion/listAll",  
     "urllistLugaresAtencionCercanos":"/lugarAtencion/lugaresCercanos",    
-    "urlcreateLugaresAtencion":"/lugarAtencion/create",
-    "urldeleteLugaresAtencion":"/lugarAtencion/delete",
-    "urlactivarLugaresAtencion":"/lugarAtencion/activar",
+    "urlcreateLugarAtencion":"/lugarAtencion/create",
+    "urldeleteLugarAtencion":"/lugarAtencion/delete",
+    "urlactivarLugarAtencion":"/lugarAtencion/activar",
     "urlLugaresAtencion":"/lugarAtencion",
+
+    "urllistAllEspecialidad":"/especialidad/listAll",
+    "urlcreateEspecialidad":"/especialidad/create",
+    "urldeleteEspecialidad":"/especialidad/delete",
+    "urlupdateEspecialidad":"/especialidad/update",
 
     "urlLogin":"/login"
 

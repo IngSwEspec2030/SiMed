@@ -9,7 +9,7 @@ public interface ServiceInterface <E, PK>  {
     List<E> findAll() throws Exception;
 
     E create(E entity) throws Exception;
-    E update(E entity) throws Exception;
+    E update(E entity, PK key) throws Exception;
 
     void delete(PK key) throws Exception;
 

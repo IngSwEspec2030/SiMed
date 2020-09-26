@@ -46,24 +46,23 @@ public class EspecialidadController {
         return new ResponseEntity<>(especialidadService.create(especialidad), HttpStatus.OK);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity <?> update(@RequestBody Especialidad especialidad) throws Exception {
+    @PutMapping("/update/{id}")
+    public ResponseEntity <?> update(@PathVariable("id") Short id, @RequestBody Especialidad especialidad) throws Exception {
         Especialidad especialidad1 = especialidadService.findById(especialidad.getIdEspecialidad());
         if(especialidad1==null){
             return new ResponseEntity<>("No existe una especialidad correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(especialidadService.update(especialidad),HttpStatus.OK);
+        return new ResponseEntity<>(especialidadService.update(especialidad, id),HttpStatus.OK);
     }
 
-    @ResponseBody
+    //@ResponseBody
     @DeleteMapping("/delete/{id}")
     public ResponseEntity <?> delete(@PathVariable("id") Short id) throws Exception {
-        Especialidad especialidad1 = especialidadService.findById(id);
+        Especialidad especialidad1 = especialidadService.findId(id);
         if(especialidad1==null || !especialidadService.existeById(id)){
             return new ResponseEntity<>("No existe una especialidad correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        especialidadService.delete(id);
-        return new ResponseEntity<>("Especialidad eliminada", HttpStatus.OK);
+        return new ResponseEntity<>(especialidadService.deleteEspecialidad(id), HttpStatus.OK);
     }
 
     @PutMapping("/activar/{id}")
@@ -72,8 +71,7 @@ public class EspecialidadController {
         if(especialidad==null || !especialidadService.existeById(id)){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        especialidadService.activar(id);
-        return new ResponseEntity<>("Especialidad activada", HttpStatus.OK);
+        return new ResponseEntity<>(especialidadService.activar(id), HttpStatus.OK);
     }
 
 }

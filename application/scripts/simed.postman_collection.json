@@ -9,12 +9,12 @@
 			"name": "Usuario",
 			"item": [
 				{
-					"name": "http://localhost:8191/usuario/findById/3",
+					"name": "Listar usuario por Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/findById/3",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -22,8 +22,7 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"findById",
-								"3"
+								"34"
 							]
 						},
 						"description": "Buscar un id por Usuario"
@@ -31,20 +30,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/listAll",
+					"name": "Listar todos los Usuarios",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/listAll",
+							"raw": "http://localhost:8191/usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"usuario",
-								"listAll"
+								"usuario"
 							]
 						},
 						"description": "Listar todos los Usuarios"
@@ -52,7 +50,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/create",
+					"name": "Crear un usuario",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -64,18 +62,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "  {\r\n        \"nombreUsuario\": \"Mar\",\r\n        \"apellidosUsuario\": \"R\",\r\n        \"numeroIdentificacionUsuario\": \"45613\",\r\n        \"passwordUsuario\": \"123456\",\r\n        \"correoUsuario\": \"m@simed.com.co\",\r\n        \"estadoUsuario\": \"true\",\r\n        \"fechaCreacionUsuario\": \"2020-09-02\",\r\n        \"fechaModificacionUsuario\": \"2020-09-02\",\r\n        \"idEps\": 1,\r\n        \"tipoIdentificacion\": 1,\r\n        \"idTipoUsuario\": 1\r\n  \t\r\n  }\r\n"
+							"raw": "  {\r\n        \"nombreUsuario\": \"jef\",\r\n        \"apellidosUsuario\": \"b\",\r\n        \"username\": \"jb\",\r\n        \"numeroIdentificacionUsuario\": \"45613\",\r\n        \"passwordUsuario\": \"123456\",\r\n        \"correoUsuario\": \"jb@simed.com.co\",\r\n        \"estadoUsuario\": \"true\",\r\n        \"eps\": {\r\n        \"idEps\":4\r\n        },\r\n        \"tipoIdentificacion\": {\r\n        \"tipoIdentificacion\":1\r\n        },\r\n        \"tipoUsuario\": {\r\n        \"idTipoUsuario\":2\r\n        }\r\n  \t\r\n  }\r\n"
 						},
 						"url": {
-							"raw": "http://localhost:8191/usuario/create",
+							"raw": "http://localhost:8191/usuario",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"usuario",
-								"create"
+								"usuario"
 							]
 						},
 						"description": "Crear un Usuario"
@@ -83,12 +80,12 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/delete/3",
+					"name": "Eliminar un usuario",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/usuario/delete/3",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -96,8 +93,7 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"delete",
-								"3"
+								"34"
 							]
 						},
 						"description": "Borrado lógico de un usuario"
@@ -105,12 +101,21 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/usuario/activar/3",
+					"name": "Activar Un usuario",
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estadoUsuario\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8191/usuario/activar/3",
+							"raw": "http://localhost:8191/usuario/34",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -118,11 +123,39 @@
 							"port": "8191",
 							"path": [
 								"usuario",
-								"activar",
-								"3"
+								"34"
 							]
 						},
 						"description": "Activar un usuario borrado, cambio de estado a true"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar un Usuario",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreUsuario\": \"estado2\",\r\n    \"apellidosUsuario\": \"C\",\r\n    \"username\": \"valice\",\r\n    \"numeroIdentificacionUsuario\": \"145696329853\",\r\n    \"correoUsuario\": \"vce@simed.com.co\",\r\n    \"estadoUsuario\": true,\r\n   \"eps\": {\r\n        \"idEps\":3\r\n        },\r\n        \"tipoIdentificacion\": {\r\n        \"tipoIdentificacion\":3\r\n        },\r\n        \"tipoUsuario\": {\r\n        \"idTipoUsuario\":3\r\n        }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/usuario/34",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"usuario",
+								"34"
+							]
+						}
 					},
 					"response": []
 				}
@@ -138,7 +171,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/findById/1",
+							"raw": "http://localhost:8191/eps/findById/19",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -147,7 +180,7 @@
 							"path": [
 								"eps",
 								"findById",
-								"1"
+								"19"
 							]
 						},
 						"description": "Listar por Id EPS"
@@ -188,7 +221,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombreEps\": \"Salud Total S.A. E.P.S.\",\r\n    \"direccionEps\": \"Cra. 104 #14-50\",\r\n    \"telefonoEps\": \"4854555 \"\r\n}"
+							"raw": "{\r\n    \"nombreEps\": \"Sanar Salud E.P.S.\",\r\n    \"direccionEps\": \"Cra. 10 #5-1\",\r\n    \"telefonoEps\": \"7896325\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8191/eps/create",
@@ -243,7 +276,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/delete/3",
+							"raw": "http://localhost:8191/eps/delete/19",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -252,7 +285,7 @@
 							"path": [
 								"eps",
 								"delete",
-								"3"
+								"19"
 							]
 						},
 						"description": "Eliminar una EPS"
@@ -265,7 +298,7 @@
 						"method": "PUT",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/activar/3",
+							"raw": "http://localhost:8191/eps/activar/19",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -274,7 +307,7 @@
 							"path": [
 								"eps",
 								"activar",
-								"3"
+								"19"
 							]
 						},
 						"description": "Activar una EPS"
@@ -294,7 +327,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"idEps\":\"8\",\r\n\t\"lugarAtencionCollection\":[1,2,3,4,5]\r\n}",
+							"raw": "{\r\n\t\"idEps\":\"11\",\r\n\t\"lugarAtencionCollection\":[6]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -314,6 +347,161 @@
 								""
 							]
 						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Especialidad",
+			"item": [
+				{
+					"name": "http://localhost:8191/especialidad/findById/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/especialidad/findById/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"findById",
+								"1"
+							]
+						},
+						"description": "Listar por Id Especialidad"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/especialidad/listAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/especialidad/listAll",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"listAll"
+							]
+						},
+						"description": "Listar todos Especialidad"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/especialidad/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreEspecialidad\": \"Neurologia\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8191/especialidad/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"create"
+							]
+						},
+						"description": "Crear una Nueva Especialidad"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/especialidad/update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idEspecialidad\": 7,\r\n    \"nombreEspecialidad\": \"Endocrinología\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8191/especialidad/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"update"
+							]
+						},
+						"description": "Crear una Nueva Especialidad"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/especialidad/delete/3",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/especialidad/delete/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"delete",
+								"1"
+							]
+						},
+						"description": "Eliminar una Especialidad"
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8191/especialidad/activar/3",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/especialidad/activar/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"especialidad",
+								"activar",
+								"1"
+							]
+						},
+						"description": "Activar una EPS"
 					},
 					"response": []
 				}
@@ -492,7 +680,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"username\":\"kattyap\",\r\n\t\"password\":\"123456\"\r\n}"
+							"raw": "{\r\n\t\"username\":\"jtrigos\",\r\n\t\"password\":\"123456\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8191/login",

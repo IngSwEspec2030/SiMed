@@ -2,25 +2,25 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table'
-import { Especialidad } from 'src/app/dto/Especialidad';
+import { LugaresAtencion } from 'src/app/dto/lugarAtencion';
 import { ConfigService } from 'src/app/services/config.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
-import { AgregarEspecialidadComponent } from '../admin-crud/agregar-especialidad/agregar-especialidad.component';
-import { BorrarEspecialidadComponent } from '../admin-crud/borrar-especialidad/borrar-especialidad.component';
-import { EditarEspecialidadComponent } from '../admin-crud/editar-especialidad/editar-especialidad.component';
+import { AgregarLugarAtencionComponent } from '../admin-crud/agregar-lugarAtencion/agregar-lugarAtencion.component';
+import { BorrarLugarAtencionComponent } from '../admin-crud/borrar-lugarAtencion/borrar-lugarAtencion.component';
+import { EditarLugarAtencionComponent } from '../admin-crud/editar-lugarAtencion/editar-lugarAtencion.component';
 
 @Component({
-  selector: 'app-admin-especialidad',
-  templateUrl: './admin-especialidad.component.html',
-  styleUrls: ['./admin-especialidad.component.css']
+  selector: 'app-admin-lugarAtencion',
+  templateUrl: './admin-lugarAtencion.component.html',
+  styleUrls: ['./admin-lugarAtencion.component.css']
 })
-export class AdminEspecialidadComponent implements OnInit {
+export class AdminLugarAtencionComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   searchKey: string = "";
 
-  displayedColumns: string[] = ['nombreEspecialidad', 'estadoEspecialidad','actions'];
-  data: Especialidad[] = [];
+  displayedColumns: string[] = ['nombreLugarAtencion', 'direccionLugarAtencion', 'telefonoLugarAtencion',  'sitioWebLugarAtencion', 'latitudLugarAtencion', 'longitudLugarAtencion', 'estadoLugarAtencion','actions'];
+  data: LugaresAtencion[] = [];
   datasource = new MatTableDataSource<any>();
 
   constructor(
@@ -33,18 +33,18 @@ export class AdminEspecialidadComponent implements OnInit {
 
   ngOnInit(): void {
     //this.onConfigInit();
-    this.onLoadEspecialidad();//TODO: Activar esto y borrar la línea anterior
+    this.onLoadLugarAtencion();//TODO: Activar esto y borrar la línea anterior
   }
 
-  onLoadEspecialidad() {
+  onLoadLugarAtencion() {
     this.data = this.data.splice(0, this.data.length);
     this.http.showBusy();
-    this.http.get(this.config.prop.urllistAllEspecialidad, null).subscribe((resp: Especialidad[]) => {
+    this.http.get(this.config.prop.urllistAllLugarAtencion, null).subscribe((resp: LugaresAtencion[]) => {
       this.data = resp;
       this.http.closeBusy();
       this.onConfigInit();
     }, error => {
-      console.error(error);
+      console.error(error.error);
       this.http.closeBusy();
     })
   }
@@ -52,7 +52,7 @@ export class AdminEspecialidadComponent implements OnInit {
   onConfigInit() {
     this.datasource = new MatTableDataSource<any>(this.data);
     this.datasource.filterPredicate =
-      (data: Especialidad, filter: string) => data.nombreEspecialidad.toLowerCase().indexOf(filter) !== -1;
+      (data: LugaresAtencion, filter: string) => data.nombreLugarAtencion.toLowerCase().indexOf(filter) !== -1;
     this.datasource.paginator = this.paginator;
   }
 
@@ -63,8 +63,8 @@ export class AdminEspecialidadComponent implements OnInit {
 
   onEditItem(index: number, element: any) {
     this.index = index;
-    this.id = element.idEspecialidad;
-    const dialogRef = this.dialog.open(EditarEspecialidadComponent, {
+    this.id = element.idLugarAtencion;
+    const dialogRef = this.dialog.open(EditarLugarAtencionComponent, {
       data: element
     });
   }
@@ -72,10 +72,10 @@ export class AdminEspecialidadComponent implements OnInit {
   index: number;
   id: number;
 
-  onDeleteItem(index: number, element: Especialidad) {
+  onDeleteItem(index: number, element: LugaresAtencion) {
     this.index = index;
-    this.id = element.idEspecialidad;
-    const dialogRef = this.dialog.open(BorrarEspecialidadComponent, {
+    this.id = element.idLugaresAtencion;
+    const dialogRef = this.dialog.open(BorrarLugarAtencionComponent, {
       data: element
     });
 
@@ -83,7 +83,7 @@ export class AdminEspecialidadComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         //this.datasource.data.splice(index, 1);
-        this.onLoadEspecialidad();
+        this.onLoadLugarAtencion();
         this.refreshTable();
       }
     });
@@ -100,11 +100,11 @@ export class AdminEspecialidadComponent implements OnInit {
   onAddNew() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.width = '80vw';
-    let dialogRef= this.dialog.open(AgregarEspecialidadComponent, dialogConfig);
+    let dialogRef= this.dialog.open(AgregarLugarAtencionComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       if (result === 1) {
         //this.datasource.data.splice(index, 1);
-        this.onLoadEspecialidad();
+        this.onLoadLugarAtencion();
         this.refreshTable();
       }
     });

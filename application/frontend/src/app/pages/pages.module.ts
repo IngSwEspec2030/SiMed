@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { AdminLugarComponent } from './lugarAtencion/admin-lugar/admin-lugar.component';
+import { AdminLugarAtencionComponent } from './lugarAtencion/admin-lugar/admin-lugarAtencion.component';
 import { AdminUsuarioComponent } from './usuario/admin-usuario/admin-usuario.component';
 import { AdminEspecialidadComponent } from './especialidad/admin-especialidad/admin-especialidad.component';
 import { ComponentsModule } from '../components/components.module';
@@ -27,14 +27,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ActivoPipe } from '../utils/pipes/activo.pipe';
 import { OpcionesVisualizacionComponent } from './usuario/opciones-visualizacion/opciones-visualizacion.component';
+import { AgregarEspecialidadComponent } from './especialidad/admin-crud/agregar-especialidad/agregar-especialidad.component';
+import { EditarEspecialidadComponent } from './especialidad/admin-crud/editar-especialidad/editar-especialidad.component';
+import { AgregarLugarAtencionComponent } from './lugarAtencion/admin-crud/agregar-lugarAtencion/agregar-lugarAtencion.component';
+import { EditarLugarAtencionComponent } from './lugarAtencion/admin-crud/editar-lugarAtencion/editar-lugarAtencion.component';
+import { BorrarLugarAtencionComponent } from './lugarAtencion/admin-crud/borrar-lugarAtencion/borrar-lugarAtencion.component';
+import { BorrarEspecialidadComponent } from './especialidad/admin-crud/borrar-especialidad/borrar-especialidad.component';
 
 
 @NgModule({
   declarations: [
     PagesComponent,
     DashboardComponent,
-    AdminLugarComponent,
-    AdminEspecialidadComponent,
+    AdminLugarAtencionComponent, AgregarLugarAtencionComponent, EditarLugarAtencionComponent, BorrarLugarAtencionComponent,
+    AdminEspecialidadComponent, AgregarEspecialidadComponent, EditarEspecialidadComponent, BorrarEspecialidadComponent,
     AdminUsuarioComponent,
     UbicarLugaresComponent,
     AdminEpsComponent,AgregarEpsComponent,BorrarEpsComponent,EditarEpsComponent,

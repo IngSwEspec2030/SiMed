@@ -6,6 +6,7 @@
 package com.sw.ingenieria.simed.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 
 import java.io.Serializable;
@@ -20,8 +21,6 @@ import javax.validation.constraints.Size;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 @Entity
 @Table(name = "\"EPS\"")
 @NamedQueries({
@@ -50,10 +49,12 @@ public class Eps implements Serializable {
         @JoinColumn(name = "ID_LUGARES_ATENCION", referencedColumnName = "ID_LUGARES_ATENCION")})
     @ManyToMany
     @JsonIgnore
+    @JsonDeserialize
     @ToString.Exclude
     private Collection<LugarAtencion> lugarAtencionCollection;
-    @OneToMany(mappedBy = "idEps")
+    @OneToMany(mappedBy = "eps")
     @JsonIgnore
+    @JsonDeserialize
     @ToString.Exclude
     private Collection<Usuario> usuarioCollection;
 
@@ -61,78 +62,6 @@ public class Eps implements Serializable {
     public Eps(Short idEps) {
         this.idEps = idEps;
     }
-/*
-    public Short getIdEps() {
-        return idEps;
-    }
 
-    public void setIdEps(Short idEps) {
-        this.idEps = idEps;
-    }
-
-    public String getNombreEps() {
-        return nombreEps;
-    }
-
-    public void setNombreEps(String nombreEps) {
-        this.nombreEps = nombreEps;
-    }
-
-    public String getDireccionEps() {
-        return direccionEps;
-    }
-
-    public void setDireccionEps(String direccionEps) {
-        this.direccionEps = direccionEps;
-    }
-
-    public String getTelefonoEps() {
-        return telefonoEps;
-    }
-
-    public void setTelefonoEps(String telefonoEps) {
-        this.telefonoEps = telefonoEps;
-    }
-
-    public Collection<LugarAtencion> getLugarAtencionCollection() {
-        return lugarAtencionCollection;
-    }
-
-    public void setLugarAtencionCollection(Collection<LugarAtencion> lugarAtencionCollection) {
-        this.lugarAtencionCollection = lugarAtencionCollection;
-    }
-
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
-    }
-
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idEps != null ? idEps.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Eps)) {
-            return false;
-        }
-        Eps other = (Eps) object;
-        if ((this.idEps == null && other.idEps != null) || (this.idEps != null && !this.idEps.equals(other.idEps))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.sw.ingenieria.simed.entity.Eps[ idEps=" + idEps + " ]";
-    }*/
     
 }

@@ -32,16 +32,19 @@ public class EspecialidadService implements ServiceInterface  <Especialidad, Sho
     }
 
     @Override
-    public Especialidad update(Especialidad entity) throws Exception {
+    public Especialidad update(Especialidad entity, Short id) throws Exception {
         Especialidad especialidad = especialidadRepository.findById(entity.getIdEspecialidad()).get();
         return especialidadRepository.save(entity);
     }
 
     @Override
     public void delete(Short key) throws Exception {
+    }
+
+    public Especialidad deleteEspecialidad(Short key) throws Exception {
         Especialidad especialidad = especialidadRepository.findById(key).get();
-        //especialidad.setEstadoEspeciaidad(false);
-        especialidadRepository.save(especialidad);
+        especialidad.setEstadoEspecialidad(false);
+       return especialidadRepository.save(especialidad);
     }
 
     public Boolean existeById (Short key) throws Exception {
@@ -69,7 +72,7 @@ public class EspecialidadService implements ServiceInterface  <Especialidad, Sho
      */
     public Especialidad activar(Short key) throws Exception {
         Especialidad especialidad = especialidadRepository.findById(key).get();
-        //especialidad.setEstadoEspecialidad(true);
+        especialidad.setEstadoEspecialidad(true);
         return especialidadRepository.save(especialidad);
     }
 }

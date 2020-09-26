@@ -26,7 +26,6 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
 
     @Override
     public LugarAtencion findById(Long key) throws Exception {
-        System.out.println("este es el id que llega al servicio = " + key);
         if (key == null || !existeById(key)) {
             throw new ResourceNotFoundException("El lugar de atención con ID " + key + " no existe.");
         }
@@ -46,7 +45,7 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
     }
 
     @Override
-    public LugarAtencion update(LugarAtencion entity) throws Exception {
+    public LugarAtencion update(LugarAtencion entity, Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(entity.getIdLugaresAtencion()).get();
         return lugarAtencionRepository.save(entity);
     }
@@ -126,9 +125,13 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
                 }
             }
         }
-        //ToDo limitar elementos a 5
+        //ToDo limitar elementos a 5 o menos
+        int cantEnviar = 0;
+        if(lugarAtencionEPS.size()>=5){
+            cantEnviar=5;
+        }else cantEnviar = lugarAtencionEPS.size();
         List<LugarAtencion> lugarAtencionCercanos = new ArrayList<LugarAtencion>();
-        for(int i=0;i<5;i++){
+        for(int i=0;i<cantEnviar;i++){
             lugarAtencionCercanos.add(lugarAtencionEPS.get(i));
         }
         return lugarAtencionCercanos;

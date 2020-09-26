@@ -9,6 +9,8 @@ import { Eps } from 'src/app/dto/eps';
 import { TipoIdentificacion } from 'src/app/dto/tipo_identificacion';
 import { UtilHttpService } from 'src/app/services/util-http.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { TipoUsuario } from 'src/app/dto/tipo_usuario';
+import { Usuario } from 'src/app/dto/usuario';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -51,7 +53,10 @@ export class RegisterComponent implements OnInit {
     private http: UtilHttpService,
     private userService: UserService,
     private alertService: AlertService,
-    private config: ConfigService
+    private config: ConfigService,
+    private eps: Eps,
+    private tipoIdentificacion: TipoIdentificacion,
+    private idTipoUsuario: TipoUsuario
   ) {
     this.alert = new DisplayMessage();
 
@@ -91,6 +96,34 @@ export class RegisterComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.registerForm.controls; }
+
+  crearObjetoUsuario() : Usuario{
+    let eps = new Eps();
+    eps.idEps=this.registerForm.get("idEps").value
+    let tipoIdentificacion = new TipoIdentificacion();
+    tipoIdentificacion.idTipoIdentificacion=this.registerForm.get("tipoIdentificacion").value
+    let tipoUsuario = new TipoUsuario();
+    tipoUsuario.idTipoUsuario=this.registerForm.get("idTipoUsuario").value
+
+    let usuario = new Usuario()={
+      nombreUsuario:this.registerForm.get("nombreUsuario").value,
+      apellidosUsuario:this.registerForm.get("apellidosUsuario").value,
+      numeroIdentificacionUsuario:this.registerForm.get("numeroIdentificacionUsuario").value,
+      correoUsuario:this.registerForm.get("correoUsuario").value,
+      passwordUsuario:this.registerForm.get("passwordUsuario").value,
+      username:this.registerForm.get("username").value,
+      
+      eps:eps,
+      tipoUsuario:tipoUsuario,
+      tipoIdentificacion:TipoIdentificacion,
+      estadoUsuario: true
+
+
+      
+    }
+    return usuario;
+
+  }
 
   onSubmit() {
     this.submitted = true;
