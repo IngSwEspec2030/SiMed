@@ -11,6 +11,8 @@ import { UbicarLugaresComponent } from './lugarAtencion/ubicar-lugares/ubicar-lu
 import { AuthRouteGuard } from '../services/auth/auth-route.guard';
 import { Permisos } from '../services/auth/permission-checker.service';
 import { OpcionesVisualizacionComponent } from './usuario/opciones-visualizacion/opciones-visualizacion.component';
+import { RelSiteSpecialtyComponent } from './lugarAtencion/rel-site-specialty/rel-site-specialty.component';
+import { RelEpsSiteComponent } from './eps/rel-eps-site/rel-eps-site.component';
 
 
 const routes: Routes = [
@@ -24,8 +26,10 @@ const routes: Routes = [
             { path: 'pages/admin-user', component: AdminUsuarioComponent, canActivate: [AuthRouteGuard],data:{permission:Permisos.AdminUsuario} },
             { path: 'pages/settings-user', component: OpcionesVisualizacionComponent, canActivate: [AuthRouteGuard],data:{permission:Permisos.AdminUsuario} },
             { path: 'pages/admin-eps', component: AdminEpsComponent, canActivate: [AuthRouteGuard],data:{permission:Permisos.AdminEps}  },
+            { path: 'pages/rel-eps-site', component: RelEpsSiteComponent, canActivate: [AuthRouteGuard],data:{permission:Permisos.AdminEps}  },
             { path: 'pages/admin-specialties', component: AdminEspecialidadComponent, canActivate: [AuthRouteGuard],data:{permission:Permisos.AdminEspecialidad}   },
             { path: 'pages/admin-site', component: AdminLugarAtencionComponent, canActivate: [AuthRouteGuard], data:{permission:Permisos.AdminLugares}   },
+            { path: 'pages/rel-site-spec', component: RelSiteSpecialtyComponent, canActivate: [AuthRouteGuard], data:{permission:Permisos.AdminLugares}   },
         ]
     },
 ];
