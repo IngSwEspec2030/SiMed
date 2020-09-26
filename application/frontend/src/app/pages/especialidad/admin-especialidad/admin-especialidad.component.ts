@@ -44,7 +44,7 @@ export class AdminEspecialidadComponent implements OnInit {
       this.http.closeBusy();
       this.onConfigInit();
     }, error => {
-      console.error(error.error);
+      console.error(error);
       this.http.closeBusy();
     })
   }

@@ -28,8 +28,6 @@ export class AgregarEspecialidadComponent implements OnInit {
 
    this.addForm =  this.formBuilder.group({   
       nombreEspecialidad: ['', Validators.required],
-      direccionEspecialidad: ['', Validators.required],
-      telefonoEspecialidad:[],
       estadoEspecialidad:1
      });
   }

@@ -23,6 +23,11 @@
     "urlactivarLugarAtencion":"/lugarAtencion/activar",
     "urlLugaresAtencion":"/lugarAtencion",
 
+    "urllistAllEspecialidad":"/especialidad/listAll",
+    "urlcreateEspecialidad":"/especialidad/create",
+    "urldeleteEspecialidad":"/especialidad/delete",
+    "urlupdateEspecialidad":"/especialidad/update",
+
     "urlLogin":"/login"
 
 }
