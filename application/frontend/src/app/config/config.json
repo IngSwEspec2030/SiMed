@@ -1,10 +1,10 @@
 
 {
-    "urlfindByIdUsuario":"/usuario/findById",
-    "urllistAllUsuario":"/usuario/listAll",
-    "urlcreateUsuario":"/usuario/create",
-    "urldeleteUsuario":"/usuario/delete",
-    "urlactivarUsuario":"/usuario/activar",
+    "urlfindByIdUsuario":"/usuario/",
+    "urllistAllUsuario":"/usuario/",
+    "urlcreateUsuario":"/usuario/",
+    "urldeleteUsuario":"/usuario/",
+    "urlactivarUsuario":"/usuario/",
     "urlUsuario":"/usuario",
 
     "urlFindByIdEps":"/eps/findById/",

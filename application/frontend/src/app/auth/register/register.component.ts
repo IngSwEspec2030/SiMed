@@ -35,11 +35,11 @@ export class RegisterComponent implements OnInit {
 * */
   tipoDocumento = [
     {
-      "idTipoDocumento": "1",
+      "idTipoDocumento": 1,
       "tipoDocumento": "CC"
     },
     {
-      "idTipoDocumento": "2",
+      "idTipoDocumento": 2,
       "tipoDocumento": "CE"
     },
   ]
@@ -54,15 +54,14 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private config: ConfigService,
-    private eps: Eps,
-    private tipoIdentificacion: TipoIdentificacion,
-    private idTipoUsuario: TipoUsuario
   ) {
     this.alert = new DisplayMessage();
 
   }
 
   ngOnInit(): void {
+    console.log("Entró a Registrate");
+    this.getEps();
     this.registerForm = this.formBuilder.group({
       nombreUsuario: ['', Validators.required],
       apellidosUsuario: ['', Validators.required],
@@ -76,20 +75,22 @@ export class RegisterComponent implements OnInit {
       idTipoUsuario: 3
     });
 
-    this.getEps();
+
+    
 
 
   }
 
   getEps() {
+    console.log("Entro a obtener EPS: "+this.config.prop.urllistAllEps);
     this.http.showBusy();
-    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp: Eps[]) => {
+    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp) => {
       console.log("EPS Recibidas: ", resp);
-
       this.epsList = resp;
       this.http.closeBusy();
     }, error => {
-      console.error(error.error);
+      
+      console.error("Error EPS: "+error);
       this.http.closeBusy();
     })
   }
@@ -101,7 +102,7 @@ export class RegisterComponent implements OnInit {
     let eps = new Eps();
     eps.idEps=this.registerForm.get("idEps").value
     let tipoIdentificacion = new TipoIdentificacion();
-    tipoIdentificacion.idTipoIdentificacion=this.registerForm.get("tipoIdentificacion").value
+    tipoIdentificacion.tipoIdentificacion=this.registerForm.get("tipoIdentificacion").value
     let tipoUsuario = new TipoUsuario();
     tipoUsuario.idTipoUsuario=this.registerForm.get("idTipoUsuario").value
 

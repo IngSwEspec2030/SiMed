@@ -19,8 +19,8 @@ export class UtilHttpService {
 
     return new HttpHeaders({
       'Content-Type':'application/json',
-      'Accept':'application/json',
-      'Authorization': this.auth.getTokenUser()
+      'Accept':'application/json'//,
+      //'Authorization': this.auth.getTokenUser()
     })
   }
 
@@ -30,8 +30,10 @@ export class UtilHttpService {
    * @param param si el endpoint necesita un recurso se pasa aquí, de lo contrario debe ser null o ""
    */
   get(url:string, param?:string){
+   
     url = param===null || param===""? url:`${url}/${param}`;
     url = environment.apiEndPoint + url;
+    console.log("Entre al util http: "+url);
     return this.http.get(url, {headers:this.createRequestHeader()})
   }
 

@@ -30,7 +30,7 @@ export class UserService {
     register(user: Usuario) {
     
         console.log(user)
-        return this.http.post(`${this.apiEndPoint}/usuario/create`,  user, httpOptions);
+        return this.http.post(`${this.apiEndPoint}/usuario/`,  user, httpOptions);
     }
 
     delete(id: number) {
