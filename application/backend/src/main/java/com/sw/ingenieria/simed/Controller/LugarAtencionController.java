@@ -48,11 +48,12 @@ public class LugarAtencionController {
 
     @PutMapping("/update/{id}")
     public ResponseEntity <?> update(@PathVariable("id") Long id, @RequestBody LugarAtencion lugarAtencion) throws Exception {
-        LugarAtencion lugAtencion = lugarAtencionService.findById(lugarAtencion.getIdLugaresAtencion());
+        LugarAtencion lugAtencion = lugarAtencionService.findById(id);
         if(lugAtencion==null){
             return new ResponseEntity<>("No existe un lugar de atención correspondiente al ID ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion, id),HttpStatus.OK);
+        lugarAtencion.setIdLugaresAtencion(id);
+        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion),HttpStatus.OK);
     }
 
     @ResponseBody

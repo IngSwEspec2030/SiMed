@@ -17,12 +17,11 @@ import javax.validation.constraints.Size;
 /**
  * @author Johan Céspedes at PUJ
  */
-@Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "LUGAR_ATENCION")
+@Entity
+@Table(name = "\"LUGAR_ATENCION\"")
 @NamedQueries({
         @NamedQuery(name = "LugarAtencion.findAll", query = "SELECT l FROM LugarAtencion l")})
 public class LugarAtencion implements Serializable {
@@ -61,35 +60,8 @@ public class LugarAtencion implements Serializable {
     @JsonIgnore
     @ToString.Exclude
     private Collection<Eps> epsCollection;
-
-
     public LugarAtencion(Long idLugaresAtencion) {
         this.idLugaresAtencion = idLugaresAtencion;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idLugaresAtencion != null ? idLugaresAtencion.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof LugarAtencion)) {
-            return false;
-        }
-        LugarAtencion other = (LugarAtencion) object;
-        if ((this.idLugaresAtencion == null && other.idLugaresAtencion != null) || (this.idLugaresAtencion != null && !this.idLugaresAtencion.equals(other.idLugaresAtencion))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.sw.ingenieria.simed.entity.LugarAtencion[ idLugaresAtencion=" + idLugaresAtencion + " ]";
     }
 
 }

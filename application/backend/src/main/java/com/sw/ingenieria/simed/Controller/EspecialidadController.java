@@ -1,6 +1,7 @@
 package com.sw.ingenieria.simed.Controller;
 
 import com.sw.ingenieria.simed.entity.Especialidad;
+import com.sw.ingenieria.simed.entity.LugarAtencion;
 import com.sw.ingenieria.simed.service.EspecialidadService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EspecialidadController {
 
     public EspecialidadController(EspecialidadService especialidadService) {this.especialidadService = especialidadService;}
 
-    @GetMapping("/listAll")
+    @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
         List<Especialidad> list = especialidadService.findAll();
         if(!list.isEmpty()){
@@ -32,7 +33,7 @@ public class EspecialidadController {
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
     @ResponseBody
-    @GetMapping("/findById/{id}")
+    @GetMapping("{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") Short id ) throws Exception {
         Especialidad especialidad = especialidadService.findById(id);
         if(especialidad==null){
@@ -41,22 +42,23 @@ public class EspecialidadController {
         return new ResponseEntity<>(especialidadService.findById(id),HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity <?> create(@RequestBody Especialidad especialidad) throws Exception {
         return new ResponseEntity<>(especialidadService.create(especialidad), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") Short id, @RequestBody Especialidad especialidad) throws Exception {
-        Especialidad especialidad1 = especialidadService.findById(especialidad.getIdEspecialidad());
+        Especialidad especialidad1 = especialidadService.findById(id);
         if(especialidad1==null){
             return new ResponseEntity<>("No existe una especialidad correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(especialidadService.update(especialidad, id),HttpStatus.OK);
+        especialidad.setIdEspecialidad(id);
+        return new ResponseEntity<>(especialidadService.update(especialidad),HttpStatus.OK);
     }
 
     //@ResponseBody
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity <?> delete(@PathVariable("id") Short id) throws Exception {
         Especialidad especialidad1 = especialidadService.findId(id);
         if(especialidad1==null || !especialidadService.existeById(id)){

@@ -45,7 +45,7 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
     }
 
     @Override
-    public LugarAtencion update(LugarAtencion entity, Long id) throws Exception {
+    public LugarAtencion update(LugarAtencion entity) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(entity.getIdLugaresAtencion()).get();
         return lugarAtencionRepository.save(entity);
     }

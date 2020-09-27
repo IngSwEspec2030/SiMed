@@ -54,8 +54,8 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
     }
 
     @Override
-    public Usuario update(Usuario entity, Long key) throws Exception {
-        Usuario usuario = usuarioRepository.findById(key).get();
+    public Usuario update(Usuario entity) throws Exception {
+        Usuario usuario = usuarioRepository.findById(entity.getIdUsuario()).get();
 
         if (entity.getFechaCreacionUsuario() == null) {
             entity.setFechaCreacionUsuario(usuario.getFechaCreacionUsuario());
@@ -98,10 +98,6 @@ public class UsuarioService implements ServiceInterface <Usuario, Long>{
         if (entity.getNumeroIdentificacionUsuario() == null) {
             entity.setNumeroIdentificacionUsuario(usuario.getNumeroIdentificacionUsuario());
         }
-
-
-
-
         return usuarioRepository.save(entity);
     }
 

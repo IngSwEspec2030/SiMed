@@ -24,7 +24,7 @@ public class EpsController {
 
     public EpsController(EpsService epsService) {this.epsService = epsService;}
 
-    @GetMapping("/listAll")
+    @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
         List<Eps> list = epsService.findAll();
         if(!list.isEmpty()){
@@ -33,7 +33,7 @@ public class EpsController {
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
     @ResponseBody
-    @GetMapping("/findById/{id}")
+    @GetMapping("{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") Short id ) throws Exception {
         Eps eps = epsService.findById(id);
         if(eps==null){
@@ -42,22 +42,23 @@ public class EpsController {
         return new ResponseEntity<>(epsService.findById(id),HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity <?> create(@RequestBody Eps eps) throws Exception {
         return new ResponseEntity<>(epsService.create(eps), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") Short id, @RequestBody Eps eps) throws Exception {
-        Eps eps1 = epsService.findById(eps.getIdEps());
+        Eps eps1 = epsService.findById(id);
         if(eps1==null){
             return new ResponseEntity<>("No existe un Eps correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(epsService.update(eps, id),HttpStatus.OK);
+        eps.setIdEps(id);
+        return new ResponseEntity<>(epsService.update(eps),HttpStatus.OK);
     }
 
     @ResponseBody
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity <?> delete(@PathVariable("id") Short id) throws Exception {
         Eps eps1 = epsService.findById(id);
         if(eps1==null || !epsService.existeById(id)){
@@ -66,7 +67,7 @@ public class EpsController {
 
         return new ResponseEntity<>(epsService.deleteEPS(id), HttpStatus.OK);
     }
-
+    @Deprecated
     @PutMapping("/activar/{id}")
     public ResponseEntity <?> activar(@PathVariable("id") Short id) throws Exception {
         Eps eps = epsService.findId(id);
@@ -77,12 +78,12 @@ public class EpsController {
         return new ResponseEntity<>(epsService.activar(id), HttpStatus.OK);
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
+   /* @ResponseStatus(HttpStatus.ACCEPTED)
     @PutMapping("/asignarLugar")
     public GeneralOutput asignarLugar(@RequestBody EpsInputDTO entity) throws Exception{
         epsService.asignarLugar(entity);
         return new GeneralOutput(HttpStatus.ACCEPTED.value(),HttpStatus.ACCEPTED.getReasonPhrase(),"Asignación Realizada Exitosamente...");
-    }
+    }*/
 
 
 }
