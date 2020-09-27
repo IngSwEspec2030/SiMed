@@ -166,12 +166,12 @@
 			"name": "Eps",
 			"item": [
 				{
-					"name": "http://localhost:8191/eps/findById/1",
+					"name": "Listar por ID",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/findById/19",
+							"raw": "http://localhost:8191/eps/19",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -179,7 +179,6 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"findById",
 								"19"
 							]
 						},
@@ -188,20 +187,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/listAll",
+					"name": "Listar EPS",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/listAll",
+							"raw": "http://localhost:8191/eps",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"eps",
-								"listAll"
+								"eps"
 							]
 						},
 						"description": "Listar todos eps"
@@ -209,7 +207,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/create",
+					"name": "Crear Eps",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -221,18 +219,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombreEps\": \"Sanar Salud E.P.S.\",\r\n    \"direccionEps\": \"Cra. 10 #5-1\",\r\n    \"telefonoEps\": \"7896325\"\r\n}"
+							"raw": "{\r\n    \"nombreEps\": \"colombia medica E.P.S.\",\r\n    \"direccionEps\": \"Cra. 110 #7-26\",\r\n    \"telefonoEps\": \"4236952\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8191/eps/create",
+							"raw": "http://localhost:8191/eps",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"eps",
-								"create"
+								"eps"
 							]
 						},
 						"description": "Crear una Nueva EPS"
@@ -240,7 +237,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/update",
+					"name": "Actualizar una EPS",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -252,10 +249,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idEps\": 10,    \r\n    \"nombreEps\": \"MEDIMAS OAU y PA E.P.S.\",\r\n    \"direccionEps\": \"Carrera 52 No. 67 A - 71\",\r\n    \"telefonoEps\": \"+57(1)7632596\"\r\n}"
+							"raw": "{\r\n    \"nombreEps\": \"MEDIMAS OA y PA E.P.S.\",\r\n    \"direccionEps\": \"Carrera 52 No. 67 A - 71\",\r\n    \"telefonoEps\": \"+57(1)7632000\"\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8191/eps/update",
+							"raw": "http://localhost:8191/eps/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -263,7 +260,7 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"update"
+								"10"
 							]
 						},
 						"description": "Crear una Nueva EPS"
@@ -271,12 +268,12 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/delete/3",
+					"name": "Borrado lógico de  una EPS",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/eps/delete/19",
+							"raw": "http://localhost:8191/eps/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -284,8 +281,7 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"delete",
-								"19"
+								"10"
 							]
 						},
 						"description": "Eliminar una EPS"
@@ -293,12 +289,21 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/activar/3",
+					"name": "Activar una Eps",
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"estadoEps\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8191/eps/activar/19",
+							"raw": "http://localhost:8191/eps/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -306,8 +311,7 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"activar",
-								"19"
+								"10"
 							]
 						},
 						"description": "Activar una EPS"
@@ -327,7 +331,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"idEps\":\"11\",\r\n\t\"lugarAtencionCollection\":[6]\r\n}",
+							"raw": "{\r\n\t\"lugarAtencionCollection\":[1,2,3,4]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -335,7 +339,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8191/eps/asignarLugar/",
+							"raw": "http://localhost:8191/eps/11",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -343,8 +347,7 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"asignarLugar",
-								""
+								"11"
 							]
 						}
 					},
@@ -357,12 +360,12 @@
 			"name": "Especialidad",
 			"item": [
 				{
-					"name": "http://localhost:8191/especialidad/findById/1",
+					"name": "Especialidad por Id",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/especialidad/findById/1",
+							"raw": "http://localhost:8191/especialidad/14",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -370,8 +373,7 @@
 							"port": "8191",
 							"path": [
 								"especialidad",
-								"findById",
-								"1"
+								"14"
 							]
 						},
 						"description": "Listar por Id Especialidad"
@@ -379,20 +381,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/especialidad/listAll",
+					"name": "Listar Especialidad",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/especialidad/listAll",
+							"raw": "http://localhost:8191/especialidad",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"especialidad",
-								"listAll"
+								"especialidad"
 							]
 						},
 						"description": "Listar todos Especialidad"
@@ -400,7 +401,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/especialidad/create",
+					"name": "Crear especialidad",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -412,18 +413,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombreEspecialidad\": \"Neurologia\"\r\n}"
+							"raw": "{\r\n    \"nombreEspecialidad\": \"Internista\",\r\n    \"lugarAtencionCollection\":[5,6,7,8]\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8191/especialidad/create",
+							"raw": "http://localhost:8191/especialidad",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"especialidad",
-								"create"
+								"especialidad"
 							]
 						},
 						"description": "Crear una Nueva Especialidad"
@@ -431,7 +431,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/especialidad/update",
+					"name": "Actualizar Especialidad",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -443,10 +443,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idEspecialidad\": 7,\r\n    \"nombreEspecialidad\": \"Endocrinología\"\r\n}"
+							"raw": "{\r\n    \"nombreEspecialidad\": \"Endocrinología\",\r\n     \"estadoEspecialidad\": true,\r\n     \"lugarAtencionCollection\":[4,3,8,9]\r\n\r\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8191/especialidad/update",
+							"raw": "http://localhost:8191/especialidad/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -454,7 +454,7 @@
 							"port": "8191",
 							"path": [
 								"especialidad",
-								"update"
+								"1"
 							]
 						},
 						"description": "Crear una Nueva Especialidad"
@@ -462,12 +462,12 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/especialidad/delete/3",
+					"name": "Eliminar una Especialidad",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/especialidad/delete/1",
+							"raw": "http://localhost:8191/especialidad/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -475,33 +475,10 @@
 							"port": "8191",
 							"path": [
 								"especialidad",
-								"delete",
 								"1"
 							]
 						},
-						"description": "Eliminar una Especialidad"
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8191/especialidad/activar/3",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8191/especialidad/activar/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8191",
-							"path": [
-								"especialidad",
-								"activar",
-								"1"
-							]
-						},
-						"description": "Activar una EPS"
+						"description": "Es posible hace borrado lógico de una Especialidad"
 					},
 					"response": []
 				}
