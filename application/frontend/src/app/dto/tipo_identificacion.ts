@@ -1,5 +1,5 @@
 
 export class TipoIdentificacion {
-    idTipoIdentificacion: number
+    tipoIdentificacion: number
     nombreTipoIdentificacion: string
 }

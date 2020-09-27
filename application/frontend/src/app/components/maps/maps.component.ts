@@ -68,7 +68,7 @@ export class MapsComponent implements OnInit {
    */
   getLugaresCercanos(){
     let parametros= `${this.auth.getidEps()}/${this.lat}/${this.lng}`
-
+    console.log("parametros lugares cercanos"+parametros);
     this.http.get(this.config.prop.urllistLugaresAtencionCercanos, parametros)
     .subscribe((data:LugaresAtencion[])=>{
 

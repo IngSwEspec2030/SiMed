@@ -13,12 +13,7 @@
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-account-settings-variant"></i>
-                        <span class="hide-menu"> 
-                            USUARIOS
-                            <span class="label label-rouded label-themecolor pull-right">
-                                2
-                            </span>
-                        </span>
+                        <span class="hide-menu">USUARIOS</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">                        
                         <li><a *ngIf="pc.isGranted(permisos.AdminUsuario)" routerLink="pages/admin-user" >Mi Perfil</a></li>
@@ -36,16 +31,11 @@
                 <li>
                     <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-hospital-marker"></i>
-                        <span class="hide-menu"> 
-                            LUGARES
-                            <span class="label label-rouded label-themecolor pull-right">
-                               3
-                            </span>
-                        </span>
+                        <span class="hide-menu">LUGARES</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  href="#">Lugares más cercanos</a></li>
-                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site">Admin Lugares</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.ConsultarLugaresCercanos)"  routerLink="">Consulta Lugares más cercanos</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/admin-site">Administrar Lugares Atención</a></li>
                         <li><a *ngIf="pc.isGranted(permisos.AdminLugares)" routerLink="pages/rel-site-spec">Asignar Especialidades</a></li>
                     </ul>                    
                 </li>
@@ -59,13 +49,10 @@
                         <i class="mdi mdi-hospital-building"></i>
                         <span class="hide-menu"> 
                             EPS
-                            <span class="label label-rouded label-themecolor pull-right">
-                               2
-                            </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a *ngIf="pc.isGranted(permisos.AdminEps)" routerLink="pages/admin-eps">Admin EPS</a></li>
+                        <li><a *ngIf="pc.isGranted(permisos.AdminEps)" routerLink="pages/admin-eps">Administrar EPS</a></li>
                         <li><a *ngIf="pc.isGranted(permisos.AdminEps)" routerLink="pages/rel-eps-site">Asignar Lugares de Atención</a></li>
                     </ul>                    
                 </li>
@@ -79,14 +66,11 @@
                         <i class="mdi mdi-signal-hspa-plus"></i>
                         <span class="hide-menu"> 
                             ESPECIALIDADES
-                            <span class="label label-rouded label-themecolor pull-right">
-                               1
-                            </span>
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a *ngIf="pc.isGranted(permisos.AdminEspecialidad)"  
-                            routerLink="pages/admin-specialties">Admin Especialidades</a>
+                            routerLink="pages/admin-specialties">Administrar Especialidades</a>
                         </li>
                     </ul>                    
                 </li>
@@ -100,10 +84,7 @@
                     class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
                         <i class="mdi mdi-chart-bar"></i>
                         <span class="hide-menu"> 
-                            DASHBOARD
-                            <span class="label label-rouded label-themecolor pull-right">
-                                1
-                            </span>
+                            REPORTES
                         </span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
