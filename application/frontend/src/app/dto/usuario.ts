@@ -7,13 +7,13 @@ export class Usuario {
     nombreUsuario: string;
     apellidosUsuario: string;
     numeroIdentificacionUsuario: string;
-    passwordUsuario: string;
+    passwordUsuario?: string;
     correoUsuario: string;
-    estadoUsuario: boolean;
+    estadoUsuario?: boolean;
     fechaCreacionUsuario?: Date;
     fechaModificacionUsuario?: Date;
-    tipoIdentificacion: TipoIdentificacion;
-    eps: Eps;
-    tipoUsuario: TipoUsuario;
-    username: string;
+    tipoIdentificacion?: TipoIdentificacion;
+    eps?: Eps;
+    tipoUsuario?: TipoUsuario;
+    username?: string;
 }

@@ -18,21 +18,7 @@ import { Usuario } from 'src/app/dto/usuario';
 })
 export class RegisterComponent implements OnInit {
   epsList: any = []
-/*
-  epsList: any = [
-    {
-      "idEps": "1",
-      "nombreEps": "Sanitas"
-    },
-    {
-      "idEps": "2",
-      "nombreEps": "Salud Total"
-    },
-    {
-      "idEps": "1",
-      "nombreEps": "Nueva Eps"
-    }]
-* */
+
   tipoDocumento = [
     {
       "idTipoDocumento": 1,
@@ -60,7 +46,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("Entró a Registrate");
     this.getEps();
     this.registerForm = this.formBuilder.group({
       nombreUsuario: ['', Validators.required],
@@ -143,7 +128,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/login']);
         },
         error => {
-          this.alert.displayInfoMessage('Usuario', 'No se ha registrado correctamente', IconType.error, ButtonType.Ok);
+          this.alert.displayInfoMessage('Usuario', 'Error al realizar el registro, por favor intente mas tarde', IconType.error, ButtonType.Ok);
 
           //this.alertService.error('No se ha registrado correctamente', true);
           this.alertService.error(error);
