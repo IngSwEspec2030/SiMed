@@ -30,7 +30,6 @@ public class LugarAtencion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "ID_LUGARES_ATENCION")
     private Long idLugaresAtencion;
     @Size(max = 100)
