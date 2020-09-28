@@ -22,7 +22,7 @@ public class TipoIdentificacionService implements ServiceInterface  <TipoIdentif
     }
 
     @Override
-    public TipoIdentificacion update(TipoIdentificacion entity, Short key) throws Exception {
+    public TipoIdentificacion update(TipoIdentificacion entity) throws Exception {
         return null;
     }
 

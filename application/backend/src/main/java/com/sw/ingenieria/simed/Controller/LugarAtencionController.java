@@ -23,7 +23,7 @@ public class LugarAtencionController {
     private LugarAtencionService lugarAtencionService;
     public LugarAtencionController(LugarAtencionService lugarAtencionService) {this.lugarAtencionService = lugarAtencionService;}
 
-    @GetMapping("/listAll")
+    @GetMapping("")
     public ResponseEntity<?> getList() throws Exception {
         List<LugarAtencion> list = lugarAtencionService.findAll();
         if(!list.isEmpty()){
@@ -32,7 +32,7 @@ public class LugarAtencionController {
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
     @ResponseBody
-    @GetMapping("/findById/{id}")
+    @GetMapping("{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") Long id ) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionService.findById(id);
         if(lugarAtencion==null){
@@ -41,31 +41,32 @@ public class LugarAtencionController {
         return new ResponseEntity<>(lugarAtencionService.findById(id),HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("")
     public ResponseEntity <?> create(@RequestBody LugarAtencion lugarAtencion) throws Exception {
         return new ResponseEntity<>(lugarAtencionService.create(lugarAtencion), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("{id}")
     public ResponseEntity <?> update(@PathVariable("id") Long id, @RequestBody LugarAtencion lugarAtencion) throws Exception {
-        LugarAtencion lugAtencion = lugarAtencionService.findById(lugarAtencion.getIdLugaresAtencion());
+        LugarAtencion lugAtencion = lugarAtencionService.findById(id);
         if(lugAtencion==null){
             return new ResponseEntity<>("No existe un lugar de atención correspondiente al ID ingresado",HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion, id),HttpStatus.OK);
+        lugarAtencion.setIdLugaresAtencion(id);
+        return new ResponseEntity<>(lugarAtencionService.update(lugarAtencion),HttpStatus.OK);
     }
 
     @ResponseBody
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public ResponseEntity <?> delete(@PathVariable("id") Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionService.findById(id);
         if(lugarAtencion==null || !lugarAtencionService.existeById(id)){
             return new ResponseEntity<>("No existe un lugar de atención correspondiente al ID ingresado",HttpStatus.BAD_REQUEST);
         }
-        lugarAtencionService.delete(id);
-        return new ResponseEntity<>("Lugar de atención eliminado", HttpStatus.OK);
-    }
 
+        return new ResponseEntity<>(lugarAtencionService.deleteLugarAt(id), HttpStatus.OK);
+    }
+    @Deprecated
     @PutMapping("/activar/{id}")
     public ResponseEntity <?> activar(@PathVariable("id") Long id) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionService.findId(id);
