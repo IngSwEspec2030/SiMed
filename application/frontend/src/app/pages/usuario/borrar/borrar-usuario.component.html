@@ -1,0 +1,16 @@
+<button type="button" class="close" tabindex="-1" (click)="onNoClick()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div class="container">
+      <h3 mat-dialog-title>Está seguro que quiere darse de baja del sistema?</h3>
+      <div mat-dialog-content>
+        <p>
+            Recuerde que una vez acepte, no podrá ingresar de nuevo a la plataforma con los datos del usuario aquí registrados
+        </p>
+      </div>
+    
+      <div mat-dialog-actions>
+        <button class="btn btn-danger mr-2" mat-button [mat-dialog-close]="1" (click)="confirmDelete()">Borrar</button>
+        <button class="btn btn-light mr-2"mat-button (click)="onNoClick()" tabindex="-1">Cancelar</button>
+      </div>
+    </div>

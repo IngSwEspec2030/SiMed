@@ -14,14 +14,17 @@ export class AuthService {
   private user:Usuario;
   private keyTipoUsuario:string;
   private keyEmail: string;
+  private keyIdUser:string;
+  private keyUsuerAll: string;
 
   constructor(private router:Router) {
     this.keyToken='#ARDPTJB*Kt#';
     this.keyUsuer='#334567Ku$';
     this.keyEps='#456467Ke$';
     this.keyTipoUsuario="%46456456";
+    this.keyIdUser="%#sfgfkuidd*";
     this.keyEmail="%&456545km";
-
+    this.keyUsuerAll="#*rawxXkjni$nXS84#dwerturse&&627";
    }
 
   isAuthenticated():boolean{
@@ -30,16 +33,26 @@ export class AuthService {
 
   setUser(usuarioAutenticado:userReturned){
     this.user = usuarioAutenticado.usuario;
+    let userJson = JSON.stringify(this.user);
+    localStorage.setItem(this.keyUsuerAll,userJson);
     localStorage.setItem(this.keyTipoUsuario, usuarioAutenticado.usuario.tipoUsuario.idTipoUsuario.toString());
     localStorage.setItem(this.keyUsuer, usuarioAutenticado.usuario.username);
+    localStorage.setItem(this.keyIdUser, usuarioAutenticado.usuario.idUsuario.toString());
     localStorage.setItem(this.keyEps, usuarioAutenticado.usuario.eps.idEps.toString());
     localStorage.setItem(this.keyToken, usuarioAutenticado.token);
     localStorage.setItem(this.keyEmail, usuarioAutenticado.usuario.correoUsuario);
   }
-  
+
+  getUserRegistered():Usuario{
+    return JSON.parse(localStorage.getItem(this.keyUsuerAll));
+  }  
   
   getUserName():string{    
     return localStorage.getItem(this.keyUsuer);
+  }
+
+  getUserId():string{    
+    return localStorage.getItem(this.keyIdUser);
   }
 
   getUserEmail():string{    
