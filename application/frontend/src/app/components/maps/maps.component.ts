@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class MapsComponent implements OnInit {
 
-
+  
   iconRed:any = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FF0000';
   iconBlue:any = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|4286f4';
   

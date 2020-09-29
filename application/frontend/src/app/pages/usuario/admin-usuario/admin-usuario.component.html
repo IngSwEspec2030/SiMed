@@ -33,12 +33,12 @@
                 <label for="tipoIdentificacion">Tipo identificación</label>
                 <select type="text" formControlName="tipoIdentificacion" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.tipoIdentificacion.errors }">
-                    <option selected hidden value=tipoDocumentoSelected.idTipoDocumento>{{tipoDocumentoSelected.tipoDocumento}}</option>
-                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.idTipoDocumento">{{tipo.tipoDocumento}}</option>
+                    <!-- <option selected hidden value=tipoDocumentoSelected.idTipoIdentificacion>{{tipoDocumentoSelected.nombreTipoIdentificacion}}</option> -->
+                    <option *ngFor="let tipo of tipoDocumento; let i=index"  [ngValue]="tipo.idTipoIdentificacion">{{tipo.nombreTipoIdentificacion}}</option>
                 </select>
-                <div *ngIf="submitted && f.tipoIdentificacion.errors" class="invalid-feedback">
+                <!-- <div *ngIf="submitted && f.tipoIdentificacion.errors" class="invalid-feedback">
                     <div *ngIf="f.tipoIdentificacion.errors.required">El Tipo de identificación es requerido</div>
-                </div>
+                </div> -->
             </div>
 
             <div class="col-lg-6 col-sm-12 form-group">
@@ -54,7 +54,7 @@
                 <label for="idEps">EPS</label>
                 <select type="text" formControlName="idEps" class="form-control"
                     [ngClass]="{ 'is-invalid': submitted && f.idEps.errors }">
-                    <option selected hidden value=epsSelected.idEps>{{epsSelected.nombreEps}}</option>
+                    <!-- <option selected hidden value=epsSelected.idEps>{{epsSelected.nombreEps}}</option> -->
                     <option *ngFor="let eps of epsList; let i=index"
                     [style.visibility]="eps.estadoEps ? 'visible' : 'hidden'"
                     [ngValue]="eps.idEps">{{eps.nombreEps}}</option>

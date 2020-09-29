@@ -22,17 +22,14 @@ export class AdminUsuarioComponent implements OnInit {
   submitted:boolean=false;
   loading:boolean;
   epsList: Eps[];
-  epsSelected:Eps;
-  tipoDocumentoSelected:any;
-
-  tipoDocumento = [
+  public tipoDocumento:TipoIdentificacion[] = [
     {
-      "idTipoDocumento": 1,
-      "tipoDocumento": "CC"
+      idTipoIdentificacion: 1,
+      nombreTipoIdentificacion: "CC",
     },
     {
-      "idTipoDocumento": 2,
-      "tipoDocumento": "CE"
+      idTipoIdentificacion: 2,
+      nombreTipoIdentificacion: "CE"
     },
   ]
   constructor(    
@@ -43,8 +40,7 @@ export class AdminUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser=this.auth.getUserRegistered();
-    this.tipoDocumentoSelected = 
-      this.tipoDocumento.find(x=>x.idTipoDocumento==this.currentUser.tipoIdentificacion.tipoIdentificacion);
+    this.onBuildForm();
     this.getEps();
   }  
 
@@ -52,8 +48,6 @@ export class AdminUsuarioComponent implements OnInit {
     this.http.showBusy();
     this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp:Eps[]) => {
       this.epsList = resp;
-      this.epsSelected = this.epsList.find(x=>x.idEps==this.currentUser.eps.idEps);
-      this.epsSelected.idEps
       this.http.closeBusy();
     }, error => {
       this.http.closeBusy();
@@ -66,7 +60,6 @@ export class AdminUsuarioComponent implements OnInit {
       apellidosUsuario: ['', Validators.required],
       numeroIdentificacionUsuario: ['', Validators.required],
       correoUsuario: ['', [Validators.required, Validators.email]],
-      passwordUsuario: ['', [Validators.required, Validators.minLength(6)]],
       tipoIdentificacion: ['', [Validators.required, Validators.required]],
       username: [],
       idEps: ['', [Validators.required, Validators.required]],
@@ -85,7 +78,7 @@ export class AdminUsuarioComponent implements OnInit {
       apellidosUsuario:this.currentUser.apellidosUsuario,
       numeroIdentificacionUsuario:this.currentUser.numeroIdentificacionUsuario,
       correoUsuario:this.currentUser.correoUsuario,
-      tipoIdentificacion:this.currentUser.tipoIdentificacion,
+      tipoIdentificacion:this.currentUser.tipoIdentificacion.idTipoIdentificacion,
       username:this.currentUser.username,
       idEps:this.currentUser.eps.idEps,
       idTipoUsuario:this.currentUser.tipoUsuario,

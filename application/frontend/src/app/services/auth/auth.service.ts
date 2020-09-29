@@ -42,9 +42,11 @@ export class AuthService {
     localStorage.setItem(this.keyToken, usuarioAutenticado.token);
     localStorage.setItem(this.keyEmail, usuarioAutenticado.usuario.correoUsuario);
   }
-
+  
   getUserRegistered():Usuario{
-    return JSON.parse(localStorage.getItem(this.keyUsuerAll));
+    let user = localStorage.getItem(this.keyUsuerAll);
+    let userTrs = JSON.parse(user);
+    return userTrs;
   }  
   
   getUserName():string{    
