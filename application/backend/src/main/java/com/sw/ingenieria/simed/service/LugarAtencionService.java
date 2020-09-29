@@ -126,7 +126,7 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
         }
         Eps eps = epsRepository.findEpsByIdEps(idEps);
         if (lugarAtencionRepository.findAllByEpsCollectionAndAndEstadoLugarAtencionIsTrue(eps).isEmpty()    ){
-            throw new ResourceNotFoundException("El Eps no tiene Lugares disponibles activos en el sistema");
+            throw new ResourceNotFoundException( "La EPS "+ eps.getNombreEps()+" no tiene Lugares disponibles activos en el sistema");
         }
         return lugarAtencionRepository.findAllByEpsCollectionAndAndEstadoLugarAtencionIsTrue(eps);
     }
