@@ -37,8 +37,8 @@ export class PermissionCheckerService {
 
 
    isGranted(permiso:Permisos):boolean{
-    if(this.grantedPermissions=='1'){
-      return (this.adminPermisos.includes(permiso));
+     if(this.grantedPermissions=='1'){
+       return (this.adminPermisos.includes(permiso));
     }
     else{
       return (this.estandarPermisos.includes(permiso));

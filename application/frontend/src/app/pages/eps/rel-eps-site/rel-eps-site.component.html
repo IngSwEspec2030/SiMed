@@ -1,1 +1,38 @@
-<p>rel-eps-site works!</p>
+<h2 class="card-title">Asignación Eps-IPS</h2>
+
+<div class="card">
+    <div class="card-body mb-5">
+        <h5 class="card-title">Asignación de lugares de atención a EPS</h5>
+        <hr>
+        <form [formGroup]="editForm">  
+        <div class="row">
+            <div class="col-lg-7 col-sm-12 form-group">
+                <label for="idEps">EPS</label>
+                <select type="text" formControlName="idEps" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.idEps.errors }">
+                    <option selected hidden value="">Seleccionar</option>
+                    <option *ngFor="let eps of epsList; let i=index"  [ngValue]="eps.idEps">{{eps.nombreEps}}</option>
+                </select>
+                <div *ngIf="submitted && f.idEps.errors" class="invalid-feedback">
+                    <div *ngIf="f.idEps.errors.required">La EPS es requerido</div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-sm-12 form-group">
+                <label for="idLugar">Lugar de atención</label>
+                <select type="text" formControlName="idLugar" class="form-control"
+                    [ngClass]="{ 'is-invalid': submitted && f.idLugar.errors }">
+                    <option selected hidden value="">Seleccionar</option>
+                    <option *ngFor="let lugar of lugaresList; let i=index"  [ngValue]="lugar.idLugaresAtencion">{{lugar.nombreLugarAtencion}}</option>
+                </select>
+                <div *ngIf="submitted && f.idLugar.errors" class="invalid-feedback">
+                    <div *ngIf="f.idLugar.errors.required">La EPS es requerido</div>
+                </div>
+            </div>
+        </div>
+        </form>
+        <div class="col-12 form-group">
+            <button class="btn btn-primary mr-2" [disabled]="!editForm.valid"  (click)="onConfirm()">Asignar</button>
+          </div>
+    </div>
+</div>

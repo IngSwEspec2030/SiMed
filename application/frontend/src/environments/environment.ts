@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiEndPoint:"http://localhost:8191"
+  apiEndPoint:"http://3.137.173.201:8191"
+  // apiEndPoint:"http://localhost:8191"
 };
 
 /*
