@@ -52,7 +52,7 @@ public class UsuarioController {
             return new ResponseEntity<>("No existe un Usuario correspondiente al id ingresado",HttpStatus.BAD_REQUEST);
         }
         usuario.setIdUsuario(id);
-        return new ResponseEntity<>(usuarioService.update(usuario, id),HttpStatus.OK);
+        return new ResponseEntity<>(usuarioService.update(usuario),HttpStatus.OK);
     }
 
     @ResponseBody

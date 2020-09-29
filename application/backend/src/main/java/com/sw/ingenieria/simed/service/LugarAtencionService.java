@@ -1,6 +1,7 @@
 package com.sw.ingenieria.simed.service;
 
 import com.sw.ingenieria.simed.entity.Eps;
+import com.sw.ingenieria.simed.entity.Especialidad;
 import com.sw.ingenieria.simed.entity.LugarAtencion;
 import com.sw.ingenieria.simed.repository.EpsRepository;
 import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
@@ -40,22 +41,50 @@ public class LugarAtencionService implements ServiceInterface <LugarAtencion,Lon
 
     @Override
     public LugarAtencion create(LugarAtencion entity) throws Exception {
-        //entity.setFecha_creacion(LocalDate.now());
+        entity.setEstadoLugarAtencion(true);
         return  lugarAtencionRepository.save(entity);
     }
 
     @Override
-    public LugarAtencion update(LugarAtencion entity, Long id) throws Exception {
+    public LugarAtencion update(LugarAtencion entity) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(entity.getIdLugaresAtencion()).get();
+
+        if (entity.getNombreLugarAtencion() != null) {
+            lugarAtencion.setNombreLugarAtencion(entity.getNombreLugarAtencion());
+        }
+        if (entity.getDireccionLugarAtencion() != null) {
+            lugarAtencion.setDireccionLugarAtencion(entity.getDireccionLugarAtencion());
+        }
+        if (entity.getTelefonoLugarAtencion() != null) {
+            lugarAtencion.setTelefonoLugarAtencion(entity.getTelefonoLugarAtencion());
+        }
+        if (entity.getSitioWebLugarAtencion() != null) {
+            lugarAtencion.setSitioWebLugarAtencion(entity.getSitioWebLugarAtencion());
+        }
+        if (entity.getLatitudLugarAtencion() != null) {
+            lugarAtencion.setLatitudLugarAtencion(entity.getLatitudLugarAtencion());
+        }
+
+        if (entity.getLongitudLugarAtencion() != null) {
+            lugarAtencion.setLongitudLugarAtencion(entity.getLongitudLugarAtencion());
+        }
+        if (entity.getEstadoLugarAtencion() != null) {
+            lugarAtencion.setEstadoLugarAtencion (true);
+        }
+        if (entity.getEspecialidadCollection() != null) {
+            lugarAtencion.setEspecialidadCollection(entity.getEspecialidadCollection());
+        }
         return lugarAtencionRepository.save(entity);
     }
 
     @Override
     public void delete(Long key) throws Exception {
+    }
+
+    public LugarAtencion deleteLugarAt(Long key) throws Exception {
         LugarAtencion lugarAtencion = lugarAtencionRepository.findById(key).get();
         lugarAtencion.setEstadoLugarAtencion(false);
-        lugarAtencionRepository.save(lugarAtencion);
-        //usuarioRepository.delete(usuario);
+        return lugarAtencionRepository.save(lugarAtencion);
 
     }
 

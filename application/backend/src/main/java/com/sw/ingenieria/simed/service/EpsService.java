@@ -2,18 +2,26 @@ package com.sw.ingenieria.simed.service;
 
 
 import com.sw.ingenieria.simed.dto.EpsInputDTO;
+import com.sw.ingenieria.simed.dto.LugarAtencionOutputDTO;
 import com.sw.ingenieria.simed.entity.Eps;
 import com.sw.ingenieria.simed.entity.LugarAtencion;
 import com.sw.ingenieria.simed.exeptions.ResourceNotFoundException;
 import com.sw.ingenieria.simed.repository.EpsRepository;
+import com.sw.ingenieria.simed.repository.LugarAtencionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+
 @Service
 public class EpsService implements ServiceInterface  <Eps, Short>{
     @Autowired
     private EpsRepository epsRepository;
+
+    @Autowired
+    private LugarAtencionRepository lugarAtencionRepository;
+
     @Autowired
     private LugarAtencionService lugarAtencionService;
 
@@ -37,7 +45,7 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
     }
 
     @Override
-    public Eps update(Eps entity, Short id) throws Exception {
+    public Eps update(Eps entity) throws Exception {
         Eps eps = epsRepository.findById(entity.getIdEps()).get();
 
         if (entity.getNombreEps() != null) {
@@ -48,6 +56,12 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
         }
         if (entity.getTelefonoEps() != null) {
         eps.setTelefonoEps(entity.getTelefonoEps());
+        }
+        if (entity.getEstadoEps() != null) {
+        eps.setEstadoEps(true);
+        }
+        if (entity.getLugarAtencionCollection() != null) {
+           asignarLugar(entity);
         }
         return epsRepository.save(eps);
     }
@@ -86,6 +100,7 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
      * @return
      * @throws Exception
      */
+    @Deprecated
     public Eps activar(Short key) throws Exception {
         Eps eps = epsRepository.findById(key).get();
         eps.setEstadoEps(true);
@@ -97,7 +112,7 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
      * @return Objeto EPS
      * @autor Johan Miguel Céspedes - Método que permite asignar uno o muchos Lugares de Atencion a una EPS.
      */
-    public Eps asignarLugar(EpsInputDTO entity) throws Exception {
+    public Eps asignarLugar(Eps entity) throws Exception {
         if (entity.getIdEps() == null || !existeById(entity.getIdEps())) {
             throw new ResourceNotFoundException("La EPS con Id " + entity.getIdEps() + " no existe.");
         }
@@ -116,9 +131,29 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
         }
         eps.setLugarAtencionCollection(entity.getLugarAtencionCollection());
         return epsRepository.save(eps);
+/*
+
+        Collection lugarAtCollection = new LinkedList();
+        if(eps.getLugarAtencionCollection().size()>0){
+            lugarAtCollection.add(eps.getLugarAtencionCollection());
+
+            for (LugarAtencion lugarAtencion: eps.getLugarAtencionCollection()) {
+                lugarAtCollection.add(LugarAtencionOutputDTO.getDTO(lugarAtencion));
+
+                for (LugarAtencion eps1: entity.getLugarAtencionCollection()) {
+                    LugarAtencion lugarAtencionx = lugarAtencionRepository.findById(eps1.getIdLugaresAtencion()).get();
+
+                    if(lugarAtencion.getIdLugaresAtencion() != eps1.getIdLugaresAtencion()){
+                        eps.getLugarAtencionCollection().add(lugarAtencionx);
+                        System.out.println("lugarAtencion en el servicio linea 132 = "
+                                + lugarAtencion.getIdLugaresAtencion()  +"=" + eps1.getIdLugaresAtencion() );
+                    }
+                }
+
+            }
+        }
+        eps.setLugarAtencionCollection(lugarAtCollection);
+        //eps.setLugarAtencionCollection(entity.getLugarAtencionCollection());
+        return epsRepository.save(eps);*/
     }
-
-
-
-
 }
