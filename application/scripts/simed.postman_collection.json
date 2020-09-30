@@ -50,6 +50,26 @@
 					"response": []
 				},
 				{
+					"name": "Listar todos los Usuarios Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"usuario"
+							]
+						},
+						"description": "Listar todos los Usuarios"
+					},
+					"response": []
+				},
+				{
 					"name": "Crear un usuario",
 					"request": {
 						"method": "POST",
@@ -219,7 +239,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nombreEps\": \"colombia medica E.P.S.\",\r\n    \"direccionEps\": \"Cra. 110 #7-26\",\r\n    \"telefonoEps\": \"4236952\"\r\n}"
+							"raw": "{\r\n    \"nombreEps\": \"Servicios Medicos Colpatria\",\r\n    \"direccionEps\": \"Cra. 70b #109-46\",\r\n    \"telefonoEps\": \"57 +1 368-8805\",\r\n    \"lugarAtencionCollection\":[1,2,3]\r\n\r\n\r\n\r\n\r\n\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8191/eps",
@@ -319,7 +339,7 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/eps/asignarLugar/",
+					"name": "Asignar Lugares de At a una EPS",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -331,7 +351,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"lugarAtencionCollection\":[1,2,3,4]\r\n}",
+							"raw": "{\r\n\t\"lugarAtencionCollection\":[1,2,3]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -339,7 +359,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8191/eps/11",
+							"raw": "http://localhost:8191/eps/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -347,9 +367,10 @@
 							"port": "8191",
 							"path": [
 								"eps",
-								"11"
+								"3"
 							]
-						}
+						},
+						"description": "Asignar lugares de atención a una EPS, es posible Asignarlo de manera indivisual o enviar un varios lugares como una colección"
 					},
 					"response": []
 				}
@@ -489,12 +510,12 @@
 			"name": "LugaresAtencion",
 			"item": [
 				{
-					"name": "http://localhost:8191/LugarAtencion/findById/1",
+					"name": "Lugar de Atención por ID",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/findById/1",
+							"raw": "http://localhost:8191/lugarAtencion/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -502,7 +523,6 @@
 							"port": "8191",
 							"path": [
 								"lugarAtencion",
-								"findById",
 								"1"
 							]
 						},
@@ -511,20 +531,19 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/LugarAtencion/listAll",
+					"name": "Listar lugares de Atención",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/listAll",
+							"raw": "http://localhost:8191/lugarAtencion",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"lugarAtencion",
-								"listAll"
+								"lugarAtencion"
 							]
 						},
 						"description": "Lista todos los lugares de atención"
@@ -532,20 +551,34 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/LugarAtencion/create",
+					"name": "Crear un Lugar de Atención",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreLugarAtencion\": \"Virrey Solís IPS\",\r\n    \"direccionLugarAtencion\": \"Carrera 67 No 4G-68\",\r\n    \"telefonoLugarAtencion\": \"(1) 4473535\",\r\n    \"sitioWebLugarAtencion\": \"https://www.virreysolisips.com/\",\r\n    \"latitudLugarAtencion\": 4.6086992,\r\n    \"longitudLugarAtencion\": -74.1449104,\r\n    \"especialidadCollection\":[5,6,7,8]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/create",
+							"raw": "http://localhost:8191/lugarAtencion",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8191",
 							"path": [
-								"lugarAtencion",
-								"create"
+								"lugarAtencion"
 							]
 						},
 						"description": "Crea un lugar de atención"
@@ -553,12 +586,12 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/LugarAtencion/delete/3",
+					"name": "Eliminar un Lugar de Atencion",
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/delete/3",
+							"raw": "http://localhost:8191/lugarAtencion/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -566,7 +599,6 @@
 							"port": "8191",
 							"path": [
 								"lugarAtencion",
-								"delete",
 								"3"
 							]
 						},
@@ -575,12 +607,27 @@
 					"response": []
 				},
 				{
-					"name": "http://localhost:8191/LugarAtencion/activar/3",
+					"name": "Actualizar Lugar de Atención",
 					"request": {
 						"method": "PUT",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombreLugarAtencion\": \"EFI CIENCIA OCUPACIONAL LTDA\",\r\n    \"direccionLugarAtencion\": \"CARRERA 20 A # 72 09\",\r\n    \"telefonoLugarAtencion\": \"7551993\",\r\n    \"sitioWebLugarAtencion\": \"https://www.eficiencia.com/\",\r\n    \"latitudLugarAtencion\": 4.6605955,\r\n    \"longitudLugarAtencion\": -74.065454,\r\n    \"estadoLugarAtencion\": true,\r\n    \"especialidadCollection\":[2,3,9,10]\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/activar/3",
+							"raw": "http://localhost:8191/lugarAtencion/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -588,40 +635,10 @@
 							"port": "8191",
 							"path": [
 								"lugarAtencion",
-								"activar",
-								"3"
+								"1"
 							]
 						},
 						"description": "Activa un lugar de atención con borrado lógico"
-					},
-					"response": []
-				},
-				{
-					"name": "http://localhost:8191/lugarAtencion/lugaresAtencionEps/5",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8191/lugarAtencion/lugaresAtencionEps/5",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8191",
-							"path": [
-								"lugarAtencion",
-								"lugaresAtencionEps",
-								"5"
-							],
-							"query": [
-								{
-									"key": "idEps",
-									"value": "1",
-									"disabled": true
-								}
-							]
-						},
-						"description": "Seleccion de lugares de atencion por Eps, recibe un id de Eps y retorna el listado de lugares de atancion dependientes"
 					},
 					"response": []
 				}
@@ -632,7 +649,7 @@
 			"name": "Login",
 			"item": [
 				{
-					"name": "http://localhost:8191/login",
+					"name": "Login",
 					"event": [
 						{
 							"listen": "test",
@@ -651,8 +668,8 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
+								"type": "text",
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -671,6 +688,113 @@
 							]
 						},
 						"description": "Autenticacion de Usuario"
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "LugaresAtencionXEps",
+			"item": [
+				{
+					"name": "Lugares de atencion por EPS",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8191/lugarAtencion/lugaresAtencionEps/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"lugarAtencion",
+								"lugaresAtencionEps",
+								"1"
+							],
+							"query": [
+								{
+									"key": "idEps",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Metodo que recibe el Id de una EPS y retorna el listado de lugares de atencion que le corresponden"
+					},
+					"response": []
+				},
+				{
+					"name": "Asignar Lugares de Atención",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lugarAtencionCollection\":[5,8,10]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/eps/15",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"eps",
+								"15"
+							]
+						},
+						"description": "Metodo que permite Asociar los lugares de atencion a una EPS"
+					},
+					"response": []
+				},
+				{
+					"name": "Eliminar un Lugar de Atencion",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"lugarAtencionCollection\":[5,8,10]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8191/lugarAtencion/xeps/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8191",
+							"path": [
+								"lugarAtencion",
+								"xeps",
+								"3"
+							]
+						}
 					},
 					"response": []
 				}
