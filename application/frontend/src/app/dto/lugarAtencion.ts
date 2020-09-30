@@ -8,5 +8,6 @@ export class LugaresAtencion {
     latitudLugarAtencion: any;
     longitudLugarAtencion: any;
     estadoLugarAtencion:boolean;
+    disponibilidad?:number;
 
 }

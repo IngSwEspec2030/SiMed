@@ -37,8 +37,8 @@ export class PermissionCheckerService {
 
 
    isGranted(permiso:Permisos):boolean{
+     return (this.adminPermisos.includes(permiso));
      if(this.grantedPermissions=='1'){
-       return (this.adminPermisos.includes(permiso));
     }
     else{
       return (this.estandarPermisos.includes(permiso));
@@ -58,6 +58,4 @@ export enum Permisos{
   ModificarUsuario='modificarUsuario.visible',
   EliminarUsuario='eliminarUsuario.visible',
   ConsultarLugaresCercanos='lugaresCercanos.visible'
-
-
 }

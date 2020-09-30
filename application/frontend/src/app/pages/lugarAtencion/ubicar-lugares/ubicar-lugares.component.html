@@ -1,15 +1,30 @@
 
 
-<h2 class="card-title">Lugares de atención</h2>
+<!-- <h2 class="card-title">Lugares de atención</h2> -->
 
-<div class="card">
+<div class="card mt-1">
     <div class="card-body mb-5">
         <h5 class="card-title">A continuación se presentan los lugares de atención</h5>
         <hr>
+        <!-- ********************************************************************************************** -->
+        <!-- SECCIÓN DE BUSQUEDA PARA EPS -->
+        <!-- ********************************************************************************************** -->
+        <form [formGroup]="editForm">  
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 form-group">
+                    <label for="idEps">Seleccione los lugares según la eps</label>
+                    <select type="text" formControlName="idEps" class="form-control">
+                        <option *ngFor="let eps of epsList; let i=index"  [ngValue]="eps.idEps">{{eps.nombreEps}}</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <!-- ********************************************************************************************** -->
+        <!-- SECCIÓN DE MAPA -->
+        <!-- ********************************************************************************************** -->
         <div>
             <app-maps></app-maps>
         </div>
-
     </div>
 </div>
 

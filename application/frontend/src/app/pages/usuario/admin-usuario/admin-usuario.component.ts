@@ -21,7 +21,7 @@ export class AdminUsuarioComponent implements OnInit {
   editForm:FormGroup;
   submitted:boolean=false;
   loading:boolean;
-  epsList: Eps[];
+  epsList: Eps[]=[];
   public tipoDocumento:TipoIdentificacion[] = [
     {
       idTipoIdentificacion: 1,
@@ -45,9 +45,14 @@ export class AdminUsuarioComponent implements OnInit {
   }  
 
   getEps() {
+    this.epsList.splice(0,this.epsList.length)
     this.http.showBusy();
     this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp:Eps[]) => {
-      this.epsList = resp;
+      resp.map(element=>{
+        if(element.estadoEps==true){
+          this.epsList.push(element);
+        }
+      });
       this.http.closeBusy();
     }, error => {
       this.http.closeBusy();
@@ -94,9 +99,10 @@ export class AdminUsuarioComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
-
-    this.http.put(this.config.prop.urlUsuario,this.obtenerObjetoUsuario(), this.currentUser.idUsuario)
+    let user = this.obtenerObjetoUsuario();
+    this.http.put(this.config.prop.urlUsuario,user, this.currentUser.idUsuario)
     .subscribe(result=>{
+      this.auth.updateUsuario(user)
       this.message.displayInfoMessage('Usuario', 'Se ha actualizado correctamente', IconType.info, ButtonType.Ok);
     },  error => {
       console.error(error);      
