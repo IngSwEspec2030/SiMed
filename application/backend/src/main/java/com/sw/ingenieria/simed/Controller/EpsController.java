@@ -3,6 +3,7 @@ package com.sw.ingenieria.simed.Controller;
 import com.sw.ingenieria.simed.dto.EpsInputDTO;
 import com.sw.ingenieria.simed.dto.GeneralOutput;
 import com.sw.ingenieria.simed.entity.Eps;
+import com.sw.ingenieria.simed.entity.Usuario;
 import com.sw.ingenieria.simed.service.EpsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -32,6 +36,16 @@ public class EpsController {
         }
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
+
+    @GetMapping("/findAllByEps")
+    public ResponseEntity <?> findAllByEps() throws Exception {
+        List <Map<String, String>> list = epsService.findAllByEps();
+        if(!(list == null)){
+            return new ResponseEntity<>(list,HttpStatus.OK);
+        }
+        return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
+    }
+
     @ResponseBody
     @GetMapping("{id}")
     public ResponseEntity <?> getByid(@PathVariable("id") Short id ) throws Exception {

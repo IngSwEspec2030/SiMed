@@ -1,6 +1,8 @@
 package com.sw.ingenieria.simed.Controller;
 
+import com.sw.ingenieria.simed.entity.Eps;
 import com.sw.ingenieria.simed.entity.Usuario;
+import com.sw.ingenieria.simed.repository.UsuarioRepository;
 import com.sw.ingenieria.simed.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,6 +23,8 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public UsuarioController(UsuarioService usuarioService) {this.usuarioService = usuarioService;}
 

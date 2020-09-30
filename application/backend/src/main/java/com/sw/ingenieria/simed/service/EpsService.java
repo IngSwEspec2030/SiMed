@@ -37,6 +37,9 @@ public class EpsService implements ServiceInterface  <Eps, Short>{
     public List<Eps> findAll() throws Exception {
         return (List <Eps>) epsRepository.findAll();
     }
+    public List <Map<String, String>> findAllByEps() throws Exception {
+        return epsRepository.findAllByEps();
+    }
 
     @Override
     public Eps create(Eps entity) throws Exception {
