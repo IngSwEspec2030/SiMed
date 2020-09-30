@@ -1,22 +1,22 @@
 <agm-map (mapClick)="onAddMark($event)"
-    [zoom]="13"
+    [zoom]="12"
   [latitude]="lat" [longitude]="lng">
 
    <agm-marker *ngIf="userMark.valido" 
    [iconUrl]=iconRed
    [latitude]=userMark.lat [longitude]=userMark.lng></agm-marker>
     <agm-marker [iconUrl]=iconBlue  *ngFor="let lugar of lugaresCercanosList; let i=index" [latitude]=lugar.latitudLugarAtencion [longitude]=lugar.longitudLugarAtencion>
-        <agm-info-window>
+        <agm-info-window class="info-window container row" #infoWindow>
             <strong>{{lugar.nombreLugarAtencion}}</strong>
             <ul>
                 <li><b>Dirección: </b>{{lugar.direccionLugarAtencion}}</li>
                 <li><b>Teléfono: </b>{{lugar.telefonoLugarAtencion}}</li>
                 <li><b>Sito Web: </b>{{lugar.sitioWebLugarAtencion}}</li>
             </ul>
-            <div>
-                <button  type="button" class="btn btn-primary">Aceptar</button>
-                <!-- <button (click)="onDeleteMark(i)" mat-raised-button color="warn">Borrar</button> -->
-            </div>
+
+                <div class="col-12"> 
+                    <button  type="button" class="btn btn-primary" (click)="onAccept(infoWindow)" >Aceptar</button>
+                </div>
         </agm-info-window>
     </agm-marker>
   </agm-map>

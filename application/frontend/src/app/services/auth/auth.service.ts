@@ -83,4 +83,51 @@ export class AuthService {
     localStorage.clear();
     this.router.navigate(['/login']);
   }
+
+
+  updateUsuario(usuario:Usuario){
+    console.log('mi usuario anteiror:', this.user);
+    console.log('mi usuario nuevor:', usuario);
+    
+    localStorage.removeItem(this.keyUsuerAll);
+
+    for(const prop in usuario){
+
+      if(prop==='nombreUsuario'){
+        if(this.user.nombreUsuario!=usuario.nombreUsuario)
+        this.user.nombreUsuario=usuario.nombreUsuario;
+      }
+
+      if(prop==='apellidosUsuario'){
+        if(this.user.apellidosUsuario!=usuario.apellidosUsuario)
+        this.user.apellidosUsuario=usuario.apellidosUsuario;
+      }
+
+      if(prop==='numeroIdentificacionUsuario'){
+        if(this.user.numeroIdentificacionUsuario!=usuario.numeroIdentificacionUsuario)
+        this.user.numeroIdentificacionUsuario=usuario.numeroIdentificacionUsuario;
+      }
+
+      if(prop==='correoUsuario'){
+        if(this.user.correoUsuario!=usuario.correoUsuario)
+        this.user.correoUsuario=usuario.correoUsuario;
+      }
+
+      if(prop==='eps'){
+        if(usuario.eps.idEps!=null && this.user.eps.idEps!=usuario.eps.idEps)
+          this.user.eps.idEps=usuario.eps.idEps;
+      }
+
+      if(prop==='tipoIdentificacion'){
+        if(this.user.tipoIdentificacion.tipoIdentificacion!=usuario.tipoIdentificacion.tipoIdentificacion)
+        this.user.tipoIdentificacion.tipoIdentificacion=usuario.tipoIdentificacion.tipoIdentificacion;
+      }
+    }
+
+
+
+      
+    let userJson = JSON.stringify(this.user);
+    localStorage.setItem(this.keyUsuerAll,userJson);
+  }
 }

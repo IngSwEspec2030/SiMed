@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
 import { LugaresAtencion } from 'src/app/dto/lugarAtencion';
 import { ConfigService } from 'src/app/services/config.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
@@ -12,8 +13,11 @@ import { DisplayMessage } from 'src/app/utils/messageSweet';
 })
 export class RelSiteSpecialtyComponent implements OnInit {
 
+  displayedColumns: string[] = ['nombreLugarAtencion', 'direccionLugarAtencion', 'telefonoLugarAtencion',  'sitioWebLugarAtencion', 'latitudLugarAtencion', 'longitudLugarAtencion', 'estadoLugarAtencion','actions'];
+  lugaresAtencionEPS: LugaresAtencion[] = [];//listado de lugares correspondientes a una eps
+  datasource = new MatTableDataSource<any>();
   editForm:FormGroup;
-  lugaresList:LugaresAtencion[]=[];
+  lugaresList:LugaresAtencion[]=[];//listado  general de lugares de atención
   submitted = false;
   message:  DisplayMessage = new DisplayMessage();
   constructor(
@@ -52,8 +56,7 @@ export class RelSiteSpecialtyComponent implements OnInit {
   get f() { return this.editForm.controls; }
 
   onConfirm(){
-    console.log('trato de guardar');
-    
+    console.log('trato de guardar');    
   }
 
 }

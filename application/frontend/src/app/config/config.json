@@ -18,6 +18,7 @@
     "urlFindByIdLugaresAtencion":"/lugarAtencion//",
     "urllistAllLugarAtencion":"/lugarAtencion/",  
     "urllistLugaresAtencionCercanos":"/lugarAtencion/lugaresCercanos",    
+    "urllistlugaresAtencionEps":"/lugarAtencion/lugaresAtencionEps",    
     "urlcreateLugarAtencion":"/lugarAtencion/",
     "urldeleteLugarAtencion":"/lugarAtencion/",
     "urlactivarLugarAtencion":"/lugarAtencion/",

@@ -94,9 +94,10 @@ export class AdminUsuarioComponent implements OnInit {
     if (this.editForm.invalid) {
       return;
     }
-
-    this.http.put(this.config.prop.urlUsuario,this.obtenerObjetoUsuario(), this.currentUser.idUsuario)
+    let user = this.obtenerObjetoUsuario();
+    this.http.put(this.config.prop.urlUsuario,user, this.currentUser.idUsuario)
     .subscribe(result=>{
+      this.auth.updateUsuario(user)
       this.message.displayInfoMessage('Usuario', 'Se ha actualizado correctamente', IconType.info, ButtonType.Ok);
     },  error => {
       console.error(error);      

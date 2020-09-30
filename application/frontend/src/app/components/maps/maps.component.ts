@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Marcador } from 'src/app/dto/marcador';
 import { LocationService } from 'src/app/services/location.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
@@ -14,6 +14,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class MapsComponent implements OnInit {
 
+  idEpsSelected:number;
   
   iconRed:any = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|FF0000';
   iconBlue:any = 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|4286f4';
@@ -38,13 +39,14 @@ export class MapsComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.idEpsSelected = this.auth.getidEps();
     this.getUserLocation();
   }
 
   /**
    * Obtiene la ubicación del usuario
    */
-  getUserLocation() {
+ private  getUserLocation() {
     this.locationService.getPosition().then(pos=>
       {
         if(!pos){
@@ -58,20 +60,17 @@ export class MapsComponent implements OnInit {
          if(pos!==undefined)
           this.getLugaresCercanos();
          
-      });
-    
+      });    
   }
-
-
   /**
    * Obtiene los lugares de atención mas cernanos
    */
-  getLugaresCercanos(){
-    let parametros= `${this.auth.getidEps()}/${this.lat}/${this.lng}`
+  private getLugaresCercanos(){
+    let parametros= `${this.idEpsSelected}/${this.lat}/${this.lng}`
     console.log("parametros lugares cercanos"+parametros);
     this.http.get(this.config.prop.urllistLugaresAtencionCercanos, parametros)
     .subscribe((data:LugaresAtencion[])=>{
-
+      console.log('Mis lugares cercanos: ', data);
       if(data.length>0){
         this.message.displayInfoMessage("Estimado Usuario", "Se han encontrado " +data.length + " sitios cerca de usted"  , IconType.info, ButtonType.Ok);      
         this.lugaresCercanosList = data;
@@ -85,16 +84,30 @@ export class MapsComponent implements OnInit {
     })
   }
 
-  onAddMark(evento){
+ onAddMark(evento){
     const coord: {lat:number, lng:number} = evento.coords;
     const nuevoMarcador = new Marcador(coord.lat, coord.lng);
     // this.marcadores.push(nuevoMarcador);
   }
 
 
-  onDeleteMark(index:number){
+ onDeleteMark(index:number){
   console.log("index: ", index);  
   //  this.marcadores.splice(index,1);
+  }
+
+  public onGetLugaresxEps(idEps:number){
+    this.idEpsSelected=idEps;
+    this.getLugaresCercanos();
+  }
+
+  onAccept(infoWindow){
+    console.log('trato:', infoWindow);
+    
+    if(infoWindow!=null){
+      infoWindow.close();
+    }
+      
   }
 
 }
