@@ -79,8 +79,13 @@ export class MapsComponent implements OnInit {
         this.message.displayInfoMessage("Error", "No se encontraron lugares de atención cerca de usted", IconType.error, ButtonType.Ok);      
       }
     }, (err)=>{
-      console.error(err.error);      
-      this.message.displayInfoMessage("Error", "No se pudo conectar al servicio, por favor intentelo más tarde!", IconType.error, ButtonType.Ok);      
+      console.error('he aqui el que causa el error', err.error);      
+      if(err!=null && err!==undefined && err.error.status===500){
+        this.message.displayInfoMessage("Atención", "No se encontraron lugares de atención cerca de usted para la Eps seleccionada", IconType.warning, ButtonType.Ok);      
+
+      }else{
+        this.message.displayInfoMessage("Error", "No se pudo conectar al servicio, por favor intentelo más tarde!", IconType.error, ButtonType.Ok);      
+      }
     })
   }
 

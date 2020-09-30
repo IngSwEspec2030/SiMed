@@ -17,7 +17,7 @@ import { Usuario } from 'src/app/dto/usuario';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  epsList: any = []
+  epsList: Eps[]= [];
 
   tipoDocumento = [
     {
@@ -59,19 +59,19 @@ export class RegisterComponent implements OnInit {
       estadoUsuario: true,
       idTipoUsuario: 3
     });
-
-
-    
-
-
   }
 
   getEps() {
+    this.epsList.splice(0,this.epsList.length);
     console.log("Entro a obtener EPS: "+this.config.prop.urllistAllEps);
     this.http.showBusy();
-    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp) => {
-      console.log("EPS Recibidas: ", resp);
-      this.epsList = resp;
+    this.http.get(this.config.prop.urllistAllEps, null)
+    .subscribe((resp:Eps[]) => {
+      resp.map(element=>{
+        if(element.estadoEps==true){
+          this.epsList.push(element);
+        }
+      });
       this.http.closeBusy();
     }, error => {
       

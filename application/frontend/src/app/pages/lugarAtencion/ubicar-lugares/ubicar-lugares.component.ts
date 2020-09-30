@@ -7,6 +7,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { UtilHttpService } from 'src/app/services/util-http.service';
 import { DisplayMessage } from 'src/app/utils/messageSweet';
+import { map } from 'rxjs/operators'
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-ubicar-lugares',
@@ -18,7 +20,7 @@ export class UbicarLugaresComponent implements OnInit {
 
   message = new DisplayMessage();
   editForm:FormGroup;
-  epsList: Eps[];  
+  epsList: Eps[]=[];  
   $subs:Subscription;
   idEpsSeleccionada:number;
   constructor(
@@ -61,9 +63,17 @@ export class UbicarLugaresComponent implements OnInit {
 
 
   getEps() {
+    this.epsList.splice(0,this.epsList.length);
     this.http.showBusy();
-    this.http.get(this.config.prop.urllistAllEps, null).subscribe((resp:Eps[]) => {
-      this.epsList = resp;
+    this.http.get(this.config.prop.urllistAllEps, null)
+    .subscribe((resp:Eps[]) => {
+      resp.map(element=>{
+        if(element.estadoEps==true){
+          this.epsList.push(element);
+        }
+      });
+      console.log('mis eps:', this.epsList);
+      
       this.http.closeBusy();
     }, error => {      
       console.error("Error EPS: ", error);

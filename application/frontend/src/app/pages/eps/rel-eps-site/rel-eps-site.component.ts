@@ -1,8 +1,11 @@
+import { ScrollStrategyOptions } from '@angular/cdk/overlay';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
+import { IpsListComponent } from 'src/app/components/modals/ips-list/ips-list.component';
 import { Eps } from 'src/app/dto/eps';
 import { LugaresAtencion } from 'src/app/dto/lugarAtencion';
 import { ConfigService } from 'src/app/services/config.service';
@@ -29,11 +32,12 @@ export class RelEpsSiteComponent implements OnInit {
   submitted = false;
   message:  DisplayMessage = new DisplayMessage();
   constructor(
+    public dialog: MatDialog,
     private formBuilder:FormBuilder,
     private http:UtilHttpService, 
     private config:ConfigService
     ) { 
-      this.datasource = new MatTableDataSource<any>();
+      this.datasource = new MatTableDataSource<LugaresAtencion>();
     }
 
   ngOnInit(): void {
@@ -84,8 +88,11 @@ export class RelEpsSiteComponent implements OnInit {
       }
 
       this.http.closeBusy();
-    }, error => {      
-      console.error("Error cargando lugare de atención de eps: ", error);
+    }, error => { 
+      if(error.error.status==500){
+      this.datasource = new MatTableDataSource<any>(this.lugaresAtencionEPS);
+      }  
+      console.error("Error cargando lugares de atención de eps: ", error);
       this.http.closeBusy();
     })
   }
@@ -143,12 +150,34 @@ export class RelEpsSiteComponent implements OnInit {
 
 
   onDeleteItem(i,element){
-    console.log('quiero borrar una de estas', i, element);
-    
+    let ssd = this.datasource.data;
+    ssd.splice(i,1);
+    this.datasource.data = ssd;
+    this.datasource.connect();    
   }
 
-  onAddNew(){
-    console.log('quiero agregar');
+  onAddNew() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.width = '40vw';
+    dialogConfig.height= '30vw';
+    let dialogRef= this.dialog.open(IpsListComponent, dialogConfig);
+    dialogRef.componentInstance.valueSelected.subscribe((res:LugaresAtencion)=>{
+      if(res!=null && res!=undefined)      {
+        console.log('recibiendo lugar', res);
+        let ssd:LugaresAtencion[] = this.datasource.data;
+        console.log('lo que tiene ssd', ssd);
+        let rrt = ssd.find(x=>x.idLugaresAtencion===res.idLugaresAtencion);
+        console.log(rrt);
+        
+        if(!rrt){
+          ssd.push(res);
+          this.datasource.data = ssd;
+        }
+        this.datasource.connect();       
+      }
+    }      
+    )
+    
     
   }
 
