@@ -36,7 +36,7 @@ export class EditarLugarAtencionComponent implements OnInit {
       nombreLugarAtencion: ['', Validators.required],
       direccionLugarAtencion: ['', Validators.required],
       telefonoLugarAtencion:[],
-      sitioWebLugarAtencion:['', Validators.required],
+      sitioWebLugarAtencion:[],
       latitudLugarAtencion: ['', Validators.required],
       longitudLugarAtencion: ['', Validators.required],
       estadoLugarAtencion:[]
@@ -73,6 +73,7 @@ export class EditarLugarAtencionComponent implements OnInit {
         return;
       }
      
+      console.log("Entro al modificar lugar de atencion");
       this.http.showBusy();
       this.http.put(this.config.prop.urlupdateLugarAtencion, this.editForm.value, this.id)
       .subscribe(resp=>{

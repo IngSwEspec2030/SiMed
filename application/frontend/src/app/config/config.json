@@ -23,7 +23,9 @@
     "urlcreateLugarAtencion":"/lugarAtencion/",
     "urldeleteLugarAtencion":"/lugarAtencion/",
     "urlactivarLugarAtencion":"/lugarAtencion/",
+    "urlupdateLugarAtencion":"/lugarAtencion/",
     "urlLugaresAtencion":"/lugarAtencion",
+
 
     "urllistAllEspecialidad":"/especialidad/",
     "urlcreateEspecialidad":"/especialidad/",

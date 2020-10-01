@@ -12,7 +12,7 @@
         <form [formGroup]="editForm">  
             <div class="row">
                 <div class="col-lg-12 col-sm-12 form-group">
-                    <label for="idEps">Seleccione los lugares según la eps</label>
+                    <label for="idEps">Filtro por EPS:</label>
                     <select type="text" formControlName="idEps" class="form-control">
                         <option *ngFor="let eps of epsList; let i=index"  [ngValue]="eps.idEps">{{eps.nombreEps}}</option>
                     </select>

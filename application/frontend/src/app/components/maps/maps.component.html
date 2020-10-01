@@ -9,10 +9,10 @@
         <agm-info-window class="info-window container row" #infoWindow>
             <strong>{{lugar.nombreLugarAtencion}}</strong>
             <ul>
-                <li><b>Dirección: </b>{{lugar.direccionLugarAtencion}}</li>
-                <li><b>Teléfono: </b>{{lugar.telefonoLugarAtencion}}</li>
-                <li><b>Sito Web: </b>{{lugar.sitioWebLugarAtencion}}</li>
-                <li *ngIf="lugar.disponibilidad"><b>Sito Web: </b>{{lugar.disponibilidad}}%</li>
+                <li *ngIf="lugar.direccionLugarAtencion"><b>Dirección: </b>{{lugar.direccionLugarAtencion}}</li>
+                <li *ngIf="lugar.telefonoLugarAtencion"><b>Teléfono: </b>{{lugar.telefonoLugarAtencion}}</li>
+                <li *ngIf="lugar.sitioWebLugarAtencion" ><b>Sito Web: </b>{{lugar.sitioWebLugarAtencion}}</li>
+                <li *ngIf="lugar.disponibilidad"><b>Disponibilidad: </b>{{lugar.disponibilidad}}%</li>
             </ul>
 
                 <div class="col-12"> 

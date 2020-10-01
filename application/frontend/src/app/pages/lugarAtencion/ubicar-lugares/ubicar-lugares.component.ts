@@ -72,7 +72,6 @@ export class UbicarLugaresComponent implements OnInit {
           this.epsList.push(element);
         }
       });
-      console.log('mis eps:', this.epsList);
       
       this.http.closeBusy();
     }, error => {      

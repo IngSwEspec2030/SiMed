@@ -29,7 +29,7 @@ export class LoginService {
 
     login(user: Usuario) {
     
-        console.log(user)
+       
         return this.http.post(`${this.apiEndPoint}/login`,  user, httpOptions);
     }
 

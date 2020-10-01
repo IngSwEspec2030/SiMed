@@ -90,12 +90,15 @@ public class LugarAtencionController {
 
     @GetMapping("/lugaresCercanos/{idEps}/{lat}/{lon}")
     public ResponseEntity<?> getClosestPlaces(@PathVariable("idEps") Short idEps, @PathVariable("lat") double lat, @PathVariable("lon") double lon ) throws Exception {
-        List<LugarAtencion> list = lugarAtencionService.obtenerLugaresAtencionCercanos(idEps, lat, lon);
-        if(!list.isEmpty()){
-            return new ResponseEntity<List>(list, HttpStatus.OK);
+        List<LugarAtencionOutputDTO> lugarAtencionDTOList =new ArrayList<>();
+        for (LugarAtencion lugarAtencion:lugarAtencionService.obtenerLugaresAtencionCercanos(idEps,lat,lon)) {
+            LugarAtencionOutputDTO laDTO = LugarAtencionOutputDTO.getDTO(lugarAtencion);
+            lugarAtencionDTOList.add(laDTO);
+        }
+        if(!lugarAtencionDTOList.isEmpty()){
+            return new ResponseEntity<List>(lugarAtencionDTOList, HttpStatus.OK);
         }
         return new ResponseEntity<>("No hay registros",HttpStatus.NOT_FOUND);
     }
-
 
 }
