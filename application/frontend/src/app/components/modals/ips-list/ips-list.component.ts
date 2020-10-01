@@ -51,7 +51,7 @@ export class IpsListComponent implements OnInit {
       this.lugaresList = resp;
       this.http.closeBusy();
     }, error => {      
-      console.error("Error Lugares de atención: "+error);
+      console.error("Error: "+error);
       this.http.closeBusy();
     })
   }
@@ -60,7 +60,6 @@ export class IpsListComponent implements OnInit {
     get f() { return this.editForm.controls; }
 
     onConfirm(){
-      console.log('trato de guardar');
       var idSelected = this.editForm.get('idLugar').value;
       var lugar = this.lugaresList.find(x=>x.idLugaresAtencion===idSelected);
       this.valueSelected.next(lugar);

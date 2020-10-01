@@ -12,6 +12,7 @@
                 <li><b>Dirección: </b>{{lugar.direccionLugarAtencion}}</li>
                 <li><b>Teléfono: </b>{{lugar.telefonoLugarAtencion}}</li>
                 <li><b>Sito Web: </b>{{lugar.sitioWebLugarAtencion}}</li>
+                <li *ngIf="lugar.disponibilidad"><b>Sito Web: </b>{{lugar.disponibilidad}}%</li>
             </ul>
 
                 <div class="col-12"> 
