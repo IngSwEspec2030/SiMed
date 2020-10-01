@@ -86,11 +86,8 @@ export class AuthService {
 
 
   updateUsuario(usuario:Usuario){
-    console.log('mi usuario anteiror:', this.user);
-    console.log('mi usuario nuevor:', usuario);
-    
+    this.user=this.getUserRegistered();    
     localStorage.removeItem(this.keyUsuerAll);
-
     for(const prop in usuario){
 
       if(prop==='nombreUsuario'){

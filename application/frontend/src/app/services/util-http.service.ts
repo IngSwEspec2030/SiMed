@@ -31,7 +31,7 @@ export class UtilHttpService {
    */
   get(url:string, param?:string){
    
-    url = param===null || param===""? url:`${url}/${param}`;
+    url = param===null ||param===undefined || param===""? url:`${url}/${param}`;
     url = environment.apiEndPoint + url;
     console.log("Entre al util http: "+url);
     return this.http.get(url, {headers:this.createRequestHeader()})

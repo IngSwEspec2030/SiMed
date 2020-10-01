@@ -25,10 +25,12 @@ export class AdminUsuarioComponent implements OnInit {
   public tipoDocumento:TipoIdentificacion[] = [
     {
       idTipoIdentificacion: 1,
+      tipoIdentificacion:1,
       nombreTipoIdentificacion: "CC",
     },
     {
       idTipoIdentificacion: 2,
+      tipoIdentificacion:2,
       nombreTipoIdentificacion: "CE"
     },
   ]
@@ -40,6 +42,8 @@ export class AdminUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser=this.auth.getUserRegistered();
+    console.log('currentUser', this.currentUser );
+    
     this.onBuildForm();
     this.getEps();
   }  
@@ -65,9 +69,9 @@ export class AdminUsuarioComponent implements OnInit {
       apellidosUsuario: ['', Validators.required],
       numeroIdentificacionUsuario: ['', Validators.required],
       correoUsuario: ['', [Validators.required, Validators.email]],
-      tipoIdentificacion: ['', [Validators.required, Validators.required]],
+      tipoIdentificacion: ['', [Validators.required]],
       username: [],
-      idEps: ['', [Validators.required, Validators.required]],
+      idEps: ['', [Validators.required]],
       idTipoUsuario: 3
     })
 
@@ -83,7 +87,7 @@ export class AdminUsuarioComponent implements OnInit {
       apellidosUsuario:this.currentUser.apellidosUsuario,
       numeroIdentificacionUsuario:this.currentUser.numeroIdentificacionUsuario,
       correoUsuario:this.currentUser.correoUsuario,
-      tipoIdentificacion:this.currentUser.tipoIdentificacion.idTipoIdentificacion,
+      tipoIdentificacion:this.currentUser.tipoIdentificacion.tipoIdentificacion,
       username:this.currentUser.username,
       idEps:this.currentUser.eps.idEps,
       idTipoUsuario:this.currentUser.tipoUsuario,

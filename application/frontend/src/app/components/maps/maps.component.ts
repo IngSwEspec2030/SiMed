@@ -50,7 +50,7 @@ export class MapsComponent implements OnInit {
     this.locationService.getPosition().then(pos=>
       {
         if(!pos){
-          console.log("No tengo posicion", pos);
+          console.log("Not Pos", pos);
         }
          this.lat=pos===undefined?this.lat: pos.lat;
          this.lng=pos===undefined?this.lng:pos.lng;
@@ -67,10 +67,8 @@ export class MapsComponent implements OnInit {
    */
   private getLugaresCercanos(){
     let parametros= `${this.idEpsSelected}/${this.lat}/${this.lng}`
-    console.log("parametros lugares cercanos"+parametros);
     this.http.get(this.config.prop.urllistLugaresAtencionCercanos, parametros)
     .subscribe((data:LugaresAtencion[])=>{
-      console.log('Mis lugares cercanos: ', data);
       if(data.length>0){
         this.message.displayInfoMessage("Estimado Usuario", "Se han encontrado " +data.length + " sitios cerca de usted"  , IconType.info, ButtonType.Ok);      
         this.lugaresCercanosList = data;
@@ -78,8 +76,7 @@ export class MapsComponent implements OnInit {
       else{
         this.message.displayInfoMessage("Error", "No se encontraron lugares de atención cerca de usted", IconType.error, ButtonType.Ok);      
       }
-    }, (err)=>{
-      console.error('he aqui el que causa el error', err.error);      
+    }, (err)=>{     
       if(err!=null && err!==undefined && err.error.status===500){
         this.message.displayInfoMessage("Atención", "No se encontraron lugares de atención cerca de usted para la Eps seleccionada", IconType.warning, ButtonType.Ok);      
 
@@ -97,7 +94,6 @@ export class MapsComponent implements OnInit {
 
 
  onDeleteMark(index:number){
-  console.log("index: ", index);  
   //  this.marcadores.splice(index,1);
   }
 
@@ -106,9 +102,7 @@ export class MapsComponent implements OnInit {
     this.getLugaresCercanos();
   }
 
-  onAccept(infoWindow){
-    console.log('trato:', infoWindow);
-    
+  onAccept(infoWindow){    
     if(infoWindow!=null){
       infoWindow.close();
     }

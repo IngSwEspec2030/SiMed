@@ -33,8 +33,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-    console.log("Inicio login")
     this.registerForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -45,27 +43,21 @@ export class LoginComponent implements OnInit {
   get f() { return this.registerForm.controls; }
 
   onSubmit() {
-
-    console.log("Inicio Submit")
     this.submitted = true;
 
     // reset alerts on submit
     this.alertService.clear();
-    console.log("Validar Form")
     // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
 
     this.loading = true;
-    console.log("Voy al loginservice.login")
     this.loginService.login(this.registerForm.value)
       .pipe(first())
       .subscribe(
         (data:userReturned) => {
-          console.log(data);
           this.authService.setUser(data);//inscripción de datos en servicio de autorización
-          //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/site']);
         },
         error => {

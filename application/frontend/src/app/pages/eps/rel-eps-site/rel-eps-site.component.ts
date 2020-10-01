@@ -48,8 +48,7 @@ export class RelEpsSiteComponent implements OnInit {
 
   onBuildForm(){
     this.editForm = this.formBuilder.group({
-      idEps: ['', [Validators.required]],
-      // idLugar: ['', [Validators.required]]      
+      idEps: ['', [Validators.required]],  
     })
 
     this.selectorChanges();
@@ -78,9 +77,7 @@ export class RelEpsSiteComponent implements OnInit {
     this.lugaresAtencionEPS.splice(0,this.lugaresAtencionEPS.length);
     this.http.showBusy();
     this.http.get(this.config.prop.urllistlugaresAtencionEps, idEps.toString()).subscribe((resp:any) => {
-      if(resp!=null && resp.status===200){
-        console.log('mis lugares:', resp.payLoad);
-              
+      if(resp!=null && resp.status===200){              
       this.lugaresAtencionEPS = resp.payLoad;
       this.datasource = new MatTableDataSource<any>(this.lugaresAtencionEPS);
       this.datasource.paginator = this.paginator;
@@ -112,23 +109,16 @@ export class RelEpsSiteComponent implements OnInit {
   get f() { return this.editForm.controls; }
 
   onConfirm(){
-    console.log('trato de guardar', this.datasource.data); 
+    if(this.editForm.invalid){
+      return;
+    }
 
-    let myArr:[]=[];
-
-    this.datasource.data.forEach(element => {
-      console.log(element);
-      
-
-      
-    });   
-
-
-
-    // const lugares={
-    //   "lugarAtencionCollection":[]
-    // }
-
+    let myArr:number[]=[];
+    this.datasource.data.forEach((element:LugaresAtencion) => {
+      myArr.push(element.idLugaresAtencion);    
+    });
+    let epsSelected = this.editForm.get('idEps').value;
+    this.onSave(epsSelected,{"lugarAtencionCollection":myArr});
   }
 
   /**
@@ -162,23 +152,17 @@ export class RelEpsSiteComponent implements OnInit {
     dialogConfig.height= '30vw';
     let dialogRef= this.dialog.open(IpsListComponent, dialogConfig);
     dialogRef.componentInstance.valueSelected.subscribe((res:LugaresAtencion)=>{
-      if(res!=null && res!=undefined)      {
-        console.log('recibiendo lugar', res);
-        let ssd:LugaresAtencion[] = this.datasource.data;
-        console.log('lo que tiene ssd', ssd);
+      if(res!=null && res!=undefined){
+        let ssd:LugaresAtencion[] = this.datasource.data; 
         let rrt = ssd.find(x=>x.idLugaresAtencion===res.idLugaresAtencion);
-        console.log(rrt);
-        
+        console.log(rrt);        
         if(!rrt){
           ssd.push(res);
           this.datasource.data = ssd;
         }
         this.datasource.connect();       
       }
-    }      
-    )
-    
-    
+    } )
   }
 
 }

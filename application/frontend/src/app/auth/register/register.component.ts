@@ -63,7 +63,6 @@ export class RegisterComponent implements OnInit {
 
   getEps() {
     this.epsList.splice(0,this.epsList.length);
-    console.log("Entro a obtener EPS: "+this.config.prop.urllistAllEps);
     this.http.showBusy();
     this.http.get(this.config.prop.urllistAllEps, null)
     .subscribe((resp:Eps[]) => {
@@ -122,7 +121,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data)
+
           this.alert.displayInfoMessage('Usuario', 'Se ha registrado correctamente', IconType.info, ButtonType.Ok);
           //this.alertService.success('Se ha registrado correctamente', true);
           this.router.navigate(['/login']);
