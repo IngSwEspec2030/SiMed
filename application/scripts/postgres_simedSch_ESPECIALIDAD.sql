@@ -1,0 +1,16 @@
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (2, 'Neumologia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (3, 'Consulta General', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (4, 'Otorrino', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (5, 'Odontologia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (6, 'Dermatologia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (11, 'Optometria', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (10, 'Reumatologia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (12, 'Radiologia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (9, 'Ortopedia', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (13, 'Internista', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (7, 'Endocrinología', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (8, 'Endocrinología', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (14, 'Internista', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (1, 'Endocrinología', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (15, 'Hepatología', 'true');
+insert into simedSch.ESPECIALIDAD (ID_ESPECIALIDAD, NOMBRE_ESPECIALIDAD, ESTADO_ESPECIALIDAD) values (16, 'Gastroenterologia Edicion', 'false');
